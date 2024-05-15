@@ -6,7 +6,7 @@
 >Layout是設計UI介面的地方，其他還有一些是ICON，放照片的地方，或是目錄
 >![image](https://github.com/peipei930725/Java_final/assets/114333331/a16c9a31-80a9-4326-b5b5-fcf15d26ca38)
 
->而Layout的部分可以從左邊拉
+>而Layout的部分看到需要的工具可以從左邊的工具箱拉
 >因為手機螢幕是變動的，所以他有他需要固定的方式，必須在四邊進行相對的固定那個元素才能使用
 >![image](https://github.com/peipei930725/Java_final/assets/114333331/fbb73c3d-8816-42bc-a4e8-ec3bc32bd833)
 
