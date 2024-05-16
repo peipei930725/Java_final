@@ -14,7 +14,12 @@
 >也有可能是字打錯找不到layout的元素
 
 ## 如何連接github:
-123
+起始畫面點右邊那個
+![image](https://cdn.discordapp.com/attachments/1094192360411365408/1240507058332237884/image.png?ex=6646cfba&is=66457e3a&hm=9bc4f81e10b489dd5716dc311cd0849a9d3169e0f99682c92cb698248d568640&)
+url填入 https://github.com/peipei930725/Java_final.git
+點 clone
+![image](https://cdn.discordapp.com/attachments/1094192360411365408/1240507538403754025/image.png?ex=6646d02c&is=66457eac&hm=e7fd250c4d9e3c5a0b1fb84c2f974244bdfeea7b145475fbdbfa5c17776b1d34&)
+alt + F12 在PowerShell輸入 git checkout beta 切換到beta分支
 
 ## 版本與Java語言設定
 ![image](https://github.com/peipei930725/Java_final/assets/114333331/dbcdb5ad-bb1c-4522-bc2a-4619c2661db9)
