@@ -30,7 +30,7 @@ alt + F12 在PowerShell輸入 git checkout beta 切換到beta分支
 alt + 0 叫出Commit頁面
 勾選要更新的檔案
 在下方輸入更新訊息
-按 Commit
+按 Commit 
 
 ![image](https://cdn.discordapp.com/attachments/1094192360411365408/1240509105064382484/image.png?ex=6646d1a2&is=66458022&hm=3462321bacc34596f6880091b83383247a3ab6b63950891477307c2bfeac07a9&)
 
