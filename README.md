@@ -8,9 +8,6 @@
 ---
 頁面放在templates裡面
 控制從controller裡面的java檔案做控制
-
-![image](https://github.com/peipei930725/Java_final/assets/114333331/ea0820c5-aec2-4161-bc17-04bc880a79fa)
-
 DemoApplication是主程式
 
 ![image](https://github.com/peipei930725/Java_final/assets/114333331/f1744ae4-9971-4a20-98af-efbe9cee778c)
