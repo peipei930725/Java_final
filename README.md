@@ -12,16 +12,16 @@
 ![image](https://github.com/peipei930725/Java_final/assets/114333331/f1744ae4-9971-4a20-98af-efbe9cee778c)
 
 ## 語法
->SpringBoot可以用@做頁面控制
->下圖會跑到index.html(如果放@home就會跑到home)，index是根目錄的預設值
->return也可以控制templates的頁面，讓畫面顯示想要的html
+>SpringBoot可以用@做頁面控制    
+>下圖會跑到index.html(如果放@home就會跑到home)，index是根目錄的預設值    
+>return也可以控制templates的頁面，讓畫面顯示想要的html    
 ![image](https://github.com/peipei930725/Java_final/assets/114333331/0c2b2c8e-eb15-4d9a-b6fd-e7ccd7c46122)
 
 ## 環境建置
->compiler:Vscode
->程式語言:Java
->架構:SpringBoot
->Java版本:22
+>compiler:Vscode    
+>程式語言:Java    
+>架構:SpringBoot    
+>Java版本:22    
 
 ## 延伸模組
 ![image](https://github.com/peipei930725/Java_final/assets/114333331/4246dfba-1f9b-4f23-8ee9-186f09e41385)
