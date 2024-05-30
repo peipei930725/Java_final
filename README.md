@@ -10,6 +10,7 @@
 控制從controller裡面的java檔案做控制
 
 ![image](https://github.com/peipei930725/Java_final/assets/114333331/ea0820c5-aec2-4161-bc17-04bc880a79fa)
+
 DemoApplication是主程式
 
 ![image](https://github.com/peipei930725/Java_final/assets/114333331/f1744ae4-9971-4a20-98af-efbe9cee778c)
@@ -18,7 +19,9 @@ DemoApplication是主程式
 ---
 SpringBoot可以用@做頁面控制
 下圖會跑到index.html(如果放@home就會跑到home)，index是跟目錄的預設值
+
 ![image](https://github.com/peipei930725/Java_final/assets/114333331/0c2b2c8e-eb15-4d9a-b6fd-e7ccd7c46122)
+
 return也可以控制templates的頁面，讓畫面顯示想要的html
 ---
 ## 環境建置
