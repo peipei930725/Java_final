@@ -1,0 +1,324 @@
+<mxfile host="app.diagrams.net" modified="2024-05-30T06:27:59.107Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36" etag="BogO7BpH0ZpUnjemliCt" version="24.4.10" type="github">
+  <diagram name="第 1 页" id="AH-jXYE1wM6DhPaSMXWQ">
+    <mxGraphModel dx="724" dy="1529" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-1" value="" style="shape=actor;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="270" width="40" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-4" value="" style="endArrow=none;html=1;rounded=0;exitX=0.9;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="5cor4PWvDFRwM9NsKJUv-1" target="5cor4PWvDFRwM9NsKJUv-5">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="300" as="sourcePoint" />
+            <mxPoint x="270" y="120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-5" value="轉帳主畫面" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="190" y="10" width="570" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-6" value="快速建立轉帳" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="5cor4PWvDFRwM9NsKJUv-5">
+          <mxGeometry x="200" y="50" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-8" value="群組轉帳" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="5cor4PWvDFRwM9NsKJUv-5">
+          <mxGeometry x="390" y="50" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-33" value="加入轉帳" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="5cor4PWvDFRwM9NsKJUv-5">
+          <mxGeometry x="10" y="50" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-10" value="設定區" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="190" y="150" width="770" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-11" value="銀行帳戶設定" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="5cor4PWvDFRwM9NsKJUv-10">
+          <mxGeometry x="200" y="40" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-12" value="深色模式淺色模式" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="5cor4PWvDFRwM9NsKJUv-10">
+          <mxGeometry x="390" y="40" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-9" value="查看群組(擴充功能" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="5cor4PWvDFRwM9NsKJUv-10">
+          <mxGeometry x="590" y="40" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-13" value="暱稱" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="5cor4PWvDFRwM9NsKJUv-10">
+          <mxGeometry x="10" y="40" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-14" value="轉帳區" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="190" y="290" width="490" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-16" value="待付款&lt;br&gt;(接受完轉帳邀約等待轉帳)" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="5cor4PWvDFRwM9NsKJUv-14">
+          <mxGeometry x="10" y="40" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-17" value="待接受&lt;br&gt;(接收轉帳邀約區&lt;span style=&quot;background-color: initial;&quot;&gt;)&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="5cor4PWvDFRwM9NsKJUv-14">
+          <mxGeometry x="320" y="40" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-18" value="紀錄查詢" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="190" y="520" width="710" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-19" value="已轉帳紀錄&lt;br&gt;(轉帳完成的紀錄)" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="5cor4PWvDFRwM9NsKJUv-18">
+          <mxGeometry x="30" y="45" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-20" value="待收齊的轉帳&lt;br&gt;(已經付款但是不是所有人都付款)" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="5cor4PWvDFRwM9NsKJUv-18">
+          <mxGeometry x="260" y="45" width="205" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-21" value="待接受的轉帳&lt;br&gt;(自己同意了別人還沒同意)&lt;br&gt;大家都接受完會到待付款" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="5cor4PWvDFRwM9NsKJUv-18">
+          <mxGeometry x="487" y="45" width="210" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-119" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="5cor4PWvDFRwM9NsKJUv-18" source="5cor4PWvDFRwM9NsKJUv-20" target="5cor4PWvDFRwM9NsKJUv-19">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-160" as="sourcePoint" />
+            <mxPoint x="-110" y="-50" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-122" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="5cor4PWvDFRwM9NsKJUv-25" target="5cor4PWvDFRwM9NsKJUv-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-25" value="快速建立轉帳" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="430" y="-240" width="80" height="225" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-27" value="人數" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="5cor4PWvDFRwM9NsKJUv-25">
+          <mxGeometry x="10" y="70" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-28" value="標題" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="5cor4PWvDFRwM9NsKJUv-25">
+          <mxGeometry x="10" y="30" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-29" value="總金額" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="5cor4PWvDFRwM9NsKJUv-25">
+          <mxGeometry x="10" y="110" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-79" value="確定&lt;span style=&quot;color: rgba(0, 0, 0, 0); font-family: monospace; font-size: 0px; text-align: start; text-wrap: nowrap;&quot;&gt;%3CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20value%3D%22%E9%87%91%E9%A1%8D%22%20style%3D%22ellipse%3BwhiteSpace%3Dwrap%3Bhtml%3D1%3B%22%20vertex%3D%221%22%20parent%3D%221%22%3E%3CmxGeometry%20x%3D%22430%22%20y%3D%22-120%22%20width%3D%2260%22%20height%3D%2230%22%20as%3D%22geometry%22%2F%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%3E&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="5cor4PWvDFRwM9NsKJUv-25">
+          <mxGeometry x="10" y="150" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-80" value="返回" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="5cor4PWvDFRwM9NsKJUv-25">
+          <mxGeometry x="10" y="190" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-26" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="5cor4PWvDFRwM9NsKJUv-25" target="5cor4PWvDFRwM9NsKJUv-6">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="110" y="10" as="sourcePoint" />
+            <mxPoint x="160" y="-40" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-31" value="生成QR CODE&lt;br&gt;or 代碼" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="410" y="-350" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-38" value="" style="endArrow=none;html=1;rounded=0;exitX=0.9;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="5cor4PWvDFRwM9NsKJUv-1" target="5cor4PWvDFRwM9NsKJUv-10">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="106" y="220" as="sourcePoint" />
+            <mxPoint x="200" y="80" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-39" value="" style="endArrow=none;html=1;rounded=0;exitX=0.9;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="5cor4PWvDFRwM9NsKJUv-1" target="5cor4PWvDFRwM9NsKJUv-14">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="116" y="230" as="sourcePoint" />
+            <mxPoint x="210" y="90" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-40" value="" style="endArrow=none;html=1;rounded=0;exitX=0.9;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="5cor4PWvDFRwM9NsKJUv-1" target="5cor4PWvDFRwM9NsKJUv-18">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="126" y="240" as="sourcePoint" />
+            <mxPoint x="220" y="100" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-43" value="加入轉帳" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="-160" width="80" height="145" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-44" value="加入代碼" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="5cor4PWvDFRwM9NsKJUv-43">
+          <mxGeometry x="10" y="30" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-46" value="掃描QR" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="5cor4PWvDFRwM9NsKJUv-43">
+          <mxGeometry x="10" y="70" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-82" value="返回" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="5cor4PWvDFRwM9NsKJUv-43">
+          <mxGeometry x="10" y="110" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-47" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="5cor4PWvDFRwM9NsKJUv-43" target="5cor4PWvDFRwM9NsKJUv-33">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="230" y="-20" as="sourcePoint" />
+            <mxPoint x="180" y="-40" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-49" value="群組轉帳" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="620" y="-205" width="80" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-50" value="選擇群組" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="5cor4PWvDFRwM9NsKJUv-49">
+          <mxGeometry x="10" y="30" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-51" value="加入群組" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="5cor4PWvDFRwM9NsKJUv-49">
+          <mxGeometry x="10" y="70" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-53" value="建立群組" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="5cor4PWvDFRwM9NsKJUv-49">
+          <mxGeometry x="10" y="110" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-133" value="返回" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="5cor4PWvDFRwM9NsKJUv-49">
+          <mxGeometry x="10" y="150" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-52" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="5cor4PWvDFRwM9NsKJUv-49" target="5cor4PWvDFRwM9NsKJUv-8">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="660" y="-40" as="sourcePoint" />
+            <mxPoint x="670" y="50" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-64" value="" style="endArrow=none;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="5cor4PWvDFRwM9NsKJUv-70">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="690" y="130" as="sourcePoint" />
+            <mxPoint x="860" y="80" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-134" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="5cor4PWvDFRwM9NsKJUv-70" target="5cor4PWvDFRwM9NsKJUv-73">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-73" value="群組(已點擊)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="980" y="-7.5" width="100" height="155" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-74" value="編輯群組名稱" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="5cor4PWvDFRwM9NsKJUv-73">
+          <mxGeometry x="10" y="30" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-75" value="退出群組" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="5cor4PWvDFRwM9NsKJUv-73">
+          <mxGeometry x="10" y="70" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-76" value="返回" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="5cor4PWvDFRwM9NsKJUv-73">
+          <mxGeometry x="10" y="110" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-78" value="" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="5cor4PWvDFRwM9NsKJUv-50" target="5cor4PWvDFRwM9NsKJUv-85">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="720" y="-140" as="sourcePoint" />
+            <mxPoint x="720" y="-240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-85" value="群組功能待處理" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="720" y="-200" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-87" value="銀行帳戶設定" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="780" y="290" width="110" height="155" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-88" value="常用帳戶" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="5cor4PWvDFRwM9NsKJUv-87">
+          <mxGeometry x="10" y="30" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-89" value="加入銀行帳戶" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="5cor4PWvDFRwM9NsKJUv-87">
+          <mxGeometry x="10" y="70" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-90" value="返回" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="5cor4PWvDFRwM9NsKJUv-87">
+          <mxGeometry x="10" y="110" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-93" value="" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="5cor4PWvDFRwM9NsKJUv-88" target="5cor4PWvDFRwM9NsKJUv-103">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1010" y="350" as="sourcePoint" />
+            <mxPoint x="1070" y="350" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-121" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="5cor4PWvDFRwM9NsKJUv-103" target="5cor4PWvDFRwM9NsKJUv-104">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-103" value="列出常用帳戶(點擊)" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="930" y="295" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-104" value="帳戶(已點擊)" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="925.25" y="387.5" width="129.5" height="155" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-105" value="編輯常用帳戶暱稱" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="5cor4PWvDFRwM9NsKJUv-104">
+          <mxGeometry x="10" y="30" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-106" value="刪除帳戶" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="5cor4PWvDFRwM9NsKJUv-104">
+          <mxGeometry x="10" y="70" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-107" value="返回" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="5cor4PWvDFRwM9NsKJUv-104">
+          <mxGeometry x="10" y="110" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-110" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="5cor4PWvDFRwM9NsKJUv-17" target="5cor4PWvDFRwM9NsKJUv-21">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="500" y="400" as="sourcePoint" />
+            <mxPoint x="590" y="470" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-112" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="5cor4PWvDFRwM9NsKJUv-16" target="5cor4PWvDFRwM9NsKJUv-20">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="330" y="385" as="sourcePoint" />
+            <mxPoint x="416" y="501" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-117" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="5cor4PWvDFRwM9NsKJUv-114" target="5cor4PWvDFRwM9NsKJUv-16">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="420" y="465" />
+              <mxPoint x="420" y="355" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-114" value="全部人都接受" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="458" y="425" width="142" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-116" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="5cor4PWvDFRwM9NsKJUv-21" target="5cor4PWvDFRwM9NsKJUv-114">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-123" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="5cor4PWvDFRwM9NsKJUv-21" target="5cor4PWvDFRwM9NsKJUv-127">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="750" y="800" as="sourcePoint" />
+            <mxPoint x="740" y="750" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-125" value="待接受的轉帳(假設已經點擊哪個轉帳)" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="740" y="820" width="298" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-126" value="QR code/代碼" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="5cor4PWvDFRwM9NsKJUv-125">
+          <mxGeometry x="32" y="110" width="234" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-129" value="基本資訊(轉帳創立者/時間/期限)" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="5cor4PWvDFRwM9NsKJUv-125">
+          <mxGeometry x="33" y="40" width="234" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-140" value="拒絕/刪除轉帳" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="5cor4PWvDFRwM9NsKJUv-125">
+          <mxGeometry x="32" y="180" width="234" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-128" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="5cor4PWvDFRwM9NsKJUv-127" target="5cor4PWvDFRwM9NsKJUv-125">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-127" value="列出所有待接受的轉帳" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="703" y="710" width="158" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-131" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="5cor4PWvDFRwM9NsKJUv-44" target="5cor4PWvDFRwM9NsKJUv-132">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="210" y="-145" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-132" value="跳到待接受" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="-170" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-138" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="5cor4PWvDFRwM9NsKJUv-11" target="5cor4PWvDFRwM9NsKJUv-87">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="527" y="250" />
+              <mxPoint x="700" y="250" />
+              <mxPoint x="700" y="367" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-139" value="" style="endArrow=none;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="5cor4PWvDFRwM9NsKJUv-9" target="5cor4PWvDFRwM9NsKJUv-70">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="860" y="190" as="sourcePoint" />
+            <mxPoint x="860" y="80" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-70" value="列出所有群組(點擊)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="800" y="30" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-141" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="5cor4PWvDFRwM9NsKJUv-20" target="5cor4PWvDFRwM9NsKJUv-142">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="590" y="610" as="sourcePoint" />
+            <mxPoint x="570" y="700" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-147" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="5cor4PWvDFRwM9NsKJUv-142" target="5cor4PWvDFRwM9NsKJUv-143">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-142" value="列出所有你付款&lt;div&gt;但還沒送出的轉帳&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="473.5" y="710" width="158" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-143" value="待收齊的轉帳" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="403.5" y="820" width="298" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-144" value="繳費情形" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="5cor4PWvDFRwM9NsKJUv-143">
+          <mxGeometry x="32" y="110" width="234" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="5cor4PWvDFRwM9NsKJUv-145" value="轉帳資訊" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="5cor4PWvDFRwM9NsKJUv-143">
+          <mxGeometry x="33" y="40" width="234" height="50" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
