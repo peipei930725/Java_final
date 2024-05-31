@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Form Page</title>
+</head>
+<body>
+    <h1>Form Result</h1>
+    <p>Text: <span th:text="${text}"></span></p>
+    <p>Text2: <span th:text="${text2}"></span></p>
+
+    <form action="/test/form" method="post">
+        <label for="text">Text:</label>
+        <input type="text" id="text" name="text" value="">
+
+        <label for="testing">Text2:</label>
+        <input type="text" id="text2" name="text2" value="">
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
