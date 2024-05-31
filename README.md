@@ -26,4 +26,17 @@
 ## 延伸模組
 ![image](https://github.com/peipei930725/Java_final/assets/114333331/4246dfba-1f9b-4f23-8ee9-186f09e41385)
 ![image](https://github.com/peipei930725/Java_final/assets/114333331/dbb07bf2-4aff-4f8a-9636-d17c6dc0df8a)
+![alt text](image-2.png)
 
+## 連結至DataBase
+> 搜尋MongoDB for VS Code
+> ![alt text](image-1.png)
+> 左側找到
+> ![alt text](image-3.png)
+> Add connection
+> 點connect
+> ![alt text](image-4.png)
+> 上方輸入Token
+> ![alt text](image-5.png)
+> mongodb+srv://root:\<password\>@java.e2t1ilq.mongodb.net/
+> <password\> 放在Discord裡的訂選
