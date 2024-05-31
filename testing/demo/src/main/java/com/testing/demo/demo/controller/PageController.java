@@ -5,12 +5,14 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-@Controller
+
+@RestController
 public class PageController {
 
     private static final Logger logger = LoggerFactory.getLogger(PageController.class);
@@ -21,9 +23,17 @@ public class PageController {
         Map<String, String> data = new HashMap<>();
         // 將表單提交的文本數據存入 Map 中
         data.put("text", text);
+        String text2="input2";
+        data.put("text2", text2);
         // 通過 ModelAndView 綁定數據到視圖中並返回視圖名稱 "form"
         return new ModelAndView("form", data);
     }
+
+    @RequestMapping("hello")
+    public String Sayhi() {
+        return "Hi";
+    }
+    
     
 
 
