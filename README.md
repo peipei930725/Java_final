@@ -30,13 +30,13 @@
 
 ## 連結至DataBase
 > 搜尋MongoDB for VS Code
-> ![alt text](image-1.png)
+> ![alt text](screanshot/image-1.png)
 > 左側找到
-> ![alt text](image-3.png)
+> ![alt text](screanshot/image-3.png)
 > Add connection
 > 點connect
-> ![alt text](image-4.png)
+> ![alt text](screanshot/image-4.png)
 > 上方輸入Token
-> ![alt text](image-5.png)
+> ![alt text](screanshot/image-5.png)
 > mongodb+srv://root:\<password\>@java.e2t1ilq.mongodb.net/
 > <password\> 放在Discord裡的訂選
