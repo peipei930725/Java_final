@@ -1,14 +1,13 @@
 import React, { ReactNode ,useState } from "react";
 import '../components/ModalSignup.css'
-//import useModal from "./useModal";
 
-//Signup 跟 Signin 還沒連動
 export default function ModalSignup({onToggleModal}) {
     const [firstname, setfirstnameValue]=useState('')
     const [lastname, setlastnameValue]=useState('')
     const [account, setaccountValue]=useState('')
     const [passwd, setpasswdValue]=useState('')
 
+<<<<<<< HEAD
     const handleclick=(event)=>{
       event.preventDefault()
       const student={firstname,lastname,account,passwd}
@@ -21,6 +20,31 @@ export default function ModalSignup({onToggleModal}) {
         console.log("New account added")
       })
     }
+=======
+    const [signupStatus, setSignupStatus] = useState('');
+    const handleSignupClick = async (event) => {
+        event.preventDefault();
+        const newUser = { firstname,lastname, account, passwd}
+        console.log(newUser)
+    
+        try {
+          const response = await fetch('http://localhost:8080/api/test', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newUser)
+          });
+          const result = await response.json();
+          if (result.success) {
+            setSignupStatus('Signup successful!');
+          } else {
+            setSignupStatus('Signup failed: ' + result.message);
+          }
+        } catch (error) {
+          console.error('Error:', error);
+          setSignupStatus('Signup failed: Server error');
+        }
+      };
+>>>>>>> 1b32e0150ac083ed2a8d60aa90a25cf176eb4dd1
 
   return (
     <>
@@ -66,9 +90,10 @@ export default function ModalSignup({onToggleModal}) {
                 />
               </div>
               <div className="col-12">
-                <button type="submit" className="btn btn-primary" onClick={handleclick}>註冊</button>
+                <button type="submit" className="btn btn-primary" onClick={handleSignupClick}>註冊</button>
               </div>
             </form>
+            <p>{signupStatus}</p>
           </div>
         </div>
     </>
