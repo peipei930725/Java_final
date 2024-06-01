@@ -2,18 +2,18 @@ import React, { ReactNode ,useState } from "react";
 import '../components/ModalSignup.css'
 
 export default function ModalSignup({onToggleModal}) {
-    const [firstname, setfirstnameValue]=useState('')
-    const [lastname, setlastnameValue]=useState('')
+    const [FirstName, setfirstnameValue]=useState('')
+    const [LastName, setlastnameValue]=useState('')
     const [account, setaccountValue]=useState('')
     const [passwd, setpasswdValue]=useState('')
 
     const [signupStatus, setSignupStatus] = useState('');
     const handleSignupClick = async (event) => {
         event.preventDefault();
-        const newUser = { firstname ,lastname , account, passwd}
-        // console.log(firstname, lastname, account, passwd)
+        const newUser = { FirstName, LastName, account, passwd}
+        // console.log(FirstName, LastName, account, passwd)
         console.log(newUser)
-    
+        
         try {
           const response = await fetch('http://localhost:8080/api/register', {
             method: 'POST',
@@ -39,19 +39,19 @@ export default function ModalSignup({onToggleModal}) {
             <p className="h2">共同轉帳</p>
             <form className="row g-3">
               <div className="col-md-6">
-                  <label htmlFor="inputFirstName4" className="form-label">姓</label>
+                  <label htmlFor="inputEmail4" className="form-label">姓</label>
                   <input 
-                  value={firstname}
-                  type="account" 
+                  value={FirstName}
+                  type="FirstName" 
                   className="form-control"
                   onChange={(event)=>setfirstnameValue(event.target.value)}
                   />
               </div>
               <div className="col-md-6">
-                <label htmlFor="inputLastName4" className="form-label">名</label>
+                <label htmlFor="inputEmail4" className="form-label">名</label>
                 <input 
-                value={lastname}
-                type="account" 
+                value={LastName}
+                type="LastName" 
                 className="form-control"
                 onChange={(event)=>setlastnameValue(event.target.value)}
                 />
@@ -66,7 +66,7 @@ export default function ModalSignup({onToggleModal}) {
                 />
               </div>
               <div className="md-6">
-                <label htmlFor="inputPassword4" className="form-label">密碼</label>
+                <label htmlFor="inputEmail4" className="form-label">密碼</label>
                 <input 
                 value={passwd}
                 type="password" 
