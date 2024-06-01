@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.testing.demo.demo.model.LoginRequest;
 import com.testing.demo.demo.model.RegisterRequest;
 import com.testing.demo.demo.model.UserCase;
 import com.testing.demo.demo.repository.MyDataRepository;
@@ -15,9 +14,10 @@ import java.security.MessageDigest;
 import java.nio.charset.StandardCharsets;
 import java.math.BigInteger;
 
+
 @RestController
 @RequestMapping("/api")
-public class LoginController {
+public class RegisterController {
     @Autowired
     private MyDataRepository myDataRepository;
 
@@ -36,29 +36,25 @@ public class LoginController {
         }
     }
 
-    @PostMapping("/login")
-    public String login(@RequestBody LoginRequest loginRequest) {
-        // 打印接收到的账户和密码
-        System.out.println("Received account: " + loginRequest.getAccount());
-        System.out.println("Received password: " + loginRequest.getPasswd());
 
-        // 您可以在这里添加对账户和密码的验证逻辑
-        // ...
-        UserCase  existingUserCase = myDataRepository.findByUserAccount(loginRequest.getAccount());
-        if (existingUserCase == null ) {
-            System.out.println("Account is not exist" );
+    @PostMapping("/register")
+    public String register(@RequestBody RegisterRequest RegisterRequest) {
+        // 打印接收到的账户和密码
+        System.out.println("Received account: " + RegisterRequest.getAccount());
+        System.out.println("Received password: " + RegisterRequest.getPasswd());
+
+        UserCase  existingUserCase = myDataRepository.findByUserAccount(RegisterRequest.getAccount());
+        if (existingUserCase != null ) {
+            System.out.println("Account is exist" );
             return "Login unsuccessful for account: Account is not exist";
         }else{
-            //驗證登入
-            String hashedPassword = sha256(loginRequest.getPasswd());
-            if (existingUserCase.getUserPassword().equals(hashedPassword)) {
-                System.out.println("Password is correct" );
-                return "Login successful for account: " + loginRequest.getAccount();
-            }else{
-                System.out.println("Password is incorrect" );
-                return "Login unsuccessful for account: Password is incorrect";
-            }
-
+            //新增用戶
+            String hashedPassword = sha256(RegisterRequest.getPasswd());
+            UserCase user_case = new UserCase();
+            user_case.setUserAccount(RegisterRequest.getAccount());
+            user_case.setUserPassword(hashedPassword);
+            myDataRepository.save(user_case);
+            return "Register successful for account: " + RegisterRequest.getAccount();
         }
     }
 }
