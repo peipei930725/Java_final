@@ -2,32 +2,18 @@ import React, { ReactNode ,useState } from "react";
 import '../components/ModalSignup.css'
 
 export default function ModalSignup({onToggleModal}) {
-<<<<<<< HEAD
     const [firstName, setfirstnameValue]=useState('');
     const [lastName, setlastnameValue]=useState('');
     const [account, setaccountValue]=useState('');
     const [passwd, setpasswdValue]=useState('');
-=======
-    const [FirstName, setfirstnameValue]=useState('')
-    const [LastName, setlastnameValue]=useState('')
-    const [account, setaccountValue]=useState('')
-    const [passwd, setpasswdValue]=useState('')
->>>>>>> 7a8f8c0e6c075ef891702431cb52668bfa58a304
 
     const [signupStatus, setSignupStatus] = useState('');
     const handleSignupClick = async (event) => {
         event.preventDefault();
-<<<<<<< HEAD
         const newUser = { firstName, lastName, account, passwd };
         // console.log(firstname, lastname, account, passwd)
         console.log(newUser)
         console.log("Sending data:", JSON.stringify(newUser));
-=======
-        const newUser = { FirstName, LastName, account, passwd}
-        // console.log(FirstName, LastName, account, passwd)
-        console.log(newUser)
-        
->>>>>>> 7a8f8c0e6c075ef891702431cb52668bfa58a304
         try {
           const response = await fetch("http://localhost:8080/api/register", {
             method: "POST",
@@ -56,13 +42,8 @@ export default function ModalSignup({onToggleModal}) {
               <div className="col-md-6">
                   <label htmlFor="inputEmail4" className="form-label">姓</label>
                   <input 
-<<<<<<< HEAD
                   value={firstName}
                   type="text" 
-=======
-                  value={FirstName}
-                  type="FirstName" 
->>>>>>> 7a8f8c0e6c075ef891702431cb52668bfa58a304
                   className="form-control"
                   onChange={(event)=>setfirstnameValue(event.target.value)}
                   />
@@ -70,13 +51,8 @@ export default function ModalSignup({onToggleModal}) {
               <div className="col-md-6">
                 <label htmlFor="inputEmail4" className="form-label">名</label>
                 <input 
-<<<<<<< HEAD
                 value={lastName}
                 type="text" 
-=======
-                value={LastName}
-                type="LastName" 
->>>>>>> 7a8f8c0e6c075ef891702431cb52668bfa58a304
                 className="form-control"
                 onChange={(event)=>setlastnameValue(event.target.value)}
                 />
