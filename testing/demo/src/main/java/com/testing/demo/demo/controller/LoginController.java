@@ -1,7 +1,17 @@
 package com.testing.demo.demo.controller;
 
+import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,17 +22,8 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.testing.demo.demo.model.LoginRequest;
-import com.testing.demo.demo.model.RegisterRequest;
 import com.testing.demo.demo.model.UserCase;
 import com.testing.demo.demo.repository.MyDataRepository;
-
-import java.security.MessageDigest;
-import java.util.ArrayList;
-import java.util.List;
-import java.nio.charset.StandardCharsets;
-import java.math.BigInteger;
-import org.bson.Document;
-import org.springframework.beans.factory.annotation.Value;
 @RestController
 @RequestMapping("/api")
 public class LoginController {
@@ -45,29 +46,36 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<Map<String, Object>> login(@RequestBody LoginRequest loginRequest) {
         // 打印接收到的账户和密码
         System.out.println("Received account: " + loginRequest.getAccount());
         System.out.println("Received password: " + loginRequest.getPasswd());
-
+        Map<String, Object> response = new HashMap<>();
         // 您可以在这里添加对账户和密码的验证逻辑
         // ...
         UserCase  existingUserCase = myDataRepository.findByUserAccount(loginRequest.getAccount());
         if (existingUserCase == null ) {
             System.out.println("Account is not exist" );
-            return "Login unsuccessful for account: Account is not exist";
+            //return "Login unsuccessful for account: Account is not exist";
+            response.put("success", false);
+            return ResponseEntity.ok(response);
         }else{
             //驗證登入
             String hashedPassword = sha256(loginRequest.getPasswd());
             if (existingUserCase.getUserPassword().equals(hashedPassword)) {
                 System.out.println("Password is correct" );
-                return existingUserCase.getUserPassword();
+                //return existingUserCase.getUserPassword();
+                response.put("success", true);
+                return ResponseEntity.ok(response);
             }else{
                 System.out.println("Password is incorrect" );
-                return "Login unsuccessful for account: Password is incorrect";
+                //return "Login unsuccessful for account: Password is incorrect";
+                response.put("success", false);
+                return ResponseEntity.ok(response);
             }
-
         }
+        response.put("default", true);
+        return ResponseEntity.ok(response);
     }
     
     @Value("${spring.data.mongodb.uri}")
