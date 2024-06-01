@@ -3,17 +3,17 @@ package com.testing.demo.demo.controller;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.testing.demo.demo.model.UserCase;
-import com.testing.demo.demo.repository.MyDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.testing.demo.demo.model.Usercase;
+import com.testing.demo.demo.repository.MyDataRepository;
 
 @Controller
 public class PageController {
@@ -26,7 +26,7 @@ public class PageController {
 
     @PostMapping("/test/form")
     public ModelAndView testForm(@RequestParam("text") String text, @RequestParam("text2") String text2){
-        UserCase usercase = new UserCase();
+        Usercase usercase = new Usercase();
         usercase.setId(text);
         usercase.setText(text2);
         myDataRepository.save(usercase);
