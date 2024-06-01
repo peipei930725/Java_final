@@ -31,13 +31,15 @@ public class PageController {
 
     @PostMapping("/test/form")
     public ModelAndView testForm(@RequestParam("text") String text, @RequestParam("text2") String text2){
-        UserCase  existingUserCase = myDataRepository.findByUser_account(text);
+        // 查詢用戶是否存在
+        UserCase  existingUserCase = myDataRepository.findByUserAccount(text);
         if (existingUserCase != null) {
-            logger.info("Existing UserCase: {}", existingUserCase);
+            logger.info("Existing UserCase: {}", existingUserCase.getUserAccount());
         }else{
+            // 找不到再新增
             UserCase user_case = new UserCase();
-            user_case.setUser_account(text);
-            user_case.setUser_password(text2);
+            user_case.setUserAccount(text);
+            user_case.setUserPassword(text2);
             myDataRepository.save(user_case);
         }
 
