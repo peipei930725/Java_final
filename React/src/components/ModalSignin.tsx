@@ -1,6 +1,5 @@
 import React, { ReactNode ,useState } from "react";
 import '../components/ModalSignin.css'
-//import useModal from "./useModal";
 
 export default function ModalSignin({onToggleModal}) {
     const [passwd, setpasswdValue]=useState('')
@@ -8,15 +7,38 @@ export default function ModalSignin({onToggleModal}) {
     
     const handleclick=(event)=>{
       event.preventDefault()
-      const student={account,passwd}
-      console.log(student)
+      const User={account,passwd}
+      console.log(User)
       fetch("http://localhost:8080/api/login",{
         method:"POST",
         headers:{"Content-Type":"application/json"},
-        body:JSON.stringify(student)
+        body:JSON.stringify(User)
       }).then(()=>{
         console.log("New account added")
       })
+    }
+
+    const [loginStatus, setLoginStatus] = useState('');
+    const handleLoginClick = async (event) => {
+      event.preventDefault();
+      const User = { account, passwd };
+      console.log(User);
+      try {
+        const response = await fetch('http://localhost:8080/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(User)
+        });
+        const result = await response.json();
+        if (result.success) {
+          setLoginStatus('Login successful!');
+        } else {
+          setLoginStatus('Login failed: Invalid credentials');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        setLoginStatus('Login failed: Server error');
+      }
     }
 
   return (
@@ -47,9 +69,10 @@ export default function ModalSignin({onToggleModal}) {
                 <label htmlFor="floatingPassword">密碼</label>
             </div>
             <div className="button">
-                <button type="button" className="btn btn-outline-success" onClick={handleclick}>登入</button> 
+                <button type="button" className="btn btn-outline-success" onClick={handleLoginClick}>登入</button> 
                 <hr/>
             </div>
+            <p>{loginStatus}</p>
             <p className="Signup">還沒有帳號嗎？點此<button type="button" className="btn btn-link" onClick={onToggleModal}>註冊帳號</button></p>
           </div>
         </div>
