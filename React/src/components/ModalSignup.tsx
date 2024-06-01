@@ -2,16 +2,16 @@ import React, { ReactNode ,useState } from "react";
 import '../components/ModalSignup.css'
 
 export default function ModalSignup({onToggleModal}) {
-    const [FirstName, setfirstnameValue]=useState('')
-    const [LastName, setlastnameValue]=useState('')
+    const [firstName, setfirstnameValue]=useState('')
+    const [lastName, setlastnameValue]=useState('')
     const [account, setaccountValue]=useState('')
     const [passwd, setpasswdValue]=useState('')
 
     const [signupStatus, setSignupStatus] = useState('');
     const handleSignupClick = async (event) => {
         event.preventDefault();
-        const newUser = { FirstName, LastName, account, passwd}
-        // console.log(FirstName, LastName, account, passwd)
+        const newUser = { firstName, lastName, account, passwd}
+        // console.log(firstName, lastName, account, passwd)
         console.log(newUser)
         
         try {
@@ -41,8 +41,8 @@ export default function ModalSignup({onToggleModal}) {
               <div className="col-md-6">
                   <label htmlFor="inputEmail4" className="form-label">姓</label>
                   <input 
-                  value={FirstName}
-                  type="FirstName" 
+                  value={firstName}
+                  type="firstName" 
                   className="form-control"
                   onChange={(event)=>setfirstnameValue(event.target.value)}
                   />
@@ -50,8 +50,8 @@ export default function ModalSignup({onToggleModal}) {
               <div className="col-md-6">
                 <label htmlFor="inputEmail4" className="form-label">名</label>
                 <input 
-                value={LastName}
-                type="LastName" 
+                value={lastName}
+                type="lastName" 
                 className="form-control"
                 onChange={(event)=>setlastnameValue(event.target.value)}
                 />

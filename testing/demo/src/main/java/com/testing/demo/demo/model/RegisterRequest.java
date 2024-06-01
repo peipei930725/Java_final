@@ -1,26 +1,26 @@
 package com.testing.demo.demo.model;
 
 public class RegisterRequest {
-    private String FirstName;
-    private String LastName;
+    private String firstName;
+    private String lastName;
     private String account;
     private String passwd;
 
     // Getters and Setters
     public String getFirstName() {
-        return FirstName;
+        return firstName;
     }
     
-    public void setFirstName(String FirstName) {
-        this.FirstName = FirstName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
     
     public String getLastName() {
-        return LastName;
+        return lastName;
     }
     
-    public void setLastName(String LastName) {
-        this.LastName = LastName;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
     
 
