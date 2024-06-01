@@ -10,7 +10,7 @@ const Logintest = () => {
     console.log(student);
 
     // 更新 URL 为 Spring Boot 控制器的 URL
-    fetch("http://localhost:8080/api/login", {
+    fetch("http://localhost:8080/api/login", {  // 連接到後端的 URL
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(student)
