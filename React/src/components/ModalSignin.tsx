@@ -8,7 +8,7 @@ interface ModalType {
   toggle: () => void;
 }
 
-export default function Modal(props: ModalType) {
+export default function ModalSignin(props: ModalType) {
     const [passwd, setpasswdValue]=useState('')
     const [account, setaccountValue]=useState('')
     

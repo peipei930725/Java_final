@@ -8,11 +8,11 @@ interface ModalType {
   toggle: () => void;
 }
 //Signup 跟 Signin 還沒連動
-export default function Modal(props: ModalType) {
-    const [passwd, setpasswdValue]=useState('')
-    const [account, setaccountValue]=useState('')
+export default function ModalSignup(props: ModalType) {
     const [firstname, setfirstnameValue]=useState('')
     const [lastname, setlastnameValue]=useState('')
+    const [account, setaccountValue]=useState('')
+    const [passwd, setpasswdValue]=useState('')
 
     const handleclick=(event)=>{
       event.preventDefault()
