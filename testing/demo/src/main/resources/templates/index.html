@@ -22,7 +22,7 @@
             padding-top: 20px;
         }
         .sidebar img {
-            width: 50px;
+            width: 30px;
             margin-bottom: 10px;
         }
         .sidebar .menu-item {
@@ -51,6 +51,9 @@
             background-color: #a4dedc;
             padding: 10px 20px;
             border-bottom: 1px solid #ccc;
+        }
+        .header img{
+            width: 50px;
         }
         .header .user-name {
             font-size: 18px;
@@ -83,40 +86,45 @@
 <body>
     <div class="sidebar">
         <div class="menu-item">
-            <a href="#"><img src="path/to/logo.png" alt="Logo"> CoTransfer</a>
+            <a href="#"><img src="../static/images/app-icon.png" alt="Logo" > CoTransfer</a>
         </div>
         <div class="menu-item">
-            <a href="#">Add</a>
+            <a href="#"><img src="../static/images/add.png" alt="Logo">Add</a>
         </div>
         <div class="menu-item">
-            <a href="#">Transfer</a>
+            <a href="#"><img src="../static/images/transfer.png" alt="Logo">Transfer</a>
         </div>
         <div class="menu-item">
-            <a href="#">History</a>
+            <a href="#"><img src="../static/images/history.png" alt="Logo" >History</a>
         </div>
         <div class="menu-item" style="margin-top: auto;">
-            <a href="#">Settings</a>
+            <a href="#"><img src="../static/images/settings.png" alt="Logo">Settings</a>
         </div>
     </div>
     <div class="main">
         <div class="header">
             <div></div>
             <div class="user-name">User name</div>
-            <div><img src="path/to/user-icon.png" alt="User Icon"></div>
+            <div><img src="../static/images/user.png" alt="User Icon"></div>
         </div>
         <div class="container">
             <div class="box">
-                <img src="path/to/code-icon.png" alt="Code Icon">
                 <p>加入轉帳</p>
+                <img src="../static/images/type-in.png" alt="Code Icon">
+                <img src="../static/images/qr.png" alt="Code Icon">
+                
                 <p>輸入代碼</p>
                 <p>掃描二維碼</p>
             </div>
             <div class="box">
-                <img src="http://localhost:8080/images/pen.jpg" alt="Pen Icon">
                 <p>快速建立轉帳</p>
+                <img src="../static/images/create.png" alt="Pen Icon">
+                
             </div>
             <div class="box">
-                <img src="path/to/group-icon.png" alt="Group Icon">
+                <p>群組</p>
+                <img src="../static/images/addgroup.png" alt="Group Icon">
+                <img src="../static/images/group.png" alt="Group Icon">
                 <p>建立群組</p>
                 <p>加入群組</p>
             </div>
