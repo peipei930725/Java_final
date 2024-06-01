@@ -33,7 +33,7 @@ public class PageController {
     public ModelAndView testForm(@RequestParam("text") String text, @RequestParam("text2") String text2){
         // 查詢用戶是否存在
         UserCase  existingUserCase = myDataRepository.findByUserAccount(text);
-        if (existingUserCase != null) {
+        if (existingUserCase != null && text != null && text2 != null) {
             logger.info("Existing UserCase: {}", existingUserCase.getUserAccount());
         }else{
             // 找不到再新增

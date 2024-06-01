@@ -8,7 +8,7 @@ const Logintest = () => {
     const student={account,passwd}
     console.log(student)
     //傳給spring boot 連結是資料庫的網址
-    fetch("https://localhost:8080",{
+    fetch("http://localhost:8080",{
       method:"POST",
       headers:{"Content-Type":"application/json"},
       body:JSON.stringify(student)
