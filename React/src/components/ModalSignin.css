@@ -1,0 +1,49 @@
+
+.modal-overlay {
+    z-index: 9999;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  .modal-box {
+    display: block;
+    background: white;
+    width: 40%;
+    height: 80%;
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+  
+
+  .modal-box p.h2{
+    text-align: center;
+    padding-top: 5%;
+    padding-bottom: 5%;
+  }
+
+  .form-floating{
+    display:block;
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .button{
+    text-align: center;
+    padding-top: 5%;
+  }
+  hr{
+    display: block;
+    width: 50%;
+    margin: 0 auto;
+  }
+  .Signup{
+    text-align: center;
+    padding-top: 5%;
+  }
