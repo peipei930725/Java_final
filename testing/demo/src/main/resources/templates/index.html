@@ -1,134 +1,21 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CoTransfer</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            height: 100vh;
-            background-color: #f0f8f9;
-        }
-        .sidebar {
-            width: 200px;
-            background-color: #a4dedc;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-top: 20px;
-        }
-        .sidebar img {
-            width: 30px;
-            margin-bottom: 10px;
-        }
-        .sidebar .menu-item {
-            margin: 20px 0;
-            text-align: center;
-        }
-        .sidebar .menu-item a {
-            text-decoration: none;
-            color: black;
-            font-size: 18px;
-            display: block;
-            width: 100%;
-            padding: 10px 0;
-        }
-        .sidebar .menu-item a:hover {
-            background-color: #88c3c1;
-        }
-        .main {
-            flex: 1;
-            padding: 20px;
-        }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #a4dedc;
-            padding: 10px 20px;
-            border-bottom: 1px solid #ccc;
-        }
-        .header img{
-            width: 50px;
-        }
-        .header .user-name {
-            font-size: 18px;
-        }
-        .container {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 50px;
-        }
-        .box {
-            background-color: #d6f7f6;
-            width: 200px;
-            height: 200px;
-            border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-        .box img {
-            width: 50px;
-            margin-bottom: 10px;
-        }
-        .box p {
-            margin: 5px 0;
-        }
-    </style>
+    <title>Form Page</title>
 </head>
 <body>
-    <div class="sidebar">
-        <div class="menu-item">
-            <a href="#"><img src="images/app-icon.png" alt="Logo" > CoTransfer</a>
-        </div>
-        <div class="menu-item">
-            <a href="#"><img src="images/add.png" alt="Logo">Add</a>
-        </div>
-        <div class="menu-item">
-            <a href="#"><img src="images/transfer.png" alt="Logo">Transfer</a>
-        </div>
-        <div class="menu-item">
-            <a href="#"><img src="images/history.png" alt="Logo" >History</a>
-        </div>
-        <div class="menu-item" style="margin-top: auto;">
-            <a href="#"><img src="images/settings.png" alt="Logo">Settings</a>
-        </div>
-    </div>
-    <div class="main">
-        <div class="header">
-            <div></div>
-            <div class="user-name">User name</div>
-            <div><img src="images/user.png" alt="User Icon"></div>
-        </div>
-        <div class="container">
-            <div class="box">
-                <p>加入轉帳</p>
-                <img src="images/type-in.png" alt="Code Icon">
-                <img src="images/qr.png" alt="Code Icon">
-                
-                <p>輸入代碼</p>
-                <p>掃描二維碼</p>
-            </div>
-            <div class="box">
-                <p>快速建立轉帳</p>
-                <img src="images/create.png" alt="Pen Icon">
-                
-            </div>
-            <div class="box">
-                <p>群組</p>
-                <img src="images/addgroup.png" alt="Group Icon">
-                <img src="images/group.png" alt="Group Icon">
-                <p>建立群組</p>
-                <p>加入群組</p>
-            </div>
-        </div>
-    </div>
+    <h1>Form Result</h1>
+    <p>Text: <span th:text="${text}"></span></p>
+    <p>Text2: <span th:text="${text2}"></span></p>
+
+    <form action="/test/form" method="post">
+        <label for="text">Text:</label>
+        <input type="text" id="text" name="text" value="">
+
+        <label for="testing">Text2:</label>
+        <input type="text" id="text2" name="text2" value="">
+
+        <button type="submit">Submit</button>
+    </form>
 </body>
 </html>
