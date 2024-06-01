@@ -4,28 +4,34 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "UserCase")
-public class Usercase {
+public class UserCase {
     @Id
     private String id;
-    private String User_account;
-    private String User_password;
-    private String User_name;
+
+    private String userAccount;
+
+
+    private String userPassword;
+
+
+    private String Username;
+
 
     // getters
     public String getId() {
         return id;
     }
 
-    public String getUser_account() {
-        return User_account;
+    public String getUserAccount() {
+        return userAccount;
     }
 
-    public String getUser_password() {
-        return User_password;
+    public String getUserPassword() {
+        return userPassword;
     }
 
     public String getUser_name() {
-        return User_name;
+        return Username;
     }
 
     // setters
@@ -33,16 +39,16 @@ public class Usercase {
         this.id = id;
     }
 
-    public void setUser_account(String User_account) {
-        this.User_account = User_account;
+    public void setUserAccount(String userAccount) {
+        this.userAccount = userAccount;
     }
 
-    public void setUser_password(String User_password) {
-        this.User_password = User_password;
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
     }
 
-    public void setUser_name(String User_name) {
-        this.User_name = User_name;
+    public void setUsername(String Username) {
+        this.Username = Username;
     }
 
 
