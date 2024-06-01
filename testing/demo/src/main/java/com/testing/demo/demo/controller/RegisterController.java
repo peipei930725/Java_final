@@ -18,8 +18,11 @@ import com.testing.demo.demo.model.RegisterRequest;
 import com.testing.demo.demo.model.UserCase;
 import com.testing.demo.demo.repository.MyDataRepository;
 
+<<<<<<< HEAD
 
 @CrossOrigin(origins = "http://localhost:5173")
+=======
+>>>>>>> 7a8f8c0e6c075ef891702431cb52668bfa58a304
 @RestController
 @RequestMapping("/api")
 public class RegisterController {
@@ -41,34 +44,73 @@ public class RegisterController {
         }
     }
 
-
     @PostMapping("/register")
+<<<<<<< HEAD
     public ResponseEntity<Map<String, Object>> register(@RequestBody RegisterRequest RegisterRequest) {
+=======
+    public String register(@RequestBody RegisterRequest registerRequest) {
+>>>>>>> 7a8f8c0e6c075ef891702431cb52668bfa58a304
         // 打印接收到的账户和密码
-        System.out.println("Received name: " + RegisterRequest.getFirstName()+" "+RegisterRequest.getLastName());
-        System.out.println("Received account: " + RegisterRequest.getAccount());
-        System.out.println("Received password: " + RegisterRequest.getPasswd());
+        System.out.println("Received name: " + registerRequest.getFirstName()+" "+registerRequest.getLastName());
+        System.out.println("Received account: " + registerRequest.getAccount());
+        System.out.println("Received password: " + registerRequest.getPasswd());
 
+<<<<<<< HEAD
         Map<String, Object> response = new HashMap<>();
             
 
         UserCase  existingUserCase = myDataRepository.findByUserAccount(RegisterRequest.getAccount());
+=======
+        UserCase  existingUserCase = myDataRepository.findByUserAccount(registerRequest.getAccount());
+>>>>>>> 7a8f8c0e6c075ef891702431cb52668bfa58a304
         if (existingUserCase != null ) {
             System.out.println("Account is exist" );
             response.put("success", false);
             return ResponseEntity.ok(response);
         }else{
             //新增用戶
-            String hashedPassword = sha256(RegisterRequest.getPasswd());
+            String hashedPassword = sha256(registerRequest.getPasswd());
             UserCase user_case = new UserCase();
-            user_case.setFirstName(RegisterRequest.getFirstName());
-            user_case.setLastName(RegisterRequest.getLastName());
-            user_case.setUserAccount(RegisterRequest.getAccount());
+            user_case.setFirstName(registerRequest.getFirstName());
+            user_case.setLastName(registerRequest.getLastName());
+            user_case.setUserAccount(registerRequest.getAccount());
             user_case.setUserPassword(hashedPassword);
             myDataRepository.save(user_case);
+<<<<<<< HEAD
 
             response.put("success", true);
             return ResponseEntity.ok(response);
+=======
+            return "Register successful for account: " + registerRequest.getAccount();
+>>>>>>> 7a8f8c0e6c075ef891702431cb52668bfa58a304
         }
     }
+    
+
+    // @PostMapping("/register")
+    // public String register(@RequestBody RegisterRequest registerRequest) {
+    //     // 打印接收到的账户和密码
+    //     System.out.println("Received name: " + registerRequest.getFirstName()+" "+registerRequest.getLastName());
+    //     System.out.println("Received account: " + registerRequest.getAccount());
+    //     System.out.println("Received password: " + registerRequest.getPasswd());
+
+    //     UserCase  existingUserCase = myDataRepository.findByUserAccount(registerRequest.getAccount());
+    //     if (existingUserCase != null ) {
+    //         System.out.println("Account is exist" );
+    //         return "Login unsuccessful for account: Account is not exist";
+    //     }else{
+    //         //新增用戶
+    //         String hashedPassword = sha256(registerRequest.getPasswd());
+    //         UserCase user_case = new UserCase();
+    //         user_case.setFirstName(registerRequest.getFirstName());
+    //         user_case.setLastName(registerRequest.getLastName());
+    //         user_case.setUserAccount(registerRequest.getAccount());
+    //         user_case.setUserPassword(hashedPassword);
+    //         myDataRepository.save(user_case);
+    //         return "Register successful for account: " + registerRequest.getAccount();
+    //     }
+    // }
+
+
+    
 }
