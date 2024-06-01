@@ -27,8 +27,8 @@ public class PageController {
     @PostMapping("/test/form")
     public ModelAndView testForm(@RequestParam("text") String text, @RequestParam("text2") String text2){
         Usercase usercase = new Usercase();
-        usercase.setId(text);
-        usercase.setText(text2);
+        usercase.setUser_account(text);
+        usercase.setUser_password(text2);
         myDataRepository.save(usercase);
         // 創建一個 Map 來存儲表單數據
         Map<String, String> data = new HashMap<>();
