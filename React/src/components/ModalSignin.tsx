@@ -1,14 +1,8 @@
 import React, { ReactNode ,useState } from "react";
-import '../components/Modal.css'
+import '../components/ModalSignin.css'
 //import useModal from "./useModal";
 
-interface ModalType {
-  children?: ReactNode;
-  isOpen: boolean;
-  toggle: () => void;
-}
-
-export default function ModalSignin(props: ModalType) {
+export default function ModalSignin({onToggleModal}) {
     const [passwd, setpasswdValue]=useState('')
     const [account, setaccountValue]=useState('')
     
@@ -29,7 +23,6 @@ export default function ModalSignin(props: ModalType) {
     <>
         <div className="modal-overlay" >
           <div  className="modal-box">
-            {props.children}
             <p className="h2">共同轉帳</p>
             <div className="form-floating mb-3">
                 <input 
@@ -57,7 +50,7 @@ export default function ModalSignin(props: ModalType) {
                 <button type="button" className="btn btn-outline-success" onClick={handleclick}>登入</button> 
                 <hr/>
             </div>
-            <p className="Signup">還沒有帳號嗎？點此<button type="button" className="btn btn-link" >註冊帳號</button></p>
+            <p className="Signup">還沒有帳號嗎？點此<button type="button" className="btn btn-link" onClick={onToggleModal}>註冊帳號</button></p>
           </div>
         </div>
         

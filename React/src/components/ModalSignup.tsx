@@ -2,13 +2,8 @@ import React, { ReactNode ,useState } from "react";
 import '../components/ModalSignup.css'
 //import useModal from "./useModal";
 
-interface ModalType {
-  children?: ReactNode;
-  isOpen: boolean;
-  toggle: () => void;
-}
 //Signup 跟 Signin 還沒連動
-export default function ModalSignup(props: ModalType) {
+export default function ModalSignup({onToggleModal}) {
     const [firstname, setfirstnameValue]=useState('')
     const [lastname, setlastnameValue]=useState('')
     const [account, setaccountValue]=useState('')
@@ -31,7 +26,6 @@ export default function ModalSignup(props: ModalType) {
     <>
         <div className="modal-overlay" >
           <div  className="modal-box">
-            {props.children}
             <p className="h2">共同轉帳</p>
             <form className="row g-3">
               <div className="col-md-6">
