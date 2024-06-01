@@ -7,15 +7,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class UserCase {
     @Id
     private String id;
-
     private String userAccount;
-
-
     private String userPassword;
-
-
-    private String Username;
-
+    private String FirstName;
+    private String LastName;
 
     // getters
     public String getId() {
@@ -30,8 +25,12 @@ public class UserCase {
         return userPassword;
     }
 
-    public String getUsername() {
-        return Username;
+    public String getFirstName() {
+        return FirstName;
+    }
+
+    public String getLastName() {
+        return LastName;
     }
 
     // setters
@@ -47,9 +46,11 @@ public class UserCase {
         this.userPassword = userPassword;
     }
 
-    public void setUsername(String Username) {
-        this.Username = Username;
+    public void setFirstName(String FirstName) {
+        this.FirstName = FirstName;
     }
 
-
+    public void setLastName(String LastName) {
+        this.LastName = LastName;
+    }
 }

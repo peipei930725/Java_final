@@ -13,7 +13,7 @@ export default function ModalSignup({onToggleModal}) {
       event.preventDefault()
       const student={firstname,lastname,account,passwd}
       console.log(student)
-      fetch("http://localhost:8080/api/login",{
+      fetch("http://localhost:8080/api/register",{
         method:"POST",
         headers:{"Content-Type":"application/json"},
         body:JSON.stringify(student)

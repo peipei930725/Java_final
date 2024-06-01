@@ -1,5 +1,9 @@
 package com.testing.demo.demo.controller;
 
+import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,10 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.testing.demo.demo.model.RegisterRequest;
 import com.testing.demo.demo.model.UserCase;
 import com.testing.demo.demo.repository.MyDataRepository;
-
-import java.security.MessageDigest;
-import java.nio.charset.StandardCharsets;
-import java.math.BigInteger;
 
 
 @RestController
@@ -40,6 +40,7 @@ public class RegisterController {
     @PostMapping("/register")
     public String register(@RequestBody RegisterRequest RegisterRequest) {
         // 打印接收到的账户和密码
+        System.out.println("Received name: " + RegisterRequest.getFirstName()+" "+RegisterRequest.getLastName());
         System.out.println("Received account: " + RegisterRequest.getAccount());
         System.out.println("Received password: " + RegisterRequest.getPasswd());
 
@@ -51,6 +52,8 @@ public class RegisterController {
             //新增用戶
             String hashedPassword = sha256(RegisterRequest.getPasswd());
             UserCase user_case = new UserCase();
+            user_case.setFirstName(RegisterRequest.getFirstName());
+            user_case.setLastName(RegisterRequest.getLastName());
             user_case.setUserAccount(RegisterRequest.getAccount());
             user_case.setUserPassword(hashedPassword);
             myDataRepository.save(user_case);
