@@ -7,28 +7,15 @@ export default function ModalSignup({onToggleModal}) {
     const [account, setaccountValue]=useState('')
     const [passwd, setpasswdValue]=useState('')
 
-<<<<<<< HEAD
-    const handleclick=(event)=>{
-      event.preventDefault()
-      const student={firstname,lastname,account,passwd}
-      console.log(student)
-      fetch("http://localhost:8080/api/register",{
-        method:"POST",
-        headers:{"Content-Type":"application/json"},
-        body:JSON.stringify(student)
-      }).then(()=>{
-        console.log("New account added")
-      })
-    }
-=======
     const [signupStatus, setSignupStatus] = useState('');
     const handleSignupClick = async (event) => {
         event.preventDefault();
-        const newUser = { firstname,lastname, account, passwd}
+        const newUser = { firstname ,lastname , account, passwd}
+        // console.log(firstname, lastname, account, passwd)
         console.log(newUser)
     
         try {
-          const response = await fetch('http://localhost:8080/api/test', {
+          const response = await fetch('http://localhost:8080/api/register', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newUser)
@@ -44,7 +31,6 @@ export default function ModalSignup({onToggleModal}) {
           setSignupStatus('Signup failed: Server error');
         }
       };
->>>>>>> 1b32e0150ac083ed2a8d60aa90a25cf176eb4dd1
 
   return (
     <>
