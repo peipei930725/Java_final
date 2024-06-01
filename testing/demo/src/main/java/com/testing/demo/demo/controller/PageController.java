@@ -3,7 +3,7 @@ package com.testing.demo.demo.controller;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.testing.demo.demo.model.Usercase;
+import com.testing.demo.demo.model.UserCase;
 import com.testing.demo.demo.repository.MyDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,9 +26,9 @@ public class PageController {
 
     @PostMapping("/test/form")
     public ModelAndView testForm(@RequestParam("text") String text, @RequestParam("text2") String text2){
-        Usercase usercase = new Usercase();
-        usercase.setText(text);
-        usercase.setText2(text2);
+        UserCase usercase = new UserCase();
+        usercase.setId(text);
+        usercase.setName(text2);
         myDataRepository.save(usercase);
         // 創建一個 Map 來存儲表單數據
         Map<String, String> data = new HashMap<>();
