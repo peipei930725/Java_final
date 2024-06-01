@@ -7,25 +7,43 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class UserCase {
     @Id
     private String id;
-    private String name;
+    private String User_account;
+    private String User_password;
+    private String User_name;
 
     // getters
     public String getId() {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getUser_account() {
+        return User_account;
     }
 
+    public String getUser_password() {
+        return User_password;
+    }
+
+    public String getUser_name() {
+        return User_name;
+    }
 
     // setters
     public void setId(String id) {
         this.id = id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUser_account(String User_account) {
+        this.User_account = User_account;
     }
+
+    public void setUser_password(String User_password) {
+        this.User_password = User_password;
+    }
+
+    public void setUser_name(String User_name) {
+        this.User_name = User_name;
+    }
+
 
 }
