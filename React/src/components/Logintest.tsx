@@ -1,9 +1,11 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 
 const Logintest = () => {
   const [passwd, setpasswdValue] = useState('');
   const [account, setaccountValue] = useState('');
+  const [user,setUser]=useState([])
 
+  //給後端資料庫資料
   const handleclick = (event) => {
     event.preventDefault();
     const student = { account, passwd };
@@ -17,8 +19,17 @@ const Logintest = () => {
     }).then(response => response.text())
       .then(data => {
         console.log(data);
-      });
-  };
+      })
+  }
+  
+  //跟後端資料庫要資料
+  useEffect(()=>{
+    fetch("http://localhost:8080/api/login")
+    .then(res=>res.json())
+    .then((result)=>{
+      setUser(result);
+    })
+  },[])
 
   return (
     <Fragment>
@@ -44,6 +55,18 @@ const Logintest = () => {
         Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
       </div>
       <button type="button" className="btn btn-primary" onClick={handleclick}>Submit</button>
+      <hr/>
+      
+
+      
+      <p className='h3'>getDatatest</p>
+      {user.map(user=>(
+      <p className='h5' key={user._id}>
+        Account: {user.userAccount}
+        password: {user.userPassword}
+      </p>
+      ))
+      }
     </Fragment>
   );
 }
