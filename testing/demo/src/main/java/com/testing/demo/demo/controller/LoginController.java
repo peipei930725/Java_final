@@ -1,20 +1,28 @@
 package com.testing.demo.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 import com.testing.demo.demo.model.LoginRequest;
 import com.testing.demo.demo.model.RegisterRequest;
 import com.testing.demo.demo.model.UserCase;
 import com.testing.demo.demo.repository.MyDataRepository;
 
 import java.security.MessageDigest;
+import java.util.ArrayList;
+import java.util.List;
 import java.nio.charset.StandardCharsets;
 import java.math.BigInteger;
-
+import org.bson.Document;
+import org.springframework.beans.factory.annotation.Value;
 @RestController
 @RequestMapping("/api")
 public class LoginController {
@@ -53,12 +61,34 @@ public class LoginController {
             String hashedPassword = sha256(loginRequest.getPasswd());
             if (existingUserCase.getUserPassword().equals(hashedPassword)) {
                 System.out.println("Password is correct" );
-                return "Login successful for account: " + loginRequest.getAccount();
+                return existingUserCase.getUserPassword();
             }else{
                 System.out.println("Password is incorrect" );
                 return "Login unsuccessful for account: Password is incorrect";
             }
 
         }
+    }
+    
+    @Value("${spring.data.mongodb.uri}")
+    private String mongoUri;
+    
+    @Value("${spring.data.mongodb.database}")
+    private String mongoDatabase;
+    
+    @PostMapping("/test")
+    public List<String> testPost() {
+        List<String> userAccounts = new ArrayList<>();
+    
+        try (MongoClient mongoClient = MongoClients.create(mongoUri)) {
+            MongoDatabase database = mongoClient.getDatabase(mongoDatabase);
+            MongoCollection<Document> collection = database.getCollection("UserCase");
+    
+            for (Document doc : collection.find()) {
+                userAccounts.add(doc.getString("userAccount"));
+            }
+        }
+    
+        return userAccounts;
     }
 }

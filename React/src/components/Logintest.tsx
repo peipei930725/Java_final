@@ -4,6 +4,7 @@ const Logintest = () => {
   const [passwd, setpasswdValue] = useState('');
   const [account, setaccountValue] = useState('');
   const [user,setUser]=useState([])
+  const [data, setData] = useState(''); // Add this line to import the `setData` function
 
   //給後端資料庫資料
   const handleclick = (event) => {
@@ -12,16 +13,49 @@ const Logintest = () => {
     console.log(student);
 
     // 更新 URL 为 Spring Boot 控制器的 URL
-    fetch("http://localhost:8080/api/login", {  // 連接到後端的 URL
+    fetch("http://localhost:8080/api/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(student)
-    }).then(response => response.text())
-      .then(data => {
-        console.log(data);
-      })
+    }).then(response => {
+      const contentType = response.headers.get("content-type");
+      if (contentType && contentType.indexOf("application/json") !== -1) {
+        return response.json().then(data => {
+          // 檢查用戶是否存在
+          const userExists = (user as { account: string }[]).some(u => u.account === account);
+          if (userExists) {
+            setData('Username: ' + account);
+          } else {
+            setData('User does not exist');
+          }
+        });
+      } else {
+fetch("http://localhost:8080/api/login", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(student)
+}).then(response => {
+  const contentType = response.headers.get("content-type");
+  if (contentType && contentType.indexOf("application/json") !== -1) {
+    return response.json().then(data => {
+      // 檢查用戶是否存在
+      const userExists = (user as { account: string }[]).some(u => u.account === account);
+      if (userExists) {
+        setData('Username: ' + account);
+      } else {
+        setData('User does not exist');
+      }
+    });
+  } else {
+    return response.text().then(text => {
+      // 處理非 JSON 響應
+      setData(text);
+    });
   }
-  
+})
+      }
+    })
+  }
   //跟後端資料庫要資料
   useEffect(()=>{
     fetch("http://localhost:8080/api/login")
@@ -30,6 +64,18 @@ const Logintest = () => {
       setUser(result);
     })
   },[])
+
+
+  useEffect(() => {
+    fetch("http://localhost:8080/api/test", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+    }).then(response => {
+      return response.text().then(text => {
+        setData(text);
+      });
+    })
+  }, []);
 
   return (
     <Fragment>
@@ -60,13 +106,8 @@ const Logintest = () => {
 
       
       <p className='h3'>getDatatest</p>
-      {user.map(user=>(
-      <p className='h5' key={user._id}>
-        Account: {user.userAccount}
-        password: {user.userPassword}
-      </p>
-      ))
-      }
+      <p>{data}</p>
+      
     </Fragment>
   );
 }

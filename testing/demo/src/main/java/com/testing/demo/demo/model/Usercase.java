@@ -30,7 +30,7 @@ public class UserCase {
         return userPassword;
     }
 
-    public String getUser_name() {
+    public String getUsername() {
         return Username;
     }
 
