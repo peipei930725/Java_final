@@ -1,7 +1,7 @@
 import React, { ReactNode ,useState } from "react";
 import '../components/Add.css'
 
-export default function ModalSignup({onToggleModal}) {
+export default function AddTransfer({onToggleModal}) {
     const [TransferName, SetTransferName]=useState('')
     const [People, SetPeople]=useState('')
     const [Money, SetMoney]=useState('')
