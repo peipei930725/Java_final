@@ -34,15 +34,6 @@
   
   hr {
     display: block;
-    width: 50%;
+    width: 100%;
     margin: 0 auto;
-  }
-  .name-row {
-    display: flex;
-    justify-content: space-between; /* 這會在兩個 input 元素之間添加一些空間 */
-  }
-  
-  .name-row input {
-    width: 80%;
-    margin-right: 1rem;
   }
