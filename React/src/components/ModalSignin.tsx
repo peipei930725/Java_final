@@ -1,9 +1,11 @@
-import React, { ReactNode ,useState } from "react";
+import React, { ReactNode ,useContext,useState } from "react";
 import '../components/ModalSignin.css'
+import UserContext from '../App'
 
 export default function ModalSignin({onToggleModal}) {
     const [passwd, setpasswdValue]=useState('')
     const [account, setaccountValue]=useState('')
+    //const [context, setContext] = useContext(UserContext);
     
     const handleclick=(event)=>{
       event.preventDefault()
@@ -19,10 +21,12 @@ export default function ModalSignin({onToggleModal}) {
     }
 
     const [loginStatus, setLoginStatus] = useState('');
+
     const handleLoginClick = async (event) => {
       event.preventDefault();
       const User = { account, passwd };
       console.log(User);
+      //setContext(account)
       try {
         const response = await fetch('http://localhost:8080/api/login', {
           method: 'POST',
@@ -31,6 +35,7 @@ export default function ModalSignin({onToggleModal}) {
         });
         const result = await response.json();
         if (result.success === "true") {
+          //setContext(account)
           setLoginStatus(result.message);
         } else {
           setLoginStatus(result.message);
