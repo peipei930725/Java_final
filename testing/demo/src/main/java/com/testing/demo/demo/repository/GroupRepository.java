@@ -4,4 +4,5 @@ import com.testing.demo.demo.model.GroupCase;
 
 public  interface GroupRepository extends MongoRepository<GroupCase, String>{
     GroupCase findByGroupName(String groupName);
+    GroupCase findByGroupId(String groupId);
 }

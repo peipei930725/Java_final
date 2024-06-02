@@ -1,9 +1,12 @@
 package com.testing.demo.demo.model;
 
+import org.springframework.data.annotation.Id;
 import java.util.ArrayList;
 
 public class GroupCase {
+    @Id
     private String groupId;
+
     private String groupName;
     private int groupSize;
     private ArrayList<String> groupMember;

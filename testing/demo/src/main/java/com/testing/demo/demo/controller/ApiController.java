@@ -1,5 +1,7 @@
 package com.testing.demo.demo.controller;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashMap;  // 導入 StudentDto 類
 import java.util.Map;
 
@@ -12,14 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.testing.demo.demo.request.TradeRequest;
-import com.testing.demo.demo.repository.GroupRepository;
+import com.testing.demo.demo.request.*;
+import com.testing.demo.demo.repository.*;
+import com.testing.demo.demo.model.*;
 import com.testing.demo.demo.dto.StudentDto;
-import com.testing.demo.demo.request.RegisterRequest;
-import com.testing.demo.demo.request.GroupRequest;
-import com.testing.demo.demo.model.GroupCase;
-import com.testing.demo.demo.model.TradeCase;
-import com.testing.demo.demo.repository.TradeInfoDataRepository;
+
+
 
 
 @RestController
@@ -31,7 +31,7 @@ public class ApiController {
     @Autowired
     private TradeInfoDataRepository tradeInfoDataRepository;
 
-    @PostMapping("/addGroup")
+    @PostMapping("/createGroup")
     public ResponseEntity<Map<String, String>> register(@RequestBody GroupRequest groupRequest) {
         Map<String, String> response = new HashMap<>();
         System.out.println(groupRequest.getGroupName());
@@ -44,9 +44,12 @@ public class ApiController {
             response.put("message", "群組已存在");
             return ResponseEntity.badRequest().body(response);
         }else{
+            ArrayList<String> groupMember = new ArrayList<String>();
+            groupMember.add("newMember");
             GroupCase groupCase = new GroupCase();
             groupCase.setGroupName(groupRequest.getGroupName());
             groupCase.setGroupSize(groupRequest.getGroupSize());
+            groupCase.setGroupMember(groupMember);
             GroupRepository.save(groupCase);
             response.put("message", "群組新增成功");
             response.put("success", "true");
@@ -76,5 +79,33 @@ public class ApiController {
             return ResponseEntity.ok(response);
         }
     }
+
+    @PostMapping("/addGroup")
+    public ResponseEntity<Map<String, String>> addGroup(@RequestBody AddGroupRequest addGroupRequest) {
+        Map<String, String> response = new HashMap<>();
+        GroupCase existedGroupCase = GroupRepository.findByGroupName(addGroupRequest.getGroupName());
+        System.out.println(existedGroupCase);
+        System.out.println(addGroupRequest.getGroupName());
+        if (existedGroupCase == null) {
+            response.put("message", "群組不存在");
+            return ResponseEntity.badRequest().body(response);
+        }else{
+            String groupId = existedGroupCase.getGroupId();
+            System.out.println(groupId);
+            int nowSize = existedGroupCase.getGroupMember().size();
+            if (nowSize == existedGroupCase.getGroupSize()){
+                response.put("message", "群組人數已滿");
+                return ResponseEntity.badRequest().body(response);
+            }
+            System.out.println(groupId);
+            existedGroupCase = GroupRepository.findByGroupId(groupId);
+            existedGroupCase.addGroupMember("newMember");
+            GroupRepository.save(existedGroupCase);
+            response.put("message", "新增群組成員成功");
+            response.put("success", "true");
+            return ResponseEntity.ok(response);
+        }
+    }
+
 }
 
