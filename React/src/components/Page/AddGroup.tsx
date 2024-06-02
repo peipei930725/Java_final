@@ -2,31 +2,32 @@ import React, { ReactNode ,useState } from "react";
 import './Add.css'
 
 export default function AddGroup({onToggleModal}) {
-    const [GroupID, SetGroupID]=useState('')
+    const [groupName, SetgroupName]=useState('')
 
-    const [TransferStatus, setTransferStatus] = useState('');
+    const [addGroupStatus, setAddGroupStatus] = useState('');
     const handleSignupClick = async (event) => {
         event.preventDefault();
-        const AddGroup = { GroupID }
+        const AddGroup = { groupName }
         console.log(AddGroup)
     
         try {
-          const response = await fetch('http://localhost:8080/api/transfer', {
+          const response = await fetch('http://localhost:8080/api/addGroup', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(AddGroup)
           });
           const result = await response.json();
           if (result.success === "true") {
-            SetGroupID(result.message);
+            setAddGroupStatus(result.message);
           } else {
-            SetGroupID(result.message);
+            setAddGroupStatus(result.message);
           }
         } catch (error) {
           if (error instanceof SyntaxError) {
-            setTransferStatus('請輸入正確參數');
+            setAddGroupStatus('請輸入正確參數');
           }else{
-          setTransferStatus('NewTransfer failed: Server error');
+          console.error('Error:', error);
+          setAddGroupStatus('NewTransfer failed: Server error');
           }
         }
       };
@@ -40,11 +41,11 @@ export default function AddGroup({onToggleModal}) {
                 <div className="md-6">
                   <label htmlFor="inputEmail4" className="form-label">加入群組:</label>
                   <input 
-                  value={GroupID}
+                  value={groupName}
                   type="groupName" 
                   className="form-control"
                   placeholder="請輸入群組名稱" 
-                  onChange={(event)=>SetGroupID(event.target.value)}
+                  onChange={(event)=>SetgroupName(event.target.value)}
                   />
                 </div>
               <div className="col-12">
@@ -52,7 +53,7 @@ export default function AddGroup({onToggleModal}) {
                 {/* <button type="button" className="btn btn-secondary" onClick={onToggleModal}>取消</button> */}
               </div>
             </form>
-            <p>{GroupID}</p>
+            <p>{addGroupStatus}</p>
           </div>
         </div>
     </>
