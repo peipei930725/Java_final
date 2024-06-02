@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import AddGroup from './CreateGroup';
+import AddGroup from './AddGroup';
 import AddTransfer from './AddTransfer';
+import CreateGroup from './CreateGroup';
 import '../components/Add.css';
 
 function App() {
@@ -46,7 +47,7 @@ function App() {
         <div className="box-header">建立群組</div>
         <div className="box-content">
           <div className="icon-text">
-          <img src="../assets/add.png" alt="" onClick={() => handleButtonClick('AddGroup')} />
+          <img src="../assets/add.png" alt="" onClick={() => handleButtonClick('CreateGroup')} />
             <p>建立群組</p>
           </div>
           <div className="icon-text">
@@ -66,6 +67,11 @@ function App() {
           <AddGroup onToggleModal={handleCloseModal}/>
         </Modal>
       )}
+        {isModalOpen && currentView === 'CreateGroup' && (
+            <Modal onClose={handleCloseModal}>
+            <CreateGroup onToggleModal={handleCloseModal}/>
+            </Modal>
+        )}
     </div>
   );
 }
