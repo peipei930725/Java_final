@@ -14,13 +14,13 @@ function App() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [currentView, setCurrentView] = useState('');
 
-    const handleAccept = (index) => {
-        console.log('accept', index);
-    };
+    // const handleAccept = (index) => {
+    //     console.log('accept', index);
+    // };
 
-    const handleReject = (index) => {
-        console.log('reject', index);
-    };
+    // const handleReject = (index) => {
+    //     console.log('reject', index);
+    // };
     
     const handleCloseModal = () => {
         setIsModalOpen(false);
@@ -32,11 +32,11 @@ function App() {
             .then(data => setData1(data));
     }, []);
 
-    useEffect(() => {
-        fetch('your-backend-url/table2')
-            .then(response => response.json())
-            .then(data => setData2(data));
-    }, []);
+    // useEffect(() => {
+    //     fetch(`your-backend-url/user/${userId}`)
+    //         .then(response => response.json())
+    //         .then(data => console.log(data));
+    // }, []);
 
     return (
         <div className="container1">
@@ -46,8 +46,8 @@ function App() {
                     {(showAll1 ? data1 : data1.slice(0, 2)).map((item, index) => (
                         <li key={index}>
                             {item.name} <span>{item.value}</span>
-                            <button onClick={() => handleAccept(index)}>接受</button>
-                            <button onClick={() => handleReject(index)}>拒絕</button>
+                            {/* <button onClick={() => handleAccept(index)}>接受</button>
+                            <button onClick={() => handleReject(index)}>拒絕</button> */}
                         </li>
                     ))}
                 </ul>
@@ -61,8 +61,8 @@ function App() {
                     {(showAll2 ? data2 : data2.slice(0, 2)).map((item, index) => (
                         <li key={index}>
                             {item.name} <span>{item.value}</span>
-                            <button onClick={() => handleAccept(index)}>接受</button>
-                            <button onClick={() => handleReject(index)}>拒絕</button>
+                            {/* <button onClick={() => handleAccept(index)}>接受</button>
+                            <button onClick={() => handleReject(index)}>拒絕</button> */}
                         </li>
                     ))}
                 </ul>
