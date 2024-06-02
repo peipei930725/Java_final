@@ -1,5 +1,8 @@
 import { useState } from 'react'
 import './App.css'
+import AddGroup from './components/AddGroup'
+import AddTransfer from './components/AddTransfer'
+import AddCtrl from './components/AddCtrl'
 import ModalCtrl from './components/ModalCtrl'
 
 function App() {
@@ -7,7 +10,9 @@ function App() {
 
   return (
     <div className="App">
-      <ModalCtrl />
+      <AddCtrl />
+      {/* <AddGroup />
+      <AddTransfer /> */}
     </div>
   )
 }

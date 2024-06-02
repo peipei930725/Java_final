@@ -1,7 +1,7 @@
 import React, { ReactNode ,useState } from "react";
 import '../components/Add.css'
 
-export default function ModalSignup({onToggleModal}) {
+export default function AddTransfer({onToggleModal}) {
     const [TransferName, SetTransferName]=useState('')
     const [People, SetPeople]=useState('')
     const [Money, SetMoney]=useState('')
@@ -36,8 +36,7 @@ export default function ModalSignup({onToggleModal}) {
           <div  className="modal-box">
             <p className="h2">建立轉帳</p>
             <form className="row g-3">
-              <div className="name-row">
-                <div className="col-md-6">
+                <div className="md-6">
                   <label htmlFor="inputEmail4" className="form-label">轉帳名稱:</label>
                   <input 
                   value={TransferName}
@@ -47,7 +46,7 @@ export default function ModalSignup({onToggleModal}) {
                   onChange={(event)=>SetTransferName(event.target.value)}
                   />
                 </div>
-                <div className="col-md-6">
+                <div className="md-6">
                   <label htmlFor="inputEmail4" className="form-label">人數:</label>
                   <input 
                   value={People}
@@ -57,7 +56,6 @@ export default function ModalSignup({onToggleModal}) {
                   onChange={(event)=>SetPeople(event.target.value)}
                   />
                 </div>
-              </div>
               <div className="md-6">
                 <label htmlFor="inputEmail4" className="form-label">金額:</label>
                 <input 
@@ -70,7 +68,7 @@ export default function ModalSignup({onToggleModal}) {
               </div>
               <div className="col-12">
                 <button type="submit" className="btn btn-primary" onClick={handleSignupClick}>建立轉帳</button>
-                <button type="button" className="btn btn-secondary" onClick={onToggleModal}>取消</button>
+                {/* <button type="button" className="btn btn-secondary" onClick={onToggleModal}>取消</button> */}
               </div>
             </form>
             <p>{TransferStatus}</p>

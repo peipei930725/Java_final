@@ -1,7 +1,7 @@
 import React, { ReactNode ,useState } from "react";
 import '../components/Add.css'
 
-export default function ModalSignup({onToggleModal}) {
+export default function AddGroup({onToggleModal}) {
     const [GroupName, SetGroupName]=useState('')
     const [People, SetPeople]=useState('')
 
@@ -36,8 +36,7 @@ export default function ModalSignup({onToggleModal}) {
           <div  className="modal-box">
             <p className="h2">建立群組</p>
             <form className="row g-3">
-              <div className="name-row">
-                <div className="col-md-6">
+                <div className="md-6">
                   <label htmlFor="inputEmail4" className="form-label">群組名稱:</label>
                   <input 
                   value={GroupName}
@@ -47,7 +46,7 @@ export default function ModalSignup({onToggleModal}) {
                   onChange={(event)=>SetGroupName(event.target.value)}
                   />
                 </div>
-                <div className="col-md-6">
+                <div className="md-6">
                   <label htmlFor="inputEmail4" className="form-label">人數:</label>
                   <input 
                   value={People}
@@ -56,11 +55,10 @@ export default function ModalSignup({onToggleModal}) {
                   placeholder="請輸入人數" 
                   onChange={(event)=>SetPeople(event.target.value)}
                   />
-                </div>
               </div>
               <div className="col-12">
                 <button type="submit" className="btn btn-primary" onClick={handleSignupClick}>建立群組</button>
-                <button type="button" className="btn btn-secondary" onClick={onToggleModal}>取消</button>
+                {/* <button type="button" className="btn btn-secondary" onClick={onToggleModal}>取消</button> */}
               </div>
             </form>
             <p>{AddGroupStatus}</p>
