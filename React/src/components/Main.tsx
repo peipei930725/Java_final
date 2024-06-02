@@ -7,6 +7,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Form from 'react-bootstrap/Form';
 import './Main.css'
 import AddCtrl from './Page/AddCtrl';
+import History from './Page/History';
 
 const Main = () => {
   return (
@@ -51,6 +52,8 @@ const Main = () => {
         <main className='main'>
             <Routes>
                 <Route path="/Add" Component={AddCtrl} />
+                {/* <Route path="/Transfer" Component={AddCtrl} /> */}
+                <Route path="/History" Component={History} />
             </Routes>
         </main>
         </div>

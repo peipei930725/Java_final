@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import '../components/Histroy.css';
+import './History.css';
 
 interface Item {
     name: string;
