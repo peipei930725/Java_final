@@ -36,8 +36,7 @@ export default function AddTransfer({onToggleModal}) {
           <div  className="modal-box">
             <p className="h2">建立轉帳</p>
             <form className="row g-3">
-              <div className="name-row">
-                <div className="col-md-6">
+                <div className="md-6">
                   <label htmlFor="inputEmail4" className="form-label">轉帳名稱:</label>
                   <input 
                   value={TransferName}
@@ -47,7 +46,7 @@ export default function AddTransfer({onToggleModal}) {
                   onChange={(event)=>SetTransferName(event.target.value)}
                   />
                 </div>
-                <div className="col-md-6">
+                <div className="md-6">
                   <label htmlFor="inputEmail4" className="form-label">人數:</label>
                   <input 
                   value={People}
@@ -57,7 +56,6 @@ export default function AddTransfer({onToggleModal}) {
                   onChange={(event)=>SetPeople(event.target.value)}
                   />
                 </div>
-              </div>
               <div className="md-6">
                 <label htmlFor="inputEmail4" className="form-label">金額:</label>
                 <input 

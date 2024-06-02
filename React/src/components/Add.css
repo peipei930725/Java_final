@@ -43,14 +43,14 @@ body {
     align-items: center;
     justify-content: space-around; /* Add this to distribute the items evenly */
     padding: 20px 0;
-  }
+}
   
-  .icon-text {
-    display: flex;
-    flex-direction: column; /* Change this from row to column */
-    align-items: center; /* Add this to center the text under the image */
-    margin: 10px 0;
-  }
+.icon-text {
+display: flex;
+flex-direction: column; /* Change this from row to column */
+align-items: center; /* Add this to center the text under the image */
+margin: 10px 0;
+}
 
 .icon-text img {
     width: 24px;
