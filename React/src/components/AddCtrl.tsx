@@ -22,11 +22,11 @@ function App() {
         <div className="box-header">加入轉帳</div>
         <div className="box-content">
           <div className="icon-text">
-            <img src="path-to-your-image1.png" alt="" onClick={() => handleButtonClick('AddTransfer')} />
+            <img src="path-to-your-image1.png" alt="" onClick={() => handleButtonClick('')} />
             <p>輸入代碼</p>
           </div>
           <div className="icon-text">
-            <img src="path-to-your-image2.png" alt="" onClick={() => handleButtonClick('AddTransfer')} />
+            <img src="path-to-your-image2.png" alt="" onClick={() => handleButtonClick('')} />
             <p>掃描二維碼</p>
           </div>
         </div>
@@ -36,7 +36,7 @@ function App() {
         <div className="box-header">快速建立轉帳</div>
         <div className="box-content">
           <div className="icon-text">
-            <img src="path-to-your-image3.png" alt="" onClick={() => handleButtonClick('QuickTransfer')} />
+            <img src="path-to-your-image3.png" alt="" onClick={() => handleButtonClick('AddTransfer')} />
             <p>建立轉帳</p>
           </div>
         </div>
@@ -55,7 +55,7 @@ function App() {
           </div>
         </div>
       </div>
-      
+
       {isModalOpen && currentView === 'AddTransfer' && (
         <Modal onClose={handleCloseModal}>
           <AddTransfer onToggleModal={handleCloseModal}/>
