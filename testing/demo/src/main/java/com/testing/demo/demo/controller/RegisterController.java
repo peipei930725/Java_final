@@ -49,8 +49,7 @@ public class RegisterController {
 
         UserCase  existingUserCase = myDataRepository.findByUserAccount(registerRequest.getAccount());
         if (existingUserCase != null ) {
-            System.out.println("Account is exist" );
-            response.put("message", "Account is exist");
+            response.put("message", "帳號已存在");
             response.put("success", "false");
             return ResponseEntity.badRequest().body(response);
         }else{
@@ -62,7 +61,7 @@ public class RegisterController {
             user_case.setUserAccount(registerRequest.getAccount());
             user_case.setUserPassword(hashedPassword);
             myDataRepository.save(user_case);
-            response.put("message", "Register successful");
+            response.put("message", "註冊成功");
             response.put("success", "true");
             return ResponseEntity.ok(response);
         }

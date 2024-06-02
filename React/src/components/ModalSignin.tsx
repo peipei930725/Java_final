@@ -31,9 +31,9 @@ export default function ModalSignin({onToggleModal}) {
         });
         const result = await response.json();
         if (result.success === "true") {
-          setLoginStatus('Login successful!');
+          setLoginStatus(result.message);
         } else {
-          setLoginStatus('Login failed: '+result.message);
+          setLoginStatus(result.message);
         }
       } catch (error) {
         console.error('Error:', error);

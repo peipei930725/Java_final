@@ -20,13 +20,16 @@ export default function CreateGroup({onToggleModal}) {
           });
           const result = await response.json();
           if (result.success === "true") {
-            SetCreateGroupStatus('AddGroup successful!');
+            SetCreateGroupStatus(result.message);
           } else {
-            SetCreateGroupStatus('AddGroup failed: ' + result.message);
+            SetCreateGroupStatus(result.message);
           }
         } catch (error) {
-          console.error('Error:', error);
-          SetCreateGroupStatus('AddGroup failed: Server error');
+          if (error instanceof SyntaxError) {
+            SetCreateGroupStatus('請輸入正確參數');
+          }else{
+          SetCreateGroupStatus('NewTransfer failed: Server error');
+          }
         }
       };
 

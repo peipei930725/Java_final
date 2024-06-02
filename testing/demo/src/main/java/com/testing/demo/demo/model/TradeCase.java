@@ -7,16 +7,16 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class TradeCase {
     @Id
     private String tradeId;
-    private String peopleCount;
+    private Integer peopleCount;
     private String transferName;
-    private String tradeAmount;
+    private Integer tradeAmount;
 
     // getters
     public String getTradeId() {
         return tradeId;
     }
 
-    public String getPeopleCount() {
+    public Integer getPeopleCount() {
         return peopleCount;
     }
 
@@ -24,7 +24,7 @@ public class TradeCase {
         return transferName;
     }
 
-    public String getTradeAmount() {
+    public Integer getTradeAmount() {
         return tradeAmount;
     }
 
@@ -34,7 +34,7 @@ public class TradeCase {
         this.tradeId = tradeId;
     }
 
-    public void setPeopleCount(String peopleCount) {
+    public void setPeopleCount(Integer peopleCount) {
         this.peopleCount = peopleCount;
     }
 
@@ -42,7 +42,7 @@ public class TradeCase {
         this.transferName = transferName;
     }
 
-    public void setTradeAmount(String tradeAmount) {
+    public void setTradeAmount(Integer tradeAmount) {
         this.tradeAmount = tradeAmount;
     }
 

@@ -18,13 +18,16 @@ export default function AddGroup({onToggleModal}) {
           });
           const result = await response.json();
           if (result.success === "true") {
-            SetGroupID('NewTransfer successful!');
+            SetGroupID(result.message);
           } else {
-            SetGroupID('NewTransfer failed: ' + result.message);
+            SetGroupID(result.message);
           }
         } catch (error) {
-          console.error('Error:', error);
-          SetGroupID('NewTransfer failed: Server error');
+          if (error instanceof SyntaxError) {
+            setTransferStatus('請輸入正確參數');
+          }else{
+          setTransferStatus('NewTransfer failed: Server error');
+          }
         }
       };
 

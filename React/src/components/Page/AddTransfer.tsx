@@ -20,13 +20,16 @@ export default function AddTransfer({onToggleModal}) {
           });
           const result = await response.json();
           if (result.success === "true") {
-            setTransferStatus('NewTransfer successful!');
+            setTransferStatus(result.message);
           } else {
-            setTransferStatus('NewTransfer failed: ' + result.message);
+            setTransferStatus(result.message);
           }
         } catch (error) {
-          console.error('Error:', error);
+          if (error instanceof SyntaxError) {
+            setTransferStatus('請輸入正確參數');
+          }else{
           setTransferStatus('NewTransfer failed: Server error');
+          }
         }
       };
 

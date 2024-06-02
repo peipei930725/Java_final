@@ -36,15 +36,19 @@ public class ApiController {
         Map<String, String> response = new HashMap<>();
         System.out.println(groupRequest.getGroupName());
         GroupCase existingGroupCase = GroupRepository.findByGroupName(groupRequest.getGroupName());
+        if (groupRequest.getGroupName() == null || groupRequest.getGroupSize() == 0) {
+            response.put("message", "請填入名稱或人數");
+            return ResponseEntity.badRequest().body(response);
+        }
         if (existingGroupCase != null) {
-            response.put("message", "Group name is already exist");
+            response.put("message", "群組已存在");
             return ResponseEntity.badRequest().body(response);
         }else{
             GroupCase groupCase = new GroupCase();
             groupCase.setGroupName(groupRequest.getGroupName());
             groupCase.setGroupSize(groupRequest.getGroupSize());
             GroupRepository.save(groupCase);
-            response.put("message", "Group added successfully");
+            response.put("message", "群組新增成功");
             response.put("success", "true");
             return ResponseEntity.ok(response);
         }        
@@ -54,8 +58,12 @@ public class ApiController {
     public ResponseEntity<Map<String, String>> transfer(@RequestBody TradeRequest tradeRequest) {
         Map<String, String> response = new HashMap<>();
         TradeCase existedTradeCase = tradeInfoDataRepository.findByTransferName(tradeRequest.getTransferName());
+        if (tradeRequest.getTransferName() == null || tradeRequest.getTradeAmount() <= 0 || tradeRequest.getPeopleCount() <= 1  ){
+            response.put("message", "請填入正確資料");
+            return ResponseEntity.badRequest().body(response);
+        }
         if (existedTradeCase != null) {
-            response.put("message", "Transfer name is already exist");
+            response.put("message", "交易名稱已存在");
             return ResponseEntity.badRequest().body(response);
         }else{
             TradeCase tradeCase = new TradeCase();
@@ -63,7 +71,7 @@ public class ApiController {
             tradeCase.setTradeAmount(tradeRequest.getTradeAmount());
             tradeCase.setTransferName(tradeRequest.getTransferName());
             tradeInfoDataRepository.save(tradeCase);
-            response.put("message", "Trade added successfully");
+            response.put("message", "新增交易成功");
             response.put("success", "true");
             return ResponseEntity.ok(response);
         }
