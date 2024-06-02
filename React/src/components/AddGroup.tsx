@@ -13,7 +13,7 @@ export default function AddGroup({onToggleModal}) {
         console.log(newGroup)
     
         try {
-          const response = await fetch('http://localhost:8080/api/register', {
+          const response = await fetch('http://localhost:8080/api/addGroup', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newGroup)
