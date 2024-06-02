@@ -1,5 +1,5 @@
 import React, { ReactNode ,useState } from "react";
-import '../components/Add.css'
+import './Add.css'
 
 export default function CreateGroup({onToggleModal}) {
     const [groupName, SetgroupName]=useState('')

@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import AddGroup from './AddGroup';
 import AddTransfer from './AddTransfer';
 import CreateGroup from './CreateGroup';
-import '../components/Add.css';
+import './Add.css';
 
-function App() {
+function AddCtrl() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentView, setCurrentView] = useState('');
 
@@ -23,11 +23,11 @@ function App() {
         <div className="box-header">加入轉帳</div>
         <div className="box-content">
           <div className="icon-text">
-            <img src="path-to-your-image1.png" alt="" onClick={() => handleButtonClick('')} />
+            <img src="path-to-your-image1.png" alt="" onClick={handleButtonClick} />
             <p>輸入代碼</p>
           </div>
           <div className="icon-text">
-            <img src="path-to-your-image2.png" alt="" onClick={() => handleButtonClick('')} />
+            <img src="path-to-your-image2.png" alt="" onClick={handleButtonClick} />
             <p>掃描二維碼</p>
           </div>
         </div>
@@ -102,4 +102,4 @@ function Modal({ children, onClose }) {
     );
   }
 
-export default App;
+export default AddCtrl;
