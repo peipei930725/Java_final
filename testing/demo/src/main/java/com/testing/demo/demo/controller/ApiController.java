@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.testing.demo.demo.model.TradeRequest;
+import com.testing.demo.demo.request.TradeRequest;
 import com.testing.demo.demo.repository.GroupRepository;
 import com.testing.demo.demo.dto.StudentDto;
-import com.testing.demo.demo.model.RegisterRequest;
-import com.testing.demo.demo.model.GroupRequest;
+import com.testing.demo.demo.request.RegisterRequest;
+import com.testing.demo.demo.request.GroupRequest;
 import com.testing.demo.demo.model.GroupCase;
 import com.testing.demo.demo.model.TradeCase;
 import com.testing.demo.demo.repository.TradeInfoDataRepository;

@@ -1,4 +1,4 @@
-package com.testing.demo.demo.model;
+package com.testing.demo.demo.request;
 
 public class TradeRequest {
     private String tradeId;

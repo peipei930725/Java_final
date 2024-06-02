@@ -50,7 +50,7 @@ export default function CreateGroup({onToggleModal}) {
                   <label htmlFor="inputEmail4" className="form-label">人數:</label>
                   <input 
                   value={People}
-                  type="People" 
+                  type="people" 
                   className="form-control"
                   placeholder="請輸入人數" 
                   onChange={(event)=>SetPeople(event.target.value)}
