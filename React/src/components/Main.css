@@ -1,38 +1,38 @@
-.bg-body-tertiary{
-    height: 8vh;
-    background-color: #CBF3F0 !important;
+
+.mainapp{
+    display: flex;
+    flex-direction: column;
 }
 
+.header{
+    .switch{
+        margin-top: 5%;
+    }
+    container{
+        font-display: 100%;
+    }
+}
 
 .content{
     display: flex;
     flex-direction: row;
 }
 
-.switch{
-    margin-top: 5%;
-}
+
 .flex-column{
-    height: 92vh;
-    width: 20vw;
-    display: flex;
-    flex-direction: row;
-    background-color: #6CD5CB;
+    flex-basis: 20%;
+    background-color: 	;
     color: black;
 }
 
 .main{
-    flex-grow: 1;
-    width: 100%;
+    flex-basis: 80%;
     height: 92vh;
-    display: flex;
-    flex-direction: row;
-    background-color: #EEEEEE;
+    background-color: #fff;
 }
 
 .nav-side{
     font-size: 20px;
-    color:black !important;
     text-decoration: none;
     padding-top: 5px;
     padding-bottom: 5px;

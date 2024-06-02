@@ -6,7 +6,7 @@ interface Item {
     value: string;
 }
 
-function App() {
+function History() {
     const [data1, setData1] = useState<Item[]>([]);
     const [data2, setData2] = useState<Item[]>([]);
     const [data3, setData3] = useState<Item[]>([]);

@@ -6,7 +6,7 @@ interface Item {
     value: string;
 }
 
-function App() {
+function Transfer() {
     const [data1, setData1] = useState<Item[]>([]);
     const [data2, setData2] = useState<Item[]>([]);
     const [showAll1, setShowAll1] = useState(false);
@@ -105,4 +105,4 @@ function Modal({ children, onClose }) {
     );
 }
 
-export default App;
+export default Transfer;
