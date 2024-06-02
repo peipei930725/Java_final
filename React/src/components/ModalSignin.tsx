@@ -30,10 +30,10 @@ export default function ModalSignin({onToggleModal}) {
           body: JSON.stringify(User)
         });
         const result = await response.json();
-        if (result.success) {
+        if (result.success === "true") {
           setLoginStatus('Login successful!');
         } else {
-          setLoginStatus('Login failed: Invalid credentials');
+          setLoginStatus('Login failed: '+result.message);
         }
       } catch (error) {
         console.error('Error:', error);
