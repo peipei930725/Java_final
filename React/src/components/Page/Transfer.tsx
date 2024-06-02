@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './History.css';
+import './Transfer.css';
 
 interface Item {
     name: string;
@@ -9,16 +9,17 @@ interface Item {
 function App() {
     const [data1, setData1] = useState<Item[]>([]);
     const [data2, setData2] = useState<Item[]>([]);
-    const [data3, setData3] = useState<Item[]>([]);
     const [showAll1, setShowAll1] = useState(false);
     const [showAll2, setShowAll2] = useState(false);
-    const [showAll3, setShowAll3] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [currentView, setCurrentView] = useState('');
 
-    const handleButtonClick = (view) => {
-        setCurrentView(view);
-        setIsModalOpen(true);
+    const handleAccept = (index) => {
+        console.log('accept', index);
+    };
+
+    const handleReject = (index) => {
+        console.log('reject', index);
     };
     
     const handleCloseModal = () => {
@@ -37,19 +38,17 @@ function App() {
             .then(data => setData2(data));
     }, []);
 
-    useEffect(() => {
-        fetch('your-backend-url/table3')
-            .then(response => response.json())
-            .then(data => setData3(data));
-    }, []);
-
     return (
-        <div className="container1" id='block'>
+        <div className="container1">
             <div className="section">
-                <div className="section-header">Done</div>
+                <div className="section-header">待轉帳</div>
                 <ul className="section-content">
                     {(showAll1 ? data1 : data1.slice(0, 2)).map((item, index) => (
-                        <li key={index}>{item.name} <span>{item.value}</span></li>
+                        <li key={index}>
+                            {item.name} <span>{item.value}</span>
+                            <button onClick={() => handleAccept(index)}>接受</button>
+                            <button onClick={() => handleReject(index)}>拒絕</button>
+                        </li>
                     ))}
                 </ul>
                 <div className="section-footer" onClick={() => setShowAll1(!showAll1)}>
@@ -57,25 +56,18 @@ function App() {
                 </div>
             </div>
             <div className="section">
-                <div className="section-header">To be Transferred</div>
+                <div className="section-header">待接受</div>
                 <ul className="section-content">
                     {(showAll2 ? data2 : data2.slice(0, 2)).map((item, index) => (
-                        <li key={index}>{item.name} <span>{item.value}</span></li>
+                        <li key={index}>
+                            {item.name} <span>{item.value}</span>
+                            <button onClick={() => handleAccept(index)}>接受</button>
+                            <button onClick={() => handleReject(index)}>拒絕</button>
+                        </li>
                     ))}
                 </ul>
                 <div className="section-footer" onClick={() => setShowAll2(!showAll2)}>
                     {showAll2 ? 'see less' : 'see all'}
-                </div>
-            </div>
-            <div className="section">
-                <div className="section-header">To be Accepted</div>
-                <ul className="section-content">
-                    {(showAll3 ? data3 : data3.slice(0, 2)).map((item, index) => (
-                        <li key={index}>{item.name} <span>{item.value}</span></li>
-                    ))}
-                </ul>
-                <div className="section-footer" onClick={() => setShowAll3(!showAll3)}>
-                    {showAll3 ? 'see less' : 'see all'}
                 </div>
             </div>
             {isModalOpen && (
