@@ -113,4 +113,4 @@ function Modal({ children, onClose }) {
     );
 }
 
-export default App;
+export default History;
