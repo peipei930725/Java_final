@@ -1,8 +1,9 @@
-package com.testing.demo.demo.model;
+package com.testing.demo.demo.request;
 
 public class TradeRequest {
     private String tradeId;
     private String peopleCount;
+    private String transferName;
     private String tradeAmount;
 
     // Getters and Setters
@@ -30,5 +31,13 @@ public class TradeRequest {
         this.tradeAmount = tradeAmount;
     }
 
+    public String getTransferName() {
+        return transferName;
+    }
+
+    public void setTransferName(String transferName) {
+        this.transferName = transferName;
+    }
+    
     
 }

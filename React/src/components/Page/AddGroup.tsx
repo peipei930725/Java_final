@@ -1,5 +1,5 @@
 import React, { ReactNode ,useState } from "react";
-import '../components/Add.css'
+import './Add.css'
 
 export default function AddGroup({onToggleModal}) {
     const [GroupID, SetGroupID]=useState('')
@@ -38,7 +38,7 @@ export default function AddGroup({onToggleModal}) {
                   <label htmlFor="inputEmail4" className="form-label">加入群組:</label>
                   <input 
                   value={GroupID}
-                  type="TransferName" 
+                  type="groupName" 
                   className="form-control"
                   placeholder="請輸入群組名稱" 
                   onChange={(event)=>SetGroupID(event.target.value)}
