@@ -13,6 +13,11 @@ import Transfer from './Page/Transfer';
 //icon區
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import LogoutIcon from '@mui/icons-material/Logout';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
+import HistoryIcon from '@mui/icons-material/History';
+import SettingsIcon from '@mui/icons-material/Settings';
+
 
 const Main = () => {
     const [ColorMode,setColorMode]=useState('light')
@@ -56,10 +61,21 @@ const Main = () => {
         </Navbar>
         <div className='content' >
         <Nav defaultActiveKey="/home" className="flex-column" style={{backgroundColor:ColorMode=='light'?'#F5F5F5':'#121212'}}>
-            <NavLink className="nav-side" style={{color:ColorMode=='light'?'black':'#F5F5F5'}} to="/Add">Add</NavLink>
-            <NavLink className="nav-side" style={{color:ColorMode=='light'?'black':'white'}} to="/Transfer">Transfer</NavLink>
-            <NavLink className="nav-side" style={{color:ColorMode=='light'?'black':'white'}} to="/History">History</NavLink>
-            <NavLink className="nav-side" style={{color:ColorMode=='light'?'black':'white'}} to="/Settings">Settings</NavLink> 
+            <NavLink className="nav-side" style={{color:ColorMode=='light'?'black':'#F5F5F5'}} to="/Add">
+                <AddCircleOutlineIcon style={{paddingBottom:"5px", paddingRight:"5px"}}/>Add
+                </NavLink>
+            <NavLink className="nav-side" style={{color:ColorMode=='light'?'black':'white'}} to="/Transfer">
+                <AccountBalanceWalletIcon style={{paddingBottom:"5px", paddingRight:"5px"}}/>
+                Transfer
+                </NavLink>
+            <NavLink className="nav-side" style={{color:ColorMode=='light'?'black':'white'}} to="/History">
+                <HistoryIcon style={{paddingBottom:"5px", paddingRight:"5px"}} />
+                History
+                </NavLink>
+            <NavLink className="nav-side" style={{color:ColorMode=='light'?'black':'white'}} to="/Settings">
+                <SettingsIcon style={{paddingBottom:"5px", paddingRight:"5px"}} />
+                Settings
+                </NavLink> 
         </Nav>
         <main className='main'style={{backgroundColor:ColorMode=='light'?'#F5F5F5':'#050505'}}>
             <Routes>

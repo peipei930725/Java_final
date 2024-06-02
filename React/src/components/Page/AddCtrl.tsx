@@ -4,6 +4,12 @@ import AddTransfer from './AddTransfer';
 import CreateGroup from './CreateGroup';
 import './Add.css';
 
+import BorderColorIcon from '@mui/icons-material/BorderColor';
+import KeyboardIcon from '@mui/icons-material/Keyboard';
+import QrCode2Icon from '@mui/icons-material/QrCode2';
+import GroupAddIcon from '@mui/icons-material/GroupAdd';
+import Groups2Icon from '@mui/icons-material/Groups2';
+
 function AddCtrl() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentView, setCurrentView] = useState('');
@@ -22,12 +28,12 @@ function AddCtrl() {
       <div className="box">
         <div className="box-header">加入轉帳</div>
         <div className="box-content">
-          <div className="icon-text">
-            <img src="path-to-your-image1.png" alt="" onClick={handleButtonClick} />
+          <div className="icon-text" onClick={handleButtonClick}>
+            <KeyboardIcon sx={{fontSize:'80px'}}  />
             <p>輸入代碼</p>
           </div>
-          <div className="icon-text">
-            <img src="path-to-your-image2.png" alt="" onClick={handleButtonClick} />
+          <div className="icon-text" onClick={handleButtonClick}>
+            <QrCode2Icon sx={{fontSize:'80px'}}  />
             <p>掃描二維碼</p>
           </div>
         </div>
@@ -37,8 +43,8 @@ function AddCtrl() {
         <div className="box-header">快速建立轉帳</div>
         <div className="box-content">
           <div className="icon-text">
-            <img src="path-to-your-image3.png" alt="" onClick={() => handleButtonClick('AddTransfer')} />
-            <p>建立轉帳</p>
+            <BorderColorIcon sx={{fontSize:'80px'}} onClick={() => handleButtonClick('AddTransfer')} />
+            {/*<p>建立轉帳</p>*/}
           </div>
         </div>
       </div>
@@ -46,12 +52,12 @@ function AddCtrl() {
       <div className="box">
         <div className="box-header">建立群組</div>
         <div className="box-content">
-          <div className="icon-text">
-          <img src="../assets/add.png" alt="" onClick={() => handleButtonClick('CreateGroup')} />
+          <div className="icon-text" onClick={() => handleButtonClick('CreateGroup')}>
+          <Groups2Icon sx={{fontSize:'80px'}}  />
             <p>建立群組</p>
           </div>
-          <div className="icon-text">
-            <img src="../assets/addgroup.png" alt="" onClick={() => handleButtonClick('AddGroup')} />
+          <div className="icon-text"onClick={() => handleButtonClick('AddGroup')}>
+            <GroupAddIcon sx={{fontSize:'80px'}}  />
             <p>加入群組</p>
           </div>
         </div>
