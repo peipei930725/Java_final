@@ -1,7 +1,12 @@
 * {
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     margin: 0;
     padding: 0;
+}
+
+body, .App {
+    height: 100vh;  /* This will make their height equal to the viewport height */
+    
 }
 
 body {
@@ -18,13 +23,16 @@ body {
     border-radius: 8px;
     box-shadow: none;
     width: 80%;
+    height: 80%;  /* Add this line */
     margin: 50px auto;
+    align-items: center;
 }
 
 .box {
     background-color: #e0f7f9;
     border-radius: 8px;
     width: 30%;
+    height: 50%;  /* Add this line */
     padding: 20px;
     text-align: center;
 }
