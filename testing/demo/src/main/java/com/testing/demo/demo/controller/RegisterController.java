@@ -5,6 +5,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.testing.demo.demo.model.RegisterRequest;
 import com.testing.demo.demo.model.UserCase;
 import com.testing.demo.demo.repository.MyDataRepository;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
@@ -36,7 +40,8 @@ public class RegisterController {
     }
 
     @PostMapping("/register")
-    public String register(@RequestBody RegisterRequest registerRequest) {
+    public ResponseEntity<Map<String, String>> register(@RequestBody RegisterRequest registerRequest) {
+        Map<String, String> response = new HashMap<>();
         // 打印接收到的账户和密码
         System.out.println("Received name: " + registerRequest.getFirstName()+" "+registerRequest.getLastName());
         System.out.println("Received account: " + registerRequest.getAccount());
@@ -45,7 +50,9 @@ public class RegisterController {
         UserCase  existingUserCase = myDataRepository.findByUserAccount(registerRequest.getAccount());
         if (existingUserCase != null ) {
             System.out.println("Account is exist" );
-            return "Login unsuccessful for account: Account is not exist";
+            response.put("message", "Account is exist");
+            response.put("success", "false");
+            return ResponseEntity.badRequest().body(response);
         }else{
             //新增用戶
             String hashedPassword = sha256(registerRequest.getPasswd());
@@ -55,7 +62,9 @@ public class RegisterController {
             user_case.setUserAccount(registerRequest.getAccount());
             user_case.setUserPassword(hashedPassword);
             myDataRepository.save(user_case);
-            return "Register successful for account: " + registerRequest.getAccount();
+            response.put("message", "Register successful");
+            response.put("success", "true");
+            return ResponseEntity.ok(response);
         }
     }
     

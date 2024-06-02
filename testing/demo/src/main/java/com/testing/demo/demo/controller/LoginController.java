@@ -4,11 +4,14 @@ import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,7 +46,8 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<Map<String, String>> login(@RequestBody LoginRequest loginRequest) {
+        Map<String, String> response = new HashMap<>();
         // 打印接收到的账户和密码
         System.out.println("Received account: " + loginRequest.getAccount());
         System.out.println("Received password: " + loginRequest.getPasswd());
@@ -53,16 +57,22 @@ public class LoginController {
         UserCase  existingUserCase = myDataRepository.findByUserAccount(loginRequest.getAccount());
         if (existingUserCase == null ) {
             System.out.println("Account is not exist" );
-            return "Login unsuccessful for account: Account is not exist";
+            response.put("message", "Account is not exist");
+            response.put("success", "false");
+            return ResponseEntity.badRequest().body(response);
         }else{
             //驗證登入
             String hashedPassword = sha256(loginRequest.getPasswd());
             if (existingUserCase.getUserPassword().equals(hashedPassword)) {
                 System.out.println("Password is correct" );
-                return existingUserCase.getUserPassword();
+                response.put("message", "Password is correct");
+                response.put("success", "true");
+                return ResponseEntity.ok().body(response);
             }else{
                 System.out.println("Password is incorrect" );
-                return "Login unsuccessful for account: Password is incorrect";
+                response.put("message", "Password is incorrect");
+                response.put("success", "false");
+                return ResponseEntity.badRequest().body(response);
             }
 
         }

@@ -21,7 +21,7 @@ export default function ModalSignup({onToggleModal}) {
             body: JSON.stringify(newUser)
           });
           const result = await response.json();
-          if (result.success) {
+          if (result.success === "true") {
             setSignupStatus('Signup successful!');
           } else {
             setSignupStatus('Signup failed: ' + result.message);
