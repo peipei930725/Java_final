@@ -1,11 +1,11 @@
 import React, { ReactNode ,useState } from "react";
 import '../components/Add.css'
 
-export default function AddGroup({onToggleModal}) {
+export default function CreateGroup({onToggleModal}) {
     const [GroupName, SetGroupName]=useState('')
     const [People, SetPeople]=useState('')
 
-    const [AddGroupStatus, SetAddGroupStatus] = useState('');
+    const [CreateGroupStatus, SetCreateGroupStatus] = useState('');
     const handleSignupClick = async (event) => {
         event.preventDefault();
         const newGroup = { GroupName, People}
@@ -20,13 +20,13 @@ export default function AddGroup({onToggleModal}) {
           });
           const result = await response.json();
           if (result.success === "true") {
-            SetAddGroupStatus('AddGroup successful!');
+            SetCreateGroupStatus('AddGroup successful!');
           } else {
-            SetAddGroupStatus('AddGroup failed: ' + result.message);
+            SetCreateGroupStatus('AddGroup failed: ' + result.message);
           }
         } catch (error) {
           console.error('Error:', error);
-          SetAddGroupStatus('AddGroup failed: Server error');
+          SetCreateGroupStatus('AddGroup failed: Server error');
         }
       };
 
@@ -61,7 +61,7 @@ export default function AddGroup({onToggleModal}) {
                 {/* <button type="button" className="btn btn-secondary" onClick={onToggleModal}>取消</button> */}
               </div>
             </form>
-            <p>{AddGroupStatus}</p>
+            <p>{CreateGroupStatus}</p>
           </div>
         </div>
     </>

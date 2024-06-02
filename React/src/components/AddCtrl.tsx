@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import AddGroup from './AddGroup';
+import AddGroup from './CreateGroup';
 import AddTransfer from './AddTransfer';
 import '../components/Add.css';
 
