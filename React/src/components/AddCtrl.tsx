@@ -46,11 +46,11 @@ function App() {
         <div className="box-header">建立群組</div>
         <div className="box-content">
           <div className="icon-text">
-            <img src="path-to-your-image4.png" alt="" onClick={() => handleButtonClick('AddGroup')} />
+          <img src="../assets/add.png" alt="" onClick={() => handleButtonClick('AddGroup')} />
             <p>建立群組</p>
           </div>
           <div className="icon-text">
-            <img src="path-to-your-image5.png" alt="" onClick={() => handleButtonClick('AddGroup')} />
+            <img src="../assets/addgroup.png" alt="" onClick={() => handleButtonClick('AddGroup')} />
             <p>加入群組</p>
           </div>
         </div>
