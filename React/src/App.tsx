@@ -1,14 +1,18 @@
 import { useState } from 'react'
 import './App.css'
-import ModalCtrl from './components/ModalCtrl'
+import AddGroup from './components/AddGroup'
 import AddTransfer from './components/AddTransfer'
+import AddCtrl from './components/AddCtrl'
+import ModalCtrl from './components/ModalCtrl'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <div className="App">
-      <AddTransfer onToggleModal={true}/>
+      <AddCtrl />
+      {/* <AddGroup />
+      <AddTransfer /> */}
     </div>
   )
 }
