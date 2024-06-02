@@ -9,6 +9,7 @@ import './Main.css'
 import AddCtrl from './Page/AddCtrl';
 import History from './Page/History';
 import Transfer from './Page/Transfer';
+import Settings from './Page/Settings'; // 假設你已經創建了一個設定頁面組件
 
 const Main = () => {
   return (
@@ -49,12 +50,14 @@ const Main = () => {
             <NavLink className="nav-side" to="/Add">Add</NavLink>
             <NavLink className="nav-side" to="/Transfer">Transfer</NavLink>
             <NavLink className="nav-side" to="/History">History</NavLink>
+            <NavLink className="nav-side" to="/Settings">Settings</NavLink> {/* 新增的設定頁面連結 */}
         </Nav>
         <main className='main'>
             <Routes>
                 <Route path="/Add" Component={AddCtrl} />
                 <Route path="/Transfer" Component={Transfer} />
                 <Route path="/History" Component={History} />
+                <Route path="/Settings" Component={Settings} /> {/* 新增的設定頁面路由 */}
             </Routes>
         </main>
         </div>
