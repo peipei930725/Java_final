@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.testing.demo.demo.model.TradeRequest;
+import com.testing.demo.demo.request.TradeRequest;
 import com.testing.demo.demo.repository.GroupRepository;
 import com.testing.demo.demo.dto.StudentDto;
-import com.testing.demo.demo.model.RegisterRequest;
-import com.testing.demo.demo.model.GroupRequest;
+import com.testing.demo.demo.request.RegisterRequest;
+import com.testing.demo.demo.request.GroupRequest;
 import com.testing.demo.demo.model.GroupCase;
 import com.testing.demo.demo.model.TradeCase;
 import com.testing.demo.demo.repository.TradeInfoDataRepository;
@@ -27,7 +27,9 @@ import com.testing.demo.demo.repository.TradeInfoDataRepository;
 public class ApiController {
     @Autowired
     private GroupRepository GroupRepository;
-    private TradeInfoDataRepository TradeInfoDataRepository;
+
+    @Autowired
+    private TradeInfoDataRepository tradeInfoDataRepository;
 
     @PostMapping("/addGroup")
     public ResponseEntity<Map<String, String>> register(@RequestBody GroupRequest groupRequest) {
@@ -42,6 +44,7 @@ public class ApiController {
             groupCase.setGroupSize(groupRequest.getGroupSize());
             GroupRepository.save(groupCase);
             response.put("message", "Group added successfully");
+            response.put("success", "true");
             return ResponseEntity.ok(response);
         }        
     }
@@ -49,7 +52,20 @@ public class ApiController {
     @PostMapping("/transfer")
     public ResponseEntity<Map<String, String>> transfer(@RequestBody TradeRequest tradeRequest) {
         Map<String, String> response = new HashMap<>();
-        return ResponseEntity.ok(response);
+        TradeCase existedTradeCase = tradeInfoDataRepository.findByTransferName(tradeRequest.getTransferName());
+        if (existedTradeCase != null) {
+            response.put("message", "Transfer name is already exist");
+            return ResponseEntity.badRequest().body(response);
+        }else{
+            TradeCase tradeCase = new TradeCase();
+            tradeCase.setPeopleCount(tradeRequest.getPeopleCount());
+            tradeCase.setTradeAmount(tradeRequest.getTradeAmount());
+            tradeCase.setTransferName(tradeRequest.getTransferName());
+            tradeInfoDataRepository.save(tradeCase);
+            response.put("message", "Trade added successfully");
+            response.put("success", "true");
+            return ResponseEntity.ok(response);
+        }
     }
 }
 

@@ -6,45 +6,45 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "TradeCase")
 public class TradeCase {
     @Id
-    private String id;
-    private String Payer_id;
-    private String Payee_id;
-    private String Money;
+    private String tradeId;
+    private String peopleCount;
+    private String transferName;
+    private String tradeAmount;
 
     // getters
-    public String getId() {
-        return id;
+    public String getTradeId() {
+        return tradeId;
     }
 
-    public String getPayer_id() {
-        return Payer_id;
+    public String getPeopleCount() {
+        return peopleCount;
     }
 
-    public String getPayee_id() {
-        return Payee_id;
+    public String getTransferName() {
+        return transferName;
     }
 
-    public String getMoney() {
-        return Money;
+    public String getTradeAmount() {
+        return tradeAmount;
     }
-
 
     // setters
-    public void setId(String id) {
-        this.id = id;
+
+    public void setTradeId(String tradeId) {
+        this.tradeId = tradeId;
     }
 
-    public void setPayer_id(String Payer_id) {
-        this.Payer_id = Payer_id;
+    public void setPeopleCount(String peopleCount) {
+        this.peopleCount = peopleCount;
     }
 
-    public void setPayee_id(String Payee_id) {
-        this.Payee_id = Payee_id;
+    public void setTransferName(String transferName) {
+        this.transferName = transferName;
     }
 
-    public void setMoney(String Money) {
-        this.Money = Money;
+    public void setTradeAmount(String tradeAmount) {
+        this.tradeAmount = tradeAmount;
     }
 
-    
+
 }

@@ -2,14 +2,14 @@ import React, { ReactNode ,useState } from "react";
 import './Add.css'
 
 export default function AddTransfer({onToggleModal}) {
-    const [TransferName, SetTransferName]=useState('')
-    const [People, SetPeople]=useState('')
-    const [Money, SetMoney]=useState('')
+    const [transferName, SettransferName]=useState('')
+    const [peopleCount, SetpeopleCount]=useState('')
+    const [tradeAmount, SettradeAmount]=useState('')
 
     const [TransferStatus, setTransferStatus] = useState('');
     const handleSignupClick = async (event) => {
         event.preventDefault();
-        const newTransfer = { TransferName, People, Money}
+        const newTransfer = { transferName, peopleCount, tradeAmount}
         console.log(newTransfer)
     
         try {
@@ -39,31 +39,31 @@ export default function AddTransfer({onToggleModal}) {
                 <div className="md-6">
                   <label htmlFor="inputEmail4" className="form-label">轉帳名稱:</label>
                   <input 
-                  value={TransferName}
-                  type="TransferName" 
+                  value={transferName}
+                  type="transferName" 
                   className="form-control"
                   placeholder="請輸入轉帳名稱" 
-                  onChange={(event)=>SetTransferName(event.target.value)}
+                  onChange={(event)=>SettransferName(event.target.value)}
                   />
                 </div>
                 <div className="md-6">
                   <label htmlFor="inputEmail4" className="form-label">人數:</label>
                   <input 
-                  value={People}
-                  type="People" 
+                  value={peopleCount}
+                  type="peopleCount" 
                   className="form-control"
                   placeholder="請輸入人數" 
-                  onChange={(event)=>SetPeople(event.target.value)}
+                  onChange={(event)=>SetpeopleCount(event.target.value)}
                   />
                 </div>
               <div className="md-6">
                 <label htmlFor="inputEmail4" className="form-label">金額:</label>
                 <input 
-                value={Money}
-                type="Money" 
+                value={tradeAmount}
+                type="tradeAmount" 
                 className="form-control"
                 placeholder="請輸入金額" 
-                onChange={(event)=>SetMoney(event.target.value)}
+                onChange={(event)=>SettradeAmount(event.target.value)}
                 />
               </div>
               <div className="col-12">
