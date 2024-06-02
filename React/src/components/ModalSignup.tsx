@@ -38,23 +38,27 @@ export default function ModalSignup({onToggleModal}) {
           <div  className="modal-box">
             <p className="h2">共同轉帳</p>
             <form className="row g-3">
-              <div className="col-md-6">
+              <div className="name-row">
+                <div className="col-md-6">
                   <label htmlFor="inputEmail4" className="form-label">姓</label>
                   <input 
                   value={firstName}
                   type="firstName" 
                   className="form-control"
+                  placeholder="姓氏" 
                   onChange={(event)=>setfirstnameValue(event.target.value)}
                   />
-              </div>
-              <div className="col-md-6">
-                <label htmlFor="inputEmail4" className="form-label">名</label>
-                <input 
-                value={lastName}
-                type="lastName" 
-                className="form-control"
-                onChange={(event)=>setlastnameValue(event.target.value)}
-                />
+                </div>
+                <div className="col-md-6">
+                  <label htmlFor="inputEmail4" className="form-label">名</label>
+                  <input 
+                  value={lastName}
+                  type="lastName" 
+                  className="form-control"
+                  placeholder="名字" 
+                  onChange={(event)=>setlastnameValue(event.target.value)}
+                  />
+                </div>
               </div>
               <div className="md-6">
                 <label htmlFor="inputEmail4" className="form-label">帳號</label>
@@ -62,6 +66,7 @@ export default function ModalSignup({onToggleModal}) {
                 value={account}
                 type="account" 
                 className="form-control"
+                placeholder="請輸入您的帳號" 
                 onChange={(event)=>setaccountValue(event.target.value)}
                 />
               </div>
@@ -72,6 +77,7 @@ export default function ModalSignup({onToggleModal}) {
                 type="password" 
                 className="form-control" 
                 id="inputPassword4"
+                placeholder="請輸入您的密碼" 
                 onChange={(event)=>setpasswdValue(event.target.value)}
                 />
               </div>
