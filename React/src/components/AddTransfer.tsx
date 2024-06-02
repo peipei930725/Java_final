@@ -70,7 +70,7 @@ export default function AddTransfer({onToggleModal}) {
               </div>
               <div className="col-12">
                 <button type="submit" className="btn btn-primary" onClick={handleSignupClick}>建立轉帳</button>
-                <button type="button" className="btn btn-secondary" onClick={onToggleModal}>取消</button>
+                {/* <button type="button" className="btn btn-secondary" onClick={onToggleModal}>取消</button> */}
               </div>
             </form>
             <p>{TransferStatus}</p>

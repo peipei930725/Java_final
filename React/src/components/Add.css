@@ -39,17 +39,18 @@ body {
 
 .box-content {
     display: flex;
-    flex-direction: column;
+    flex-direction: row; /* Change this from column to row */
     align-items: center;
-    justify-content: center;
+    justify-content: space-around; /* Add this to distribute the items evenly */
     padding: 20px 0;
-}
-
-.icon-text {
+  }
+  
+  .icon-text {
     display: flex;
-    align-items: center;
+    flex-direction: column; /* Change this from row to column */
+    align-items: center; /* Add this to center the text under the image */
     margin: 10px 0;
-}
+  }
 
 .icon-text img {
     width: 24px;
