@@ -2,9 +2,9 @@ package com.testing.demo.demo.request;
 
 public class TradeRequest {
     private String tradeId;
-    private String peopleCount;
+    private int peopleCount;
     private String transferName;
-    private String tradeAmount;
+    private int tradeAmount;
 
     // Getters and Setters
     public String getTradeId() {
@@ -15,20 +15,21 @@ public class TradeRequest {
         this.tradeId = tradeId;
     }
 
-    public String getPeopleCount() {
+    public int getPeopleCount() {
         return peopleCount;
     }
 
     public void setPeopleCount(String peopleCount) {
-        this.peopleCount = peopleCount;
+
+        this.peopleCount = Integer.parseInt(peopleCount);
     }
 
-    public String getTradeAmount() {
+    public int getTradeAmount() {
         return tradeAmount;
     }
 
     public void setTradeAmount(String tradeAmount) {
-        this.tradeAmount = tradeAmount;
+        this.tradeAmount = Integer.parseInt(tradeAmount);
     }
 
     public String getTransferName() {

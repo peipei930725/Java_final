@@ -22,12 +22,15 @@ export default function ModalSignup({onToggleModal}) {
           });
           const result = await response.json();
           if (result.success === "true") {
-            setSignupStatus('Signup successful!');
+            setSignupStatus(result.message);
           } else {
-            setSignupStatus('Signup failed: ' + result.message);
+            setSignupStatus(result.message);
           }
         } catch (error) {
-          console.error('Error:', error);
+          if (error == JSON.stringify({})) {
+            setSignupStatus('JSONError ');
+          }
+          console.error("'Error:', error");
           setSignupStatus('Signup failed: Server error');
         }
       };

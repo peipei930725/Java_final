@@ -56,21 +56,19 @@ public class LoginController {
         // ...
         UserCase  existingUserCase = myDataRepository.findByUserAccount(loginRequest.getAccount());
         if (existingUserCase == null ) {
-            System.out.println("Account is not exist" );
-            response.put("message", "Account is not exist");
+            response.put("message", "帳號不存在");
             response.put("success", "false");
             return ResponseEntity.badRequest().body(response);
         }else{
             //驗證登入
             String hashedPassword = sha256(loginRequest.getPasswd());
             if (existingUserCase.getUserPassword().equals(hashedPassword)) {
-                System.out.println("Password is correct" );
-                response.put("message", "Password is correct");
+                response.put("message", "登入成功");
                 response.put("success", "true");
                 return ResponseEntity.ok().body(response);
             }else{
                 System.out.println("Password is incorrect" );
-                response.put("message", "Password is incorrect");
+                response.put("message", "密碼錯誤");
                 response.put("success", "false");
                 return ResponseEntity.badRequest().body(response);
             }
