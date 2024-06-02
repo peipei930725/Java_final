@@ -17,8 +17,9 @@ public class GroupRequest {
         return groupSize;
     }
 
-    public void setGroupSize(int groupSize) {
-        this.groupSize = groupSize;
+    public void setGroupSize(String groupSize) {
+        Integer groupSizeI = Integer.valueOf(groupSize);
+        this.groupSize = groupSizeI;
     }
 
 }

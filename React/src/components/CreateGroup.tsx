@@ -2,13 +2,13 @@ import React, { ReactNode ,useState } from "react";
 import '../components/Add.css'
 
 export default function CreateGroup({onToggleModal}) {
-    const [GroupName, SetGroupName]=useState('')
-    const [People, SetPeople]=useState('')
+    const [groupName, SetgroupName]=useState('')
+    const [groupSize, SetgroupSize]=useState('')
 
     const [CreateGroupStatus, SetCreateGroupStatus] = useState('');
     const handleSignupClick = async (event) => {
         event.preventDefault();
-        const newGroup = { GroupName, People}
+        const newGroup = { groupName, groupSize}
         // console.log(firstName, lastName, account, passwd)
         console.log(newGroup)
     
@@ -39,21 +39,21 @@ export default function CreateGroup({onToggleModal}) {
                 <div className="md-6">
                   <label htmlFor="inputEmail4" className="form-label">群組名稱:</label>
                   <input 
-                  value={GroupName}
-                  type="GroupName" 
+                  value={groupName}
+                  type="groupName" 
                   className="form-control"
                   placeholder="請輸入群組名稱" 
-                  onChange={(event)=>SetGroupName(event.target.value)}
+                  onChange={(event)=>SetgroupName(event.target.value)}
                   />
                 </div>
                 <div className="md-6">
                   <label htmlFor="inputEmail4" className="form-label">人數:</label>
                   <input 
-                  value={People}
-                  type="people" 
+                  value={groupSize}
+                  type="groupSize" 
                   className="form-control"
                   placeholder="請輸入人數" 
-                  onChange={(event)=>SetPeople(event.target.value)}
+                  onChange={(event)=>SetgroupSize(event.target.value)}
                   />
               </div>
               <div className="col-12">

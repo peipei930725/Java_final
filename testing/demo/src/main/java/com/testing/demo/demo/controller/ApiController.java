@@ -34,6 +34,7 @@ public class ApiController {
     @PostMapping("/addGroup")
     public ResponseEntity<Map<String, String>> register(@RequestBody GroupRequest groupRequest) {
         Map<String, String> response = new HashMap<>();
+        System.out.println(groupRequest.getGroupName());
         GroupCase existingGroupCase = GroupRepository.findByGroupName(groupRequest.getGroupName());
         if (existingGroupCase != null) {
             response.put("message", "Group name is already exist");
