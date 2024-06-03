@@ -34,30 +34,30 @@ export default function AddGroup({onToggleModal}) {
         }
       };
 
-  return (
-    <>
-        <div className="modal-overlay" >
-          <div  className="modal-box">
-            <p className="h2">加入群組</p>
-            <form className="row g-3">
-                <div className="md-6">
-                  <label htmlFor="inputEmail4" className="form-label">加入群組:</label>
-                  <input 
-                  value={groupName}
-                  type="groupName" 
-                  className="form-control"
-                  placeholder="請輸入群組名稱" 
-                  onChange={(event)=>SetgroupName(event.target.value)}
-                  />
+    return (
+      <>
+          <div className="modal-overlay" >
+            <div  className="modal-box">
+              <p className="h2">加入群組</p>
+              <form className="row g-3">
+                  <div className="md-6">
+                    <label htmlFor="inputEmail4" className="form-label">加入群組:</label>
+                    <input 
+                    value={groupName}
+                    type="groupName" 
+                    className="form-control"
+                    placeholder="請輸入群組名稱" 
+                    onChange={(event)=>SetgroupName(event.target.value)}
+                    />
+                  </div>
+                <div className="col-12">
+                  <button type="submit" className="btn btn-primary" onClick={handleSignupClick}>建立轉帳</button>
+                  <button type="button" className="btn btn-secondary" onClick={onToggleModal}>取消</button>
                 </div>
-              <div className="col-12">
-                <button type="submit" className="btn btn-primary" onClick={handleSignupClick}>建立轉帳</button>
-                {/* <button type="button" className="btn btn-secondary" onClick={onToggleModal}>取消</button> */}
-              </div>
-            </form>
-            <p>{addGroupStatus}</p>
+              </form>
+              <p>{addGroupStatus}</p>
+            </div>
           </div>
-        </div>
-    </>
-  );
+      </>
+    );
 }

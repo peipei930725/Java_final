@@ -1,17 +1,35 @@
 * {
-    /* box-sizing: border-box; */
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body, .App {
-    height: 100vh;  /* This will make their height equal to the viewport height */
-    
-}
-
-body {
+    height: 100vh;
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* text-align: center; */
 }
 
 .container {
@@ -19,12 +37,9 @@ body {
     justify-content: space-around;
     align-items: flex-start;
     padding: 20px;
-    background-color: none;
-    border-radius: 8px;
-    box-shadow: none;
-    width: 80%;
-    height: 80%;  /* Add this line */
-    margin: 50px auto;
+    max-width: 80%;
+    height: 80%;
+    margin: auto;
     align-items: center;
 }
 
@@ -32,7 +47,7 @@ body {
     background-color: #e0f7f9;
     border-radius: 8px;
     width: 30%;
-    height: 50%;  /* Add this line */
+    height: 50%;
     padding: 20px;
     text-align: center;
 }
@@ -47,17 +62,17 @@ body {
 
 .box-content {
     display: flex;
-    flex-direction: row; /* Change this from column to row */
+    flex-direction: row;
     align-items: center;
-    justify-content: space-around; /* Add this to distribute the items evenly */
+    justify-content: space-around;
     padding: 20px 0;
 }
   
 .icon-text {
-display: flex;
-flex-direction: column; /* Change this from row to column */
-align-items: center; /* Add this to center the text under the image */
-margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0;
 }
 
 .icon-text img {
@@ -75,3 +90,8 @@ margin: 10px 0;
     width: 40px;
     height: 40px;
 }
+
+.btn {
+    margin-right: 10px;
+}
+

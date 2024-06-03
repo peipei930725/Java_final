@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './History.css';
+import { useAuth } from '../../AuthContext';
 
 interface Item {
     name: string;
