@@ -27,7 +27,6 @@ function Transfer() {
     const handleCloseModal = () => {
         setIsModalOpen(false);
     };
-
     useEffect(() => {
         fetch(`http://localhost:8080/api/transfer/waitForTransfer`, {
             method: 'POST',
@@ -55,6 +54,32 @@ function Transfer() {
         });
     }, [account]);
 
+    useEffect(() => {
+        fetch(`http://localhost:8080/api/transfer/waitForAccept`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                account: account
+            })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);  // 輸出返回的數據
+            const groupName = data.groupName;
+            const money = data.money;
+            setDataList2(prevDataList => [...prevDataList, { groupName, money }]);
+        })
+        .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+        });
+    }, [account]);
 
     return (
         <div className="container1">
@@ -80,7 +105,7 @@ function Transfer() {
             </div>
             <div className="section">
                 <div className="section-header">待接受</div>
-                {dataList && dataList.map((item, index) => {
+                {dataList2 && dataList2.map((item, index) => {
                     const groupNames = item.groupName.split(',');
                     const moneys = item.money.split(',');
                     return groupNames.map((groupName, i) => (
@@ -94,8 +119,8 @@ function Transfer() {
                         </div>
                     ));
                 })}
-                <div className="section-footer" onClick={() => setShowAll1(!showAll1)}>
-                    {showAll1 ? 'see less' : 'see all'}
+                <div className="section-footer" onClick={() => setShowAll1(!showAll2)}>
+                    {showAll2 ? 'see less' : 'see all'}
                 </div>
             </div>
             {isModalOpen && (
