@@ -31,7 +31,7 @@ function App() {
 }
 
 function Content(){
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn, colormode } = useAuth();
   return(
     <>
     {!isLoggedIn ? (
@@ -47,7 +47,7 @@ function Content(){
         <div className="Sidebar">
           <Sidebar />
         </div>
-        <main className="main">
+        <main className="main" style={{backgroundColor:colormode=='light'?'#F5F5F5':'#121212'}}>
           <Routes>
             <Route path="/Add" Component={AddCtrl} />
             <Route path="/Transfer" Component={Transfer} />
