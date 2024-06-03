@@ -4,32 +4,32 @@ import { useAuth } from "../../AuthContext";
 
 export default function AddID({onToggleModal}) {
     const [setID, SetID]=useState('')
-    const {account} =useAuth()
+    const {Account} =useAuth()
 
-    const [addGroupStatus, setAddGroupStatus] = useState('');
+    const [IDStatus, setIDStatus] = useState('');
     const handleSignupClick = async (event) => {
         event.preventDefault();
-        const AddGroup = { account,groupName }
-        console.log(AddGroup)
+        const AddID = { Account,setID }
+        console.log(AddID)
     
         try {
           const response = await fetch('http://localhost:8080/api/addGroup', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(AddGroup)
+            body: JSON.stringify(AddID)
           });
           const result = await response.json();
           if (result.success === "true") {
-            setAddGroupStatus(result.message);
+            setIDStatus(result.message);
           } else {
-            setAddGroupStatus(result.message);
+            setIDStatus(result.message);
           }
         } catch (error) {
           if (error instanceof SyntaxError) {
-            setAddGroupStatus('請輸入正確參數');
+            setIDStatus('請輸入正確參數');
           }else{
           console.error('Error:', error);
-          setAddGroupStatus('NewTransfer failed: Server error');
+          setIDStatus('NewTransfer failed: Server error');
           }
         }
       };
@@ -38,24 +38,24 @@ export default function AddID({onToggleModal}) {
       <>
           <div className="modal-overlay" >
             <div  className="modal-box">
-              <p className="h2">加入群組</p>
+              <p className="h2">加入交易</p>
               <form className="row g-3">
                   <div className="md-6">
-                    <label htmlFor="inputEmail4" className="form-label">加入群組:</label>
+                    <label htmlFor="inputEmail4" className="form-label">加入交易:</label>
                     <input 
-                    value={groupName}
+                    value={setID}
                     type="groupName" 
                     className="form-control"
-                    placeholder="請輸入群組名稱" 
-                    onChange={(event)=>SetgroupName(event.target.value)}
+                    placeholder="請輸入交易ID" 
+                    onChange={(event)=>setIDStatus(event.target.value)}
                     />
                   </div>
                 <div className="col-12">
-                  <button type="submit" className="btn btn-primary" onClick={handleSignupClick}>建立轉帳</button>
+                  <button type="submit" className="btn btn-primary" onClick={handleSignupClick}>加入</button>
                   <button type="button" className="btn btn-secondary" onClick={onToggleModal}>取消</button>
                 </div>
               </form>
-              <p>{addGroupStatus}</p>
+              <p>{IDStatus}</p>
             </div>
           </div>
       </>

@@ -29,7 +29,7 @@ function AddCtrl() {
       <div className="box">
         <div className="box-header">加入轉帳</div>
         <div className="box-content">
-          <div className="icon-text" onClick={handleButtonClick}>
+          <div className="icon-text" onClick={() => handleButtonClick('AddID')}>
             <KeyboardIcon sx={{fontSize:'80px'}}  />
             <p>輸入代碼</p>
           </div>
@@ -64,6 +64,11 @@ function AddCtrl() {
         </div>
       </div>
 
+      {isModalOpen && currentView === 'AddID' && (
+        <Modal onClose={handleCloseModal}>
+          <AddID onToggleModal={handleCloseModal}/>
+        </Modal>
+      )}
       {isModalOpen && currentView === 'AddTransfer' && (
         <Modal onClose={handleCloseModal}>
           <AddTransfer onToggleModal={handleCloseModal}/>
