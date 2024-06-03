@@ -30,7 +30,7 @@ function Transfer() {
 
     useEffect(() => {
         if (account) {
-                fetch(`http://localhost:8080/api/waitForTransfer`, {
+                fetch(`http://localhost:8080/api/transfer/waitForTransfer`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -52,7 +52,7 @@ function Transfer() {
 
     useEffect(() => {
         if (account) {
-        fetch(`http://localhost:8080/api/waitForAccept`, {
+        fetch(`http://localhost:8080/api/transfer/waitForAccept`, {
             method: 'POST',
             headers: {
             'Content-Type': 'application/json'

@@ -167,7 +167,7 @@ public class ApiController {
         }
     }
 
-    @PostMapping("/waitForTransfer")
+    @PostMapping("/transfer/waitForTransfer")
     public ResponseEntity<Map<String, String>> waitForTransfer(@RequestBody WaitForTransferRequest waitForTransferRequest) {
         System.out.println(waitForTransferRequest.getAccount());
         UserCase user =  myDataRepository.findByUserAccount(waitForTransferRequest.getAccount());
@@ -203,7 +203,7 @@ public class ApiController {
         return ResponseEntity.ok(response);
     }
 
-    @PostMapping("/waitForAccept")
+    @PostMapping("/transfer/waitForAccept")
     public ResponseEntity<Map<String, String>> waitForAccept(@RequestBody WaitForAcceptRequest waitForAcceptRequest) {
         System.out.println(waitForAcceptRequest.getAccount());
         UserCase user =  myDataRepository.findByUserAccount(waitForAcceptRequest.getAccount());
@@ -238,6 +238,8 @@ public class ApiController {
         response.put("success", "true");
         return ResponseEntity.ok(response);
     }
+    
+
     
 }
 
