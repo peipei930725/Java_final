@@ -4,7 +4,7 @@ interface AuthContextType{
     isLoggedIn: boolean
     login:(account:string)=>void
     logout:()=>void
-    Account: String|null
+    account: String|null
     colormode: 'dark'|'light'
     changeColor:()=>void
 }
@@ -14,11 +14,11 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{children:ReactNode}>=({children})=> {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [Account,setaccount]=useState('')
+    const [account,setaccount]=useState('')
     const [colormode,setColorMode]=useState<'dark'|'light'>('light')
 
-    const login=(account:string)=>{
-      setaccount(account);
+    const login=(account0:string)=>{
+      setaccount(account0);
       setIsLoggedIn(true)
     }
     const logout=()=>{
@@ -32,7 +32,7 @@ export const AuthProvider: React.FC<{children:ReactNode}>=({children})=> {
     }
 
     return (
-      <AuthContext.Provider value={{isLoggedIn,login,logout,Account,colormode,changeColor}}>
+      <AuthContext.Provider value={{isLoggedIn,login,logout,account,colormode,changeColor}}>
         {children}
       </AuthContext.Provider>  
     );

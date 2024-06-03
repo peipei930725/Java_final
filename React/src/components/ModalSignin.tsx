@@ -6,7 +6,7 @@ export default function ModalSignin({onToggleModal}) {
     const [passwd, setpasswdValue]=useState('')
     const [account, setaccountValue]=useState('')
     const {login}=useAuth();
-    const {Account}=useAuth();
+    // const {account}=useAuth();
 
     const [loginStatus, setLoginStatus] = useState('');
 

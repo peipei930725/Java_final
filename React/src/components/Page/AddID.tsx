@@ -4,12 +4,12 @@ import { useAuth } from "../../AuthContext";
 
 export default function AddID({onToggleModal}) {
     const [setID, SetID]=useState('')
-    const {Account} =useAuth()
+    const {account} =useAuth()
 
     const [IDStatus, setIDStatus] = useState('');
     const handleSignupClick = async (event) => {
         event.preventDefault();
-        const AddID = { Account,setID }
+        const AddID = { account,setID }
         console.log(AddID)
     
         try {

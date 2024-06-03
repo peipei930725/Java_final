@@ -11,7 +11,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 
 const Header = () => {
   const { logout } = useAuth();
-  const { Account } = useAuth();
+  const { account } = useAuth();
   const {colormode}=useAuth();
   const { changeColor } = useAuth();
   return (
@@ -25,7 +25,7 @@ const Header = () => {
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
             <Nav>
-              <NavDropdown title={Account} id="basic-nav-dropdown">
+              <NavDropdown title={account} id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
                   Another action
