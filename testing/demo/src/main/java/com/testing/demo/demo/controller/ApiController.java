@@ -239,7 +239,53 @@ public class ApiController {
         return ResponseEntity.ok(response);
     }
     
+    @PostMapping("/history/Done")
+    public ResponseEntity<Map<String, String>> historyDone(@RequestBody HistoryDoneRequest historyDoneRequest) {
+        System.out.println(historyDoneRequest.getAccount());
+        UserCase user =  myDataRepository.findByUserAccount(historyDoneRequest.getAccount());
+        Map<String, String> response = new HashMap<>();
+        ArrayList<String> tradeList = user.getUserTradeList();
+        ArrayList<String> stateList = user.getUserStateList();
+        String responseName = "";
+        String responseMoney = "";
 
+        response.put("groupName", responseName);
+        response.put("money", responseMoney);
+        response.put("success", "true");
+        return ResponseEntity.ok(response);
+    }
+    
+    @PostMapping("/history/ToBeTransfer")
+    public ResponseEntity<Map<String, String>> historyToBeTransfer(@RequestBody HistoryToBeTransferredRequest historyToBeTransferRequest) {
+        System.out.println(historyToBeTransferRequest.getAccount());
+        UserCase user =  myDataRepository.findByUserAccount(historyToBeTransferRequest.getAccount());
+        Map<String, String> response = new HashMap<>();
+        ArrayList<String> tradeList = user.getUserTradeList();
+        ArrayList<String> stateList = user.getUserStateList();
+        String responseName = "";
+        String responseMoney = "";
+
+        response.put("groupName", responseName);
+        response.put("money", responseMoney);
+        response.put("success", "true");
+        return ResponseEntity.ok(response);
+    }
+    
+    @PostMapping("/history/ToBeAccept")
+    public ResponseEntity<Map<String, String>> historyToBeAccept(@RequestBody HistoryToBeAcceptedRequest historyToBeAcceptRequest) {
+        System.out.println(historyToBeAcceptRequest.getAccount());
+        UserCase user =  myDataRepository.findByUserAccount(historyToBeAcceptRequest.getAccount());
+        Map<String, String> response = new HashMap<>();
+        ArrayList<String> tradeList = user.getUserTradeList();
+        ArrayList<String> stateList = user.getUserStateList();
+        String responseName = "";
+        String responseMoney = "";
+
+        response.put("groupName", responseName);
+        response.put("money", responseMoney);
+        response.put("success", "true");
+        return ResponseEntity.ok(response);
+    }
     
 }
 

@@ -29,7 +29,7 @@ function History() {
 
     useEffect(() => {
     if (account) {
-        fetch(`http://localhost:8080/api/waitForTransfer`, {
+        fetch(`http://localhost:8080/api/history/Done`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -51,7 +51,7 @@ function History() {
 
     useEffect(() => {
         if (account) {
-          fetch(`http://localhost:8080/api/waitForAccept`, {
+          fetch(`http://localhost:8080/api/history/ToBeTransferredRequest `, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -73,7 +73,7 @@ function History() {
 
       useEffect(() => {
         if (account) {
-          fetch(`http://localhost:8080/api/waitForTransfer`, {
+          fetch(`http://localhost:8080/api/history/ToBeAccepted`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
