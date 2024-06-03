@@ -175,5 +175,14 @@ public class ApiController {
         response.put("success", "true");
         return ResponseEntity.ok(response);
     }
+
+    @PostMapping("/waitForAccept")
+    public ResponseEntity<Map<String, String>> waitForAccept(@RequestBody WaitForAcceptRequest waitForAcceptRequest) {
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "hiiii");
+        response.put("success", "true");
+        return ResponseEntity.ok(response);
+    }
+    
 }
 
