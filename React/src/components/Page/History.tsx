@@ -27,53 +27,69 @@ function History() {
         setIsModalOpen(false);
     };
 
-useEffect(() => {
-  if (account) {
-    fetch(`http://localhost:8080/api/account`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        account: account
-      })
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
-    .then(data => setData1(data))
-    .catch(error => console.error('There has been a problem with your fetch operation:', error));
-  }
-}, [account]);
+    useEffect(() => {
+    if (account) {
+        fetch(`http://localhost:8080/api/account`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            account: account
+        })
+        })
+        .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+        })
+        .then(data => setData1(data))
+        .catch(error => console.error('There has been a problem with your fetch operation:', error));
+    }
+    }, [account]);
 
     useEffect(() => {
         if (account) {
-          fetch(`http://localhost:8080/api/account/${account}`)
-            .then(response => {
-              if (!response.ok) {
-                throw new Error('Network response was not ok');
-              }
-              return response.json();
+          fetch(`http://localhost:8080/api/account`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              account: account
             })
-            .then(data => setData2(data))
-            .catch(error => console.error('There has been a problem with your fetch operation:', error));
+          })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.json();
+          })
+          .then(data => setData2(data))
+          .catch(error => console.error('There has been a problem with your fetch operation:', error));
         }
       }, [account]);
 
-    useEffect(() => {
+      useEffect(() => {
         if (account) {
-          fetch(`http://localhost:8080/api/account/${account}`)
-            .then(response => {
-              if (!response.ok) {
-                throw new Error('Network response was not ok');
-              }
-              return response.json();
+          fetch(`http://localhost:8080/api/account`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              account: account
             })
-            .then(data => setData3(data))
-            .catch(error => console.error('There has been a problem with your fetch operation:', error));
+          })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.json();
+          })
+          .then(data => setData3(data))
+          .catch(error => console.error('There has been a problem with your fetch operation:', error));
         }
       }, [account]);
 
