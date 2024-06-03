@@ -90,6 +90,7 @@ public class ApiController {
             // 將交易加入到用戶的交易列表中
             UserCase user =  myDataRepository.findByUserAccount(tradeRequest.getAccount());
             user.addUserTradeList(tradeCase.getTransferId());
+            user.addUserStateList("wait");
             myDataRepository.save(user);
 
 
@@ -121,6 +122,7 @@ public class ApiController {
 
             UserCase user =  myDataRepository.findByUserAccount(addTransferRequest.getAccount());
             user.addUserTradeList(existedTradeCase.getTransferId());
+            user.addUserStateList("wait");
             myDataRepository.save(user);
 
             response.put("message", "成功加入");
@@ -165,5 +167,13 @@ public class ApiController {
         }
     }
 
+    @PostMapping("/waitForTransfer")
+    public ResponseEntity<Map<String, String>> waitForTransfer(@RequestBody WaitForTransferRequest waitForTransferRequest) {
+        System.out.println(waitForTransferRequest.getAccount());
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "hiiii");
+        response.put("success", "true");
+        return ResponseEntity.ok(response);
+    }
 }
 
