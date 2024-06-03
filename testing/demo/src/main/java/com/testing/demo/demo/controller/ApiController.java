@@ -115,6 +115,9 @@ public class ApiController {
         }else if (existedTradeCase.getUserList().contains(addTransferRequest.getAccount())){
             response.put("message", "請勿重複加入");
             return ResponseEntity.badRequest().body(response);
+        }else if (existedTradeCase.getUserList().size() == existedTradeCase.getPeopleCount()){
+            response.put("message", "人數已滿");
+            return ResponseEntity.badRequest().body(response);
         }else{
             existedTradeCase.addUserList(addTransferRequest.getAccount());
             tradeInfoDataRepository.save(existedTradeCase);
@@ -167,7 +170,7 @@ public class ApiController {
         }
     }
 
-    @PostMapping("/waitForTransfer")
+    @PostMapping("/transfer/waitForTransfer")
     public ResponseEntity<Map<String, String>> waitForTransfer(@RequestBody WaitForTransferRequest waitForTransferRequest) {
         System.out.println(waitForTransferRequest.getAccount());
         UserCase user =  myDataRepository.findByUserAccount(waitForTransferRequest.getAccount());
@@ -203,7 +206,7 @@ public class ApiController {
         return ResponseEntity.ok(response);
     }
 
-    @PostMapping("/waitForAccept")
+    @PostMapping("/transfer/waitForAccept")
     public ResponseEntity<Map<String, String>> waitForAccept(@RequestBody WaitForAcceptRequest waitForAcceptRequest) {
         System.out.println(waitForAcceptRequest.getAccount());
         UserCase user =  myDataRepository.findByUserAccount(waitForAcceptRequest.getAccount());
@@ -235,6 +238,111 @@ public class ApiController {
         System.out.println(responseMoney);
         response.put("groupName", responseName);
         response.put("money", responseMoney);
+        response.put("success", "true");
+        return ResponseEntity.ok(response);
+    }
+    
+    @PostMapping("/history/done")
+    public ResponseEntity<Map<String, String>> historyDone(@RequestBody HistoryDoneRequest historyDoneRequest) {
+        System.out.println(historyDoneRequest.getAccount());
+        UserCase user =  myDataRepository.findByUserAccount(historyDoneRequest.getAccount());
+        Map<String, String> response = new HashMap<>();
+        ArrayList<String> tradeList = user.getUserTradeList();
+        ArrayList<String> stateList = user.getUserStateList();
+        String responseName = "";
+        String responseMoney = "";
+        for (int i = 0; i < tradeList.size(); i++) {
+            if(stateList.get(i).equals("done")){
+                TradeCase trade = tradeInfoDataRepository.findByTransferId(tradeList.get(i));
+                responseName += trade.getTransferName() + ",";
+                responseMoney += trade.getTradeAmount() + ",";
+            }
+        }
+        // responseName-1
+        if (responseName.length() > 0){
+            responseName = responseName.substring(0, responseName.length()-1);
+        }
+        if (responseMoney.length() > 0){
+            responseMoney = responseMoney.substring(0, responseMoney.length()-1);
+        }
+        if (responseName.length() == 0){
+            responseName = "null";
+            responseMoney = "null";
+        }
+        response.put("groupName", responseName);
+        response.put("money", responseMoney);
+        response.put("success", "true");
+        return ResponseEntity.ok(response);
+    }
+    
+    @PostMapping("/history/toBeTransfer")
+    public ResponseEntity<Map<String, String>> historyToBeTransfer(@RequestBody HistoryToBeTransferredRequest historyToBeTransferRequest) {
+        System.out.println(historyToBeTransferRequest.getAccount());
+        UserCase user =  myDataRepository.findByUserAccount(historyToBeTransferRequest.getAccount());
+        Map<String, String> response = new HashMap<>();
+        ArrayList<String> tradeList = user.getUserTradeList();
+        ArrayList<String> stateList = user.getUserStateList();
+        String responseName = "";
+        String responseCount = "";
+        for (int i = 0; i < tradeList.size(); i++) {
+            int userCount = 0;
+            TradeCase trade = tradeInfoDataRepository.findByTransferId(tradeList.get(i));
+            responseName += trade.getTransferName() + ",";
+            for (int j = 0; j < trade.getUserList().size(); j++) {
+                UserCase newUser =  myDataRepository.findByUserAccount(trade.getUserList().get(j));
+                Integer index = newUser.getUserTradeList().indexOf(trade.getTransferName());
+                if (index == -1){
+                    continue;
+                }
+                if (newUser.getUserStateList().get(index).equals("waitPay")){
+                    userCount++;
+                }
+            }
+            responseCount += Integer.toString(userCount) + "/" + trade.getUserList().size() + ",";
+        }
+        if (responseName.length() == 0){
+            responseName = "null";
+            responseCount = "null";
+        }
+        response.put("groupName", responseName);
+        response.put("Count", responseCount);
+        response.put("success", "true");
+        return ResponseEntity.ok(response);
+    }
+    
+    @PostMapping("/history/toBeAccept")
+    public ResponseEntity<Map<String, String>> historyToBeAccept(@RequestBody HistoryToBeAcceptedRequest historyToBeAcceptRequest) {
+        System.out.println(historyToBeAcceptRequest.getAccount());
+        UserCase user =  myDataRepository.findByUserAccount(historyToBeAcceptRequest.getAccount());
+        Map<String, String> response = new HashMap<>();
+        ArrayList<String> tradeList = user.getUserTradeList();
+        ArrayList<String> stateList = user.getUserStateList();
+        String responseName = "";
+        String responseCount = "";
+
+        for (int i = 0; i < tradeList.size(); i++) {
+            int userCount = 0;
+            TradeCase trade = tradeInfoDataRepository.findByTransferId(tradeList.get(i));
+            responseName += trade.getTransferName() + ",";
+            for (int j = 0; j < trade.getUserList().size(); j++) {
+                UserCase newUser =  myDataRepository.findByUserAccount(trade.getUserList().get(j));
+                Integer index = newUser.getUserTradeList().indexOf(trade.getTransferName());
+                if (index == -1){
+                    continue;
+                }
+                if (newUser.getUserStateList().get(index).equals("wait")){
+                    userCount++;
+                }
+            }
+            responseCount += Integer.toString(userCount) + "/" + trade.getUserList().size() + ",";
+        }
+
+        if (responseName.length() == 0){
+            responseName = "null";
+            responseCount = "null";
+        }
+        response.put("groupName", responseName);
+        response.put("Count", responseCount);
         response.put("success", "true");
         return ResponseEntity.ok(response);
     }

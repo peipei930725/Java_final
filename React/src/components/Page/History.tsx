@@ -27,71 +27,71 @@ function History() {
         setIsModalOpen(false);
     };
 
-    // useEffect(() => {
-    // if (account) {
-    //     fetch(`http://localhost:8080/api/waitForTransfer`, {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify({
-    //         account: account
-    //     })
-    //     })
-    //     .then(response => {
-    //     if (!response.ok) {
-    //         throw new Error('Network response was not ok');
-    //     }
-    //     return response.json();
-    //     })
-    //     .then(data => setData1(data))
-    //     .catch(error => console.error('There has been a problem with your fetch operation:', error));
-    // }
-    // }, [account]);
+    useEffect(() => {
+    if (account) {
+        fetch(`http://localhost:8080/api/history/done`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            account: account
+        })
+        })
+        .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+        })
+        .then(data => setData1(data))
+        .catch(error => console.error('There has been a problem with your fetch operation:', error));
+    }
+    }, [account]);
 
-    // useEffect(() => {
-    //     if (account) {
-    //       fetch(`http://localhost:8080/api/waitForAccept`, {
-    //         method: 'POST',
-    //         headers: {
-    //           'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify({
-    //           account: account
-    //         })
-    //       })
-    //       .then(response => {
-    //         if (!response.ok) {
-    //           throw new Error('Network response was not ok');
-    //         }
-    //         return response.json();
-    //       })
-    //       .then(data => setData2(data))
-    //       .catch(error => console.error('There has been a problem with your fetch operation:', error));
-    //     }
-    //   }, [account]);
+    useEffect(() => {
+        if (account) {
+          fetch(`http://localhost:8080/api/history/toBeTransfer`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              account: account
+            })
+          })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.json();
+          })
+          .then(data => setData2(data))
+          .catch(error => console.error('There has been a problem with your fetch operation:', error));
+        }
+      }, [account]);
 
-    //   useEffect(() => {
-    //     if (account) {
-    //       fetch(`http://localhost:8080/api/waitForTransfer`, {
-    //         method: 'POST',
-    //         headers: {
-    //           'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify({
-    //           account: account
-    //         })
-    //       })
-    //       .then(response => {
-    //         if (!response.ok) {
-    //           throw new Error('Network response was not ok');
-    //         }
-    //         return response.json();
-    //       })
-    //       .then(data => setData3(data))
-    //       .catch(error => console.error('There has been a problem with your fetch operation:', error));
-    //     }
-    //   }, [account]);
+      useEffect(() => {
+        if (account) {
+          fetch(`http://localhost:8080/api/history/toBeAccept`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              account: account
+            })
+          })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.json();
+          })
+          .then(data => setData3(data))
+          .catch(error => console.error('There has been a problem with your fetch operation:', error));
+        }
+      }, [account]);
 
     return (
         <div className="container1" id='block'>
