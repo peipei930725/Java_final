@@ -47,7 +47,7 @@ export default function AddID({onToggleModal}) {
                     type="groupName" 
                     className="form-control"
                     placeholder="請輸入交易ID" 
-                    onChange={(event)=>setIDStatus(event.target.value)}
+                    onChange={(event)=>SetID(event.target.value)}
                     />
                   </div>
                 <div className="col-12">
