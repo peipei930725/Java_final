@@ -8,67 +8,50 @@ interface Item {
 }
 
 function Transfer() {
-    const [data1, setData1] = useState<Item[]>([]);
-    const [data2, setData2] = useState<Item[]>([]);
+    const [dataList, setDataList] = useState([]);
     const [showAll1, setShowAll1] = useState(false);
     const [showAll2, setShowAll2] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [currentView, setCurrentView] = useState('');
     const { account } = useAuth();
 
-    // const handleAccept = (index) => {
-    //     console.log('accept', index);
-    // };
+    const handleAccept = (index) => {
+        console.log('accept', index);
+    };
 
-    // const handleReject = (index) => {
-    //     console.log('reject', index);
-    // };
+    const handleReject = (index) => {
+        console.log('reject', index);
+    };
     
     const handleCloseModal = () => {
         setIsModalOpen(false);
     };
 
-    useEffect(() => {
-        if (account) {
-                fetch(`http://localhost:8080/api/waitForTransfer`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                account: account
-            })
-        })
-        .then(response => {
-            if (!response.ok) {
-            throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => setData1(data))
-        .catch(error => console.error('There has been a problem with your fetch operation:', error));
-        }
-    }, [account]);
+
 
     useEffect(() => {
         if (account) {
-        fetch(`http://localhost:8080/api/waitForAccept`, {
-            method: 'POST',
-            headers: {
-            'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-            account: account
+            fetch(`http://localhost:8080/api/waitForAccept`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    account: account
+                })
             })
-        })
-        .then(response => {
-            if (!response.ok) {
-            throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => setData2(data))
-        .catch(error => console.error('There has been a problem with your fetch operation:', error));
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                const groupName = data.groupName;
+                const money = data.money;
+                setDataList(prevDataList => [...prevDataList, { groupName, money }]);
+            })
+            .catch(error => console.error('There has been a problem with your fetch operation:', error));
         }
     }, [account]);
 
@@ -76,32 +59,22 @@ function Transfer() {
         <div className="container1">
             <div className="section">
                 <div className="section-header">待轉帳</div>
-                {/* <ul className="section-content">
-                    {(showAll1 ? data1 : data1.slice(0, 2)).map((item, index) => (
-                        <li key={index}>
-                            {item.name} <span>{item.value}</span>
-                            <button onClick={() => handleAccept(index)}>接受</button>
-                            <button onClick={() => handleReject(index)}>拒絕</button>
-                        </li>
-                    ))}
-                </ul> */}
+                {dataList && dataList.map((item, index) => {
+                    const groupNames = item.groupName.split(',');
+                    const moneys = item.money.split(',');
+                    return groupNames.map((groupName, i) => (
+                        <div key={i} className="row">
+                            <div>{groupName}</div>
+                            <div>{moneys[i]}</div>
+                            <div>
+                                <button onClick={() => handleAccept(index)}>接受</button>
+                                <button onClick={() => handleReject(index)}>拒絕</button>
+                            </div>
+                        </div>
+                    ));
+                })}
                 <div className="section-footer" onClick={() => setShowAll1(!showAll1)}>
                     {showAll1 ? 'see less' : 'see all'}
-                </div>
-            </div>
-            <div className="section">
-                <div className="section-header">待接受</div>
-                {/* <ul className="section-content">
-                    {(showAll2 ? data2 : data2.slice(0, 2)).map((item, index) => (
-                        <li key={index}>
-                            {item.name} <span>{item.value}</span>
-                            <button onClick={() => handleAccept(index)}>接受</button>
-                            <button onClick={() => handleReject(index)}>拒絕</button>
-                        </li>
-                    ))}
-                </ul> */}
-                <div className="section-footer" onClick={() => setShowAll2(!showAll2)}>
-                    {showAll2 ? 'see less' : 'see all'}
                 </div>
             </div>
             {isModalOpen && (
