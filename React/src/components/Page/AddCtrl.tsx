@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import AddGroup from './AddGroup';
 import AddTransfer from './AddTransfer';
 import CreateGroup from './CreateGroup';
+import AddID from './AddID';
 import './Add.css';
 
 import BorderColorIcon from '@mui/icons-material/BorderColor';
