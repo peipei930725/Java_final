@@ -76,30 +76,30 @@ function Transfer() {
         <div className="container1">
             <div className="section">
                 <div className="section-header">待轉帳</div>
-                <ul className="section-content">
+                {/* <ul className="section-content">
                     {(showAll1 ? data1 : data1.slice(0, 2)).map((item, index) => (
                         <li key={index}>
                             {item.name} <span>{item.value}</span>
-                            {/* <button onClick={() => handleAccept(index)}>接受</button>
-                            <button onClick={() => handleReject(index)}>拒絕</button> */}
+                            <button onClick={() => handleAccept(index)}>接受</button>
+                            <button onClick={() => handleReject(index)}>拒絕</button>
                         </li>
                     ))}
-                </ul>
+                </ul> */}
                 <div className="section-footer" onClick={() => setShowAll1(!showAll1)}>
                     {showAll1 ? 'see less' : 'see all'}
                 </div>
             </div>
             <div className="section">
                 <div className="section-header">待接受</div>
-                <ul className="section-content">
+                {/* <ul className="section-content">
                     {(showAll2 ? data2 : data2.slice(0, 2)).map((item, index) => (
                         <li key={index}>
                             {item.name} <span>{item.value}</span>
-                            {/* <button onClick={() => handleAccept(index)}>接受</button>
-                            <button onClick={() => handleReject(index)}>拒絕</button> */}
+                            <button onClick={() => handleAccept(index)}>接受</button>
+                            <button onClick={() => handleReject(index)}>拒絕</button>
                         </li>
                     ))}
-                </ul>
+                </ul> */}
                 <div className="section-footer" onClick={() => setShowAll2(!showAll2)}>
                     {showAll2 ? 'see less' : 'see all'}
                 </div>
