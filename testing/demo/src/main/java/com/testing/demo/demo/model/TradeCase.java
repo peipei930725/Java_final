@@ -8,15 +8,15 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "TradeCase")
 public class TradeCase {
     @Id
-    private String tradeId;
+    private String transferId;
     private Integer peopleCount;
     private String transferName;
     private Integer tradeAmount;
     private ArrayList<String> userList = new ArrayList<String>();
 
     // getters
-    public String getTradeId() {
-        return tradeId;
+    public String getTransferId() {
+        return transferId;
     }
 
     public Integer getPeopleCount() {
@@ -37,8 +37,8 @@ public class TradeCase {
 
     // setters
 
-    public void setTradeId(String tradeId) {
-        this.tradeId = tradeId;
+    public void setTransferId(String transferId) {
+        this.transferId = transferId;
     }
 
     public void setPeopleCount(Integer peopleCount) {

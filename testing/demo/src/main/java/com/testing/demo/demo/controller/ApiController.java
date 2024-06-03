@@ -75,7 +75,7 @@ public class ApiController {
             tradeCase.addUserList(tradeRequest.getAccount());
             tradeInfoDataRepository.save(tradeCase);
             // get tradeId
-            String tradeId = tradeCase.getTradeId();
+            String tradeId = tradeCase.getTransferId();
             response.put("message", "新增交易成功\n交易ID: "+tradeId);
             response.put("success", "true");
             return ResponseEntity.ok(response);
@@ -99,7 +99,7 @@ public class ApiController {
             tradeCase.addUserList(addTransferRequest.getAccount());
             tradeInfoDataRepository.save(tradeCase);
             // get tradeId
-            String tradeId = tradeCase.getTradeId();
+            String tradeId = tradeCase.getTransferId();
             response.put("message", "成功加入");
             response.put("success", "true");
             return ResponseEntity.ok(response);
