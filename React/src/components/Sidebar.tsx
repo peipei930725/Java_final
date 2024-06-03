@@ -10,7 +10,7 @@ import { useAuth } from '../AuthContext';
 const Sidebar = () => {
 
     const [ColorMode,setColorMode]=useState('light')
-    const {Account}=useAuth();
+    const {account}=useAuth();
   return (
     <div>
     <Nav defaultActiveKey="/home" className="flex-column" style={{backgroundColor:ColorMode=='light'?'#F5F5F5':'#121212', height:'90vh'}}>
@@ -29,7 +29,7 @@ const Sidebar = () => {
             <SettingsIcon style={{paddingBottom:"5px", paddingRight:"5px"}} />
             Settings
             </Nav.Link>  */}
-            <p>Hi {Account}</p>
+            <p>Hi {account}</p>
     </Nav>
     </div>
   )
