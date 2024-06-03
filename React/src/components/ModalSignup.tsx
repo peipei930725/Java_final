@@ -85,11 +85,11 @@ export default function ModalSignup({onToggleModal,onSwitchToLogin}) {
                 onChange={(event)=>setpasswdValue(event.target.value)}
                 />
               </div>
-              <div className="col-12">
+            </form>
+            <div className="col-12">
                 <button type="submit" className="btn btn-primary" onClick={handleSignupClick}>註冊</button>
                 <button type="button" className="btn btn-secondary" onClick={onSwitchToLogin}>取消</button>
-              </div>
-            </form>
+            </div>
             <p>{signupStatus}</p>
             {signupStatus=="註冊成功"?
             <p >點此<button type="button" className="btn btn-link" onClick={onToggleModal}>登入</button></p>
