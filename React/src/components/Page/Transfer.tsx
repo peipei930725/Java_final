@@ -33,12 +33,6 @@ function Transfer() {
             .then(data => setData1(data));
     }, []);
 
-    // useEffect(() => {
-    //     fetch(`your-backend-url/user/${userId}`)
-    //         .then(response => response.json())
-    //         .then(data => console.log(data));
-    // }, []);
-
     return (
         <div className="container1">
             <div className="section">

@@ -6,12 +6,12 @@ export default function AddTransfer({onToggleModal}) {
     const [transferName, SettransferName]=useState('')
     const [peopleCount, SetpeopleCount]=useState('')
     const [tradeAmount, SettradeAmount]=useState('')
-    const {Account} =useAuth()
+    const {account} =useAuth()
 
     const [TransferStatus, setTransferStatus] = useState('');
     const handleSignupClick = async (event) => {
         event.preventDefault();
-        const newTransfer = { Account,transferName, peopleCount, tradeAmount}
+        const newTransfer = { account,transferName, peopleCount, tradeAmount}
         console.log(newTransfer)
     
         try {
