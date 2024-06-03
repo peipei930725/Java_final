@@ -2,7 +2,7 @@ import React, { ReactNode ,useState } from "react";
 import '../components/ModalSignup.css'
 import ModalSignin from "./ModalSignin";
 
-export default function ModalSignup({onToggleModal}) {
+export default function ModalSignup({onToggleModal,onSwitchToLogin}) {
     const [firstName, setfirstnameValue]=useState('')
     const [lastName, setlastnameValue]=useState('')
     const [account, setaccountValue]=useState('')
@@ -87,6 +87,7 @@ export default function ModalSignup({onToggleModal}) {
               </div>
               <div className="col-12">
                 <button type="submit" className="btn btn-primary" onClick={handleSignupClick}>註冊</button>
+                <button type="button" className="btn btn-secondary" onClick={onSwitchToLogin}>取消</button>
               </div>
             </form>
             <p>{signupStatus}</p>

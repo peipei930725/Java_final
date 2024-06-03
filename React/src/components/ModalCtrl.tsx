@@ -12,7 +12,7 @@ const ModalCtrl = () => {
   return (
     <div>
     { isSignup ? (
-      <ModalSignup onToggleModal={handleToggleModal} />
+      <ModalSignup onToggleModal={handleToggleModal} onSwitchToLogin={handleToggleModal} />
     ):(
       <ModalSignin onToggleModal={handleToggleModal} />
     )
