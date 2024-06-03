@@ -242,7 +242,7 @@ public class ApiController {
         return ResponseEntity.ok(response);
     }
     
-    @PostMapping("/history/Done")
+    @PostMapping("/history/done")
     public ResponseEntity<Map<String, String>> historyDone(@RequestBody HistoryDoneRequest historyDoneRequest) {
         System.out.println(historyDoneRequest.getAccount());
         UserCase user =  myDataRepository.findByUserAccount(historyDoneRequest.getAccount());
@@ -275,7 +275,7 @@ public class ApiController {
         return ResponseEntity.ok(response);
     }
     
-    @PostMapping("/history/ToBeTransfer")
+    @PostMapping("/history/toBeTransfer")
     public ResponseEntity<Map<String, String>> historyToBeTransfer(@RequestBody HistoryToBeTransferredRequest historyToBeTransferRequest) {
         System.out.println(historyToBeTransferRequest.getAccount());
         UserCase user =  myDataRepository.findByUserAccount(historyToBeTransferRequest.getAccount());
@@ -291,19 +291,26 @@ public class ApiController {
             for (int j = 0; j < trade.getUserList().size(); j++) {
                 UserCase newUser =  myDataRepository.findByUserAccount(trade.getUserList().get(j));
                 Integer index = newUser.getUserTradeList().indexOf(trade.getTransferName());
+                if (index == -1){
+                    continue;
+                }
                 if (newUser.getUserStateList().get(index).equals("waitPay")){
                     userCount++;
                 }
             }
             responseCount += Integer.toString(userCount) + "/" + trade.getUserList().size() + ",";
         }
+        if (responseName.length() == 0){
+            responseName = "null";
+            responseCount = "null";
+        }
         response.put("groupName", responseName);
-        response.put("money", responseCount);
+        response.put("Count", responseCount);
         response.put("success", "true");
         return ResponseEntity.ok(response);
     }
     
-    @PostMapping("/history/ToBeAccept")
+    @PostMapping("/history/toBeAccept")
     public ResponseEntity<Map<String, String>> historyToBeAccept(@RequestBody HistoryToBeAcceptedRequest historyToBeAcceptRequest) {
         System.out.println(historyToBeAcceptRequest.getAccount());
         UserCase user =  myDataRepository.findByUserAccount(historyToBeAcceptRequest.getAccount());
@@ -320,6 +327,9 @@ public class ApiController {
             for (int j = 0; j < trade.getUserList().size(); j++) {
                 UserCase newUser =  myDataRepository.findByUserAccount(trade.getUserList().get(j));
                 Integer index = newUser.getUserTradeList().indexOf(trade.getTransferName());
+                if (index == -1){
+                    continue;
+                }
                 if (newUser.getUserStateList().get(index).equals("wait")){
                     userCount++;
                 }
@@ -327,8 +337,12 @@ public class ApiController {
             responseCount += Integer.toString(userCount) + "/" + trade.getUserList().size() + ",";
         }
 
+        if (responseName.length() == 0){
+            responseName = "null";
+            responseCount = "null";
+        }
         response.put("groupName", responseName);
-        response.put("money", responseCount);
+        response.put("Count", responseCount);
         response.put("success", "true");
         return ResponseEntity.ok(response);
     }
