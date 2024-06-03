@@ -39,6 +39,7 @@ export default function ModalSignin({onToggleModal}) {
         if (result.success === "true") {
           login(account);
           setLoginStatus(result.message);
+          onToggleModal();
         } else {
           setLoginStatus(result.message);
         }

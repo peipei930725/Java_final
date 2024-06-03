@@ -4,7 +4,7 @@ import NavLink, { Link } from 'react-router-dom';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import HistoryIcon from '@mui/icons-material/History';
-import SettingsIcon from '@mui/icons-material/Settings';
+// import SettingsIcon from '@mui/icons-material/Settings';
 import { useAuth } from '../AuthContext';
 
 const Sidebar = () => {
@@ -25,10 +25,10 @@ const Sidebar = () => {
             <HistoryIcon style={{paddingBottom:"5px", paddingRight:"5px"}} />
             History
             </Nav.Link>
-        <Nav.Link as={Link} className="nav-side" style={{color:ColorMode=='light'?'black':'white'}} to="/Settings">
+        {/* <Nav.Link as={Link} className="nav-side" style={{color:ColorMode=='light'?'black':'white'}} to="/Settings">
             <SettingsIcon style={{paddingBottom:"5px", paddingRight:"5px"}} />
             Settings
-            </Nav.Link> 
+            </Nav.Link>  */}
             <p>Hi {Account}</p>
     </Nav>
     </div>
