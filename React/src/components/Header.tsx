@@ -13,7 +13,7 @@ const Header = () => {
   const { logout } = useAuth();
   const { account } = useAuth();
   const {colormode}=useAuth();
-  const { changeColor ,setColor} = useAuth();
+  const { changeColor} = useAuth();
   return (
     <div>
       <Navbar expand="lg" bg={colormode} variant={colormode} className="header">

@@ -23,6 +23,7 @@ export const AuthProvider: React.FC<{children:ReactNode}>=({children})=> {
       setIsLoggedIn(true)
     }
     const logout=()=>{
+      localStorage.clear()
       setaccount('')
       setIsLoggedIn(false);
     }
