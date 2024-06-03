@@ -3,6 +3,11 @@ package com.testing.demo.demo.request;
 public class GroupRequest {
     private String groupName;
     private int groupSize;
+    private String account;
+    // Getters and Setters
+    public String getAccount() {
+        return account;
+    }
 
     // Getters and Setters
     public String getGroupName() {

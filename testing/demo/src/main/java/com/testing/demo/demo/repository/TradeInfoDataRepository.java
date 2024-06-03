@@ -8,4 +8,5 @@ import com.testing.demo.demo.model.TradeCase;
 
 public interface TradeInfoDataRepository extends MongoRepository<TradeCase, String> {
     TradeCase findByTransferName(String TransferName);
+    TradeCase findByTransferId(String TradeId);
 }

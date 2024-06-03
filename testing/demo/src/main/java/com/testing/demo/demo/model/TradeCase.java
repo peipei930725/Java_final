@@ -1,5 +1,7 @@
 package com.testing.demo.demo.model;
 
+import java.util.ArrayList;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -10,6 +12,7 @@ public class TradeCase {
     private Integer peopleCount;
     private String transferName;
     private Integer tradeAmount;
+    private ArrayList<String> userList = new ArrayList<String>();
 
     // getters
     public String getTradeId() {
@@ -28,6 +31,10 @@ public class TradeCase {
         return tradeAmount;
     }
 
+    public ArrayList<String> getUserList() {
+        return userList;
+    }
+
     // setters
 
     public void setTradeId(String tradeId) {
@@ -42,9 +49,13 @@ public class TradeCase {
         this.transferName = transferName;
     }
 
-    public void setTradeAmount(Integer tradeAmount) {
+    public void setTradeAmount(Integer tradeAmount) { 
         this.tradeAmount = tradeAmount;
     }
 
+
+    public void addUserList(String userId) {
+        this.userList.add(userId);
+    }
 
 }

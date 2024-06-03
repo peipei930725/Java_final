@@ -1,6 +1,9 @@
-    package com.testing.demo.demo.model;
+package com.testing.demo.demo.model;
 
-    import org.springframework.data.annotation.Id;
+
+import java.util.ArrayList;
+
+import org.springframework.data.annotation.Id;
     import org.springframework.data.mongodb.core.mapping.Document;
 
     @Document(collection = "UserCase")
@@ -11,6 +14,9 @@
         private String userPassword;
         private String FirstName;
         private String LastName;
+        private ArrayList<String> userTradeList = new ArrayList<String>();
+        private ArrayList<String> userGroupList = new ArrayList<String>();
+        private ArrayList<String> userStateList = new ArrayList<String>();
 
         // getters
         public String getId() {
@@ -33,6 +39,18 @@
             return LastName;
         }
 
+        public ArrayList<String> getUserTradeList() {
+            return userTradeList;
+        }
+
+        public ArrayList<String> getUserGroupList() {
+            return userGroupList;
+        }
+
+        public ArrayList<String> getUserStateList() {
+            return userStateList;
+        }
+
         // setters
         public void setId(String id) {
             this.id = id;
@@ -52,5 +70,25 @@
 
         public void setLastName(String LastName) {
             this.LastName = LastName;
+        }
+
+        public void addUserTradeList(String tradeId) {
+            this.userTradeList.add(tradeId);
+        }
+
+        public void addUserGroupList(String groupId) {
+            this.userGroupList.add(groupId);
+        }
+
+        public void setUserTradeList(ArrayList<String> userTradeList) {
+            this.userTradeList = userTradeList;
+        }
+
+        public void addUserStateList(String stateId) {
+            this.userStateList.add(stateId);
+        }
+
+        public void setUserGroupList(ArrayList<String> userGroupList) {
+            this.userGroupList = userGroupList;
         }
     }
