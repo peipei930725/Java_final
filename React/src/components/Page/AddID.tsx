@@ -3,17 +3,17 @@ import './Add.css'
 import { useAuth } from "../../AuthContext";
 
 export default function AddID({onToggleModal}) {
-    const [setID, SetID]=useState('')
+    const [transferId, setTransferId]=useState('')
     const {account} =useAuth()
 
     const [IDStatus, setIDStatus] = useState('');
     const handleSignupClick = async (event) => {
         event.preventDefault();
-        const AddID = { account,setID }
+        const AddID = { account,transferId }
         console.log(AddID)
     
         try {
-          const response = await fetch('http://localhost:8080/api/addGroup', {
+          const response = await fetch('http://localhost:8080/api/addTransfer', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(AddID)
@@ -43,11 +43,11 @@ export default function AddID({onToggleModal}) {
                   <div className="md-6">
                     <label htmlFor="inputEmail4" className="form-label">加入交易:</label>
                     <input 
-                    value={setID}
-                    type="groupName" 
+                    value={transferId}
+                    type="transferId" 
                     className="form-control"
                     placeholder="請輸入交易ID" 
-                    onChange={(event)=>SetID(event.target.value)}
+                    onChange={(event)=>setTransferId(event.target.value)}
                     />
                   </div>
                 <div className="col-12">

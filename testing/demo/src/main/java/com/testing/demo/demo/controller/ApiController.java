@@ -84,7 +84,7 @@ public class ApiController {
 
     @PostMapping("/addTransfer")
     public ResponseEntity<Map<String, String>> transfer(@RequestBody AddTransferRequest addTransferRequest) {
-        System.out.println(addTransferRequest.getAccount());
+        System.out.println(addTransferRequest.getTransferId());
         Map<String, String> response = new HashMap<>();
         TradeCase existedTradeCase = tradeInfoDataRepository.findByTransferId(addTransferRequest.getTransferId());
         if (addTransferRequest.getTransferId() == null ){
@@ -94,12 +94,14 @@ public class ApiController {
         if (existedTradeCase == null) {
             response.put("message", "交易ID不存在");
             return ResponseEntity.badRequest().body(response);
+        }else if (existedTradeCase.getUserList().contains(addTransferRequest.getAccount())){
+            response.put("message", "請勿重複加入");
+            return ResponseEntity.badRequest().body(response);
         }else{
-            TradeCase tradeCase = new TradeCase();
-            tradeCase.addUserList(addTransferRequest.getAccount());
-            tradeInfoDataRepository.save(tradeCase);
+            existedTradeCase.addUserList(addTransferRequest.getAccount());
+            tradeInfoDataRepository.save(existedTradeCase);
             // get tradeId
-            String tradeId = tradeCase.getTransferId();
+            String tradeId = existedTradeCase.getTransferId();
             response.put("message", "成功加入");
             response.put("success", "true");
             return ResponseEntity.ok(response);
