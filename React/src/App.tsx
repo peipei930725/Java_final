@@ -28,9 +28,14 @@ function App() {
 }
 
 function Content(){
-  const { isLoggedIn,login, colormode } = useAuth();
+  const { isLoggedIn,login, colormode ,changeColor,setColor} = useAuth();
+
   if(localStorage.getItem('account')){
     login(localStorage.getItem('account'));
+  }
+
+  if(localStorage.getItem('colormode')=='dark'){
+    setColor('dark');
   }
   return(
     <>
