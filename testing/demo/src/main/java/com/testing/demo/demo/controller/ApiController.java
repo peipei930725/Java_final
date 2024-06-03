@@ -31,6 +31,9 @@ public class ApiController {
     @Autowired
     private TradeInfoDataRepository tradeInfoDataRepository;
 
+    @Autowired
+    private MyDataRepository myDataRepository;
+    
     @PostMapping("/createGroup")
     public ResponseEntity<Map<String, String>> register(@RequestBody GroupRequest groupRequest) {
         Map<String, String> response = new HashMap<>();
@@ -44,11 +47,19 @@ public class ApiController {
             response.put("message", "群組已存在");
             return ResponseEntity.badRequest().body(response);
         }else{
+            //新增群組
             GroupCase groupCase = new GroupCase();
             groupCase.setGroupName(groupRequest.getGroupName());
             groupCase.setGroupSize(groupRequest.getGroupSize());
             groupCase.addGroupMember(groupRequest.getAccount());
             GroupRepository.save(groupCase);
+
+            // 將群組加入到用戶的群組列表中
+            UserCase user =  myDataRepository.findByUserAccount(groupRequest.getAccount());
+            user.addUserGroupList(groupCase.getGroupId());
+            myDataRepository.save(user);
+
+
             response.put("message", "群組新增成功");
             response.put("success", "true");
             return ResponseEntity.ok(response);
@@ -68,15 +79,21 @@ public class ApiController {
             response.put("message", "交易名稱已存在");
             return ResponseEntity.badRequest().body(response);
         }else{
+            //新增交易
             TradeCase tradeCase = new TradeCase();
             tradeCase.setPeopleCount(tradeRequest.getPeopleCount());
             tradeCase.setTradeAmount(tradeRequest.getTradeAmount());
             tradeCase.setTransferName(tradeRequest.getTransferName());
             tradeCase.addUserList(tradeRequest.getAccount());
             tradeInfoDataRepository.save(tradeCase);
-            // get tradeId
-            String tradeId = tradeCase.getTransferId();
-            response.put("message", "新增交易成功\n交易ID: "+tradeId);
+            
+            // 將交易加入到用戶的交易列表中
+            UserCase user =  myDataRepository.findByUserAccount(tradeRequest.getAccount());
+            user.addUserTradeList(tradeCase.getTransferId());
+            myDataRepository.save(user);
+
+
+            response.put("message", "新增交易成功\n交易ID: "+tradeCase.getTransferId());
             response.put("success", "true");
             return ResponseEntity.ok(response);
         }
@@ -101,7 +118,11 @@ public class ApiController {
             existedTradeCase.addUserList(addTransferRequest.getAccount());
             tradeInfoDataRepository.save(existedTradeCase);
             // get tradeId
-            String tradeId = existedTradeCase.getTransferId();
+
+            UserCase user =  myDataRepository.findByUserAccount(addTransferRequest.getAccount());
+            user.addUserTradeList(existedTradeCase.getTransferId());
+            myDataRepository.save(user);
+
             response.put("message", "成功加入");
             response.put("success", "true");
             return ResponseEntity.ok(response);
@@ -129,6 +150,12 @@ public class ApiController {
                 return ResponseEntity.badRequest().body(response);
             }
             System.out.println(groupId);
+
+
+            UserCase user =  myDataRepository.findByUserAccount(addGroupRequest.getAccount());
+            user.addUserGroupList(existedGroupCase.getGroupId());
+            myDataRepository.save(user);
+
             existedGroupCase = GroupRepository.findByGroupId(groupId);
             existedGroupCase.addGroupMember(addGroupRequest.getAccount());
             GroupRepository.save(existedGroupCase);
