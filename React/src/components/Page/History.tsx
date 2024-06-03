@@ -16,6 +16,7 @@ function History() {
     const [showAll3, setShowAll3] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [currentView, setCurrentView] = useState('');
+    const { account } = useAuth();
 
     const handleButtonClick = (view) => {
         setCurrentView(view);
@@ -27,22 +28,46 @@ function History() {
     };
 
     useEffect(() => {
-        fetch('your-backend-url/table1')
-            .then(response => response.json())
-            .then(data => setData1(data));
-    }, []);
+        if (account) {
+          fetch(`http://localhost:8080/api/account/${account}`)
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              return response.json();
+            })
+            .then(data => setData1(data))
+            .catch(error => console.error('There has been a problem with your fetch operation:', error));
+        }
+      }, [account]);
 
     useEffect(() => {
-        fetch('your-backend-url/table2')
-            .then(response => response.json())
-            .then(data => setData2(data));
-    }, []);
+        if (account) {
+          fetch(`http://localhost:8080/api/account/${account}`)
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              return response.json();
+            })
+            .then(data => setData2(data))
+            .catch(error => console.error('There has been a problem with your fetch operation:', error));
+        }
+      }, [account]);
 
     useEffect(() => {
-        fetch('your-backend-url/table3')
-            .then(response => response.json())
-            .then(data => setData3(data));
-    }, []);
+        if (account) {
+          fetch(`http://localhost:8080/api/account/${account}`)
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              return response.json();
+            })
+            .then(data => setData3(data))
+            .catch(error => console.error('There has been a problem with your fetch operation:', error));
+        }
+      }, [account]);
 
     return (
         <div className="container1" id='block'>
