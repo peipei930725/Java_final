@@ -98,9 +98,9 @@ function History() {
             <div className="section">
                 <div className="section-header">Done</div>
                 <ul className="section-content">
-                    {(showAll1 ? data1 : data1.slice(0, 2)).map((item, index) => (
+                    {/* {(showAll1 ? data1 : data1.slice(0, 2)).map((item, index) => (
                         <li key={index}>{item.name} <span>{item.value}</span></li>
-                    ))}
+                    ))} */}
                 </ul>
                 <div className="section-footer" onClick={() => setShowAll1(!showAll1)}>
                     {showAll1 ? 'see less' : 'see all'}
@@ -109,9 +109,9 @@ function History() {
             <div className="section">
                 <div className="section-header">To be Transferred</div>
                 <ul className="section-content">
-                    {(showAll2 ? data2 : data2.slice(0, 2)).map((item, index) => (
+                    {/* {(showAll2 ? data2 : data2.slice(0, 2)).map((item, index) => (
                         <li key={index}>{item.name} <span>{item.value}</span></li>
-                    ))}
+                    ))} */}
                 </ul>
                 <div className="section-footer" onClick={() => setShowAll2(!showAll2)}>
                     {showAll2 ? 'see less' : 'see all'}
@@ -120,9 +120,9 @@ function History() {
             <div className="section">
                 <div className="section-header">To be Accepted</div>
                 <ul className="section-content">
-                    {(showAll3 ? data3 : data3.slice(0, 2)).map((item, index) => (
+                    {/* {(showAll3 ? data3 : data3.slice(0, 2)).map((item, index) => (
                         <li key={index}>{item.name} <span>{item.value}</span></li>
-                    ))}
+                    ))} */}
                 </ul>
                 <div className="section-footer" onClick={() => setShowAll3(!showAll3)}>
                     {showAll3 ? 'see less' : 'see all'}
