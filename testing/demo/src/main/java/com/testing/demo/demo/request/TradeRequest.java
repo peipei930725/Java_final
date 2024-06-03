@@ -5,8 +5,16 @@ public class TradeRequest {
     private int peopleCount;
     private String transferName;
     private int tradeAmount;
-
+    private String account;
     // Getters and Setters
+    public String getAccount() {
+        return account;
+    }
+
+    public void setAccount(String account) {
+        this.account = account;
+    }
+
     public String getTradeId() {
         return tradeId;
     }

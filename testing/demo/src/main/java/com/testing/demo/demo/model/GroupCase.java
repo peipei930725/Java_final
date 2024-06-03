@@ -9,7 +9,7 @@ public class GroupCase {
 
     private String groupName;
     private int groupSize;
-    private ArrayList<String> groupMember;
+    private ArrayList<String> groupMember = new ArrayList<String>();
 
     // getters
     public String getGroupId() {

@@ -44,12 +44,10 @@ public class ApiController {
             response.put("message", "群組已存在");
             return ResponseEntity.badRequest().body(response);
         }else{
-            ArrayList<String> groupMember = new ArrayList<String>();
-            groupMember.add("newMember");
             GroupCase groupCase = new GroupCase();
             groupCase.setGroupName(groupRequest.getGroupName());
             groupCase.setGroupSize(groupRequest.getGroupSize());
-            groupCase.setGroupMember(groupMember);
+            groupCase.addGroupMember(groupRequest.getAccount());
             GroupRepository.save(groupCase);
             response.put("message", "群組新增成功");
             response.put("success", "true");
@@ -58,7 +56,8 @@ public class ApiController {
     }
     
     @PostMapping("/transfer")
-    public ResponseEntity<Map<String, String>> transfer(@RequestBody TradeRequest tradeRequest) {
+    public ResponseEntity<Map<String, String>> addTransfer(@RequestBody TradeRequest tradeRequest) {
+        System.out.println(tradeRequest.getAccount());
         Map<String, String> response = new HashMap<>();
         TradeCase existedTradeCase = tradeInfoDataRepository.findByTransferName(tradeRequest.getTransferName());
         if (tradeRequest.getTransferName() == null || tradeRequest.getTradeAmount() <= 0 || tradeRequest.getPeopleCount() <= 1  ){
@@ -73,8 +72,35 @@ public class ApiController {
             tradeCase.setPeopleCount(tradeRequest.getPeopleCount());
             tradeCase.setTradeAmount(tradeRequest.getTradeAmount());
             tradeCase.setTransferName(tradeRequest.getTransferName());
+            tradeCase.addUserList(tradeRequest.getAccount());
             tradeInfoDataRepository.save(tradeCase);
-            response.put("message", "新增交易成功");
+            // get tradeId
+            String tradeId = tradeCase.getTradeId();
+            response.put("message", "新增交易成功\n交易ID: "+tradeId);
+            response.put("success", "true");
+            return ResponseEntity.ok(response);
+        }
+    }
+
+    @PostMapping("/addTransfer")
+    public ResponseEntity<Map<String, String>> transfer(@RequestBody AddTransferRequest addTransferRequest) {
+        System.out.println(addTransferRequest.getAccount());
+        Map<String, String> response = new HashMap<>();
+        TradeCase existedTradeCase = tradeInfoDataRepository.findByTransferId(addTransferRequest.getTransferId());
+        if (addTransferRequest.getTransferId() == null ){
+            response.put("message", "請填入正確資料");
+            return ResponseEntity.badRequest().body(response);
+        }
+        if (existedTradeCase == null) {
+            response.put("message", "交易ID不存在");
+            return ResponseEntity.badRequest().body(response);
+        }else{
+            TradeCase tradeCase = new TradeCase();
+            tradeCase.addUserList(addTransferRequest.getAccount());
+            tradeInfoDataRepository.save(tradeCase);
+            // get tradeId
+            String tradeId = tradeCase.getTradeId();
+            response.put("message", "成功加入");
             response.put("success", "true");
             return ResponseEntity.ok(response);
         }
@@ -96,10 +122,13 @@ public class ApiController {
             if (nowSize == existedGroupCase.getGroupSize()){
                 response.put("message", "群組人數已滿");
                 return ResponseEntity.badRequest().body(response);
+            }else if (existedGroupCase.getGroupMember().contains(addGroupRequest.getAccount())){
+                response.put("message", "已在群組中");
+                return ResponseEntity.badRequest().body(response);
             }
             System.out.println(groupId);
             existedGroupCase = GroupRepository.findByGroupId(groupId);
-            existedGroupCase.addGroupMember("newMember");
+            existedGroupCase.addGroupMember(addGroupRequest.getAccount());
             GroupRepository.save(existedGroupCase);
             response.put("message", "新增群組成員成功");
             response.put("success", "true");
