@@ -170,16 +170,71 @@ public class ApiController {
     @PostMapping("/waitForTransfer")
     public ResponseEntity<Map<String, String>> waitForTransfer(@RequestBody WaitForTransferRequest waitForTransferRequest) {
         System.out.println(waitForTransferRequest.getAccount());
+        UserCase user =  myDataRepository.findByUserAccount(waitForTransferRequest.getAccount());
         Map<String, String> response = new HashMap<>();
-        response.put("message", "hiiii");
+        ArrayList<String> tradeList = user.getUserTradeList();
+        ArrayList<String> stateList = user.getUserStateList();
+        String responseName = "";
+        String responseMoney = "";
+        // for i in range tradeList
+        for (int i = 0; i < tradeList.size(); i++) {
+            if(stateList.get(i).equals("waitPay")){
+                TradeCase trade = tradeInfoDataRepository.findByTransferId(tradeList.get(i));
+                responseName += trade.getTransferName() + ",";
+                responseMoney += trade.getTradeAmount() + ",";
+            }
+        }
+        // responseName-1
+        if (responseName.length() > 0){
+            responseName = responseName.substring(0, responseName.length()-1);
+        }
+        if (responseMoney.length() > 0){
+            responseMoney = responseMoney.substring(0, responseMoney.length()-1);
+        }
+        if (responseName.length() == 0){
+            responseName = "null";
+            responseMoney = "null";
+        }
+        System.out.println(responseName);
+        System.out.println(responseMoney);
+        response.put("groupName", responseName);
+        response.put("money", responseMoney);
         response.put("success", "true");
         return ResponseEntity.ok(response);
     }
 
     @PostMapping("/waitForAccept")
     public ResponseEntity<Map<String, String>> waitForAccept(@RequestBody WaitForAcceptRequest waitForAcceptRequest) {
+        System.out.println(waitForAcceptRequest.getAccount());
+        UserCase user =  myDataRepository.findByUserAccount(waitForAcceptRequest.getAccount());
         Map<String, String> response = new HashMap<>();
-        response.put("message", "hiiii");
+        ArrayList<String> tradeList = user.getUserTradeList();
+        ArrayList<String> stateList = user.getUserStateList();
+        String responseName = "";
+        String responseMoney = "";
+        // for i in range tradeList
+        for (int i = 0; i < tradeList.size(); i++) {
+            if(stateList.get(i).equals("wait")){
+                TradeCase trade = tradeInfoDataRepository.findByTransferId(tradeList.get(i));
+                responseName += trade.getTransferName() + ",";
+                responseMoney += trade.getTradeAmount() + ",";
+            }
+        }
+        // responseName-1
+        if (responseName.length() > 0){
+            responseName = responseName.substring(0, responseName.length()-1);
+        }
+        if (responseMoney.length() > 0){
+            responseMoney = responseMoney.substring(0, responseMoney.length()-1);
+        }
+        if (responseName.length() == 0){
+            responseName = "null";
+            responseMoney = "null";
+        }
+        System.out.println(responseName);
+        System.out.println(responseMoney);
+        response.put("groupName", responseName);
+        response.put("money", responseMoney);
         response.put("success", "true");
         return ResponseEntity.ok(response);
     }

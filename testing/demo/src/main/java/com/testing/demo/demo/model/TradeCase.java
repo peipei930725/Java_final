@@ -13,7 +13,7 @@ public class TradeCase {
     private String transferName;
     private Integer tradeAmount;
     private ArrayList<String> userList = new ArrayList<String>();
-
+    
     // getters
     public String getTransferId() {
         return transferId;
