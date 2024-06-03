@@ -1,0 +1,45 @@
+.mainapp{
+    display: flex;
+    flex-direction: column;
+}
+
+.header{
+    .switch{
+        margin-top: 5%;
+    }
+    container{
+        font-display: 100%;
+    }
+}
+
+.content{
+    display: flex;
+    flex-direction: row;
+}
+
+.Sidebar{
+    flex-basis: 20%;
+    height: 92vh;
+    color: black;
+}
+
+.main{
+    flex-basis: 80%;
+    height: 92vh;
+    background-color: #fff;
+}
+
+.nav-side{
+    font-size: 20px;
+    text-decoration: none;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+}
+
+.nav-side:hover{
+    font-size: 21px;
+    background-color: rgba(203, 243, 240, 0.7);
+    box-shadow: 0 2px teal;
+    
+}
