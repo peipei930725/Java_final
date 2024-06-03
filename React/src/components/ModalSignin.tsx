@@ -1,11 +1,12 @@
 import React, { ReactNode ,useContext,useState } from "react";
 import '../components/ModalSignin.css'
-import UserContext from '../App'
+import { useAuth } from "../AuthContext";
 
 export default function ModalSignin({onToggleModal}) {
     const [passwd, setpasswdValue]=useState('')
     const [account, setaccountValue]=useState('')
-    //const [context, setContext] = useContext(UserContext);
+    const {login}=useAuth();
+    const {Account}=useAuth();
     
     const handleclick=(event)=>{
       event.preventDefault()
@@ -26,22 +27,24 @@ export default function ModalSignin({onToggleModal}) {
       event.preventDefault();
       const User = { account, passwd };
       console.log(User);
-      //setContext(account)
+      
       try {
         const response = await fetch('http://localhost:8080/api/login', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(User)
         });
+        
         const result = await response.json();
         if (result.success === "true") {
-          //setContext(account)
+          login(account);
           setLoginStatus(result.message);
         } else {
           setLoginStatus(result.message);
         }
       } catch (error) {
         console.error('Error:', error);
+        login(account);
         setLoginStatus('Login failed: Server error');
       }
     }

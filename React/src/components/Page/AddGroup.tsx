@@ -1,13 +1,15 @@
 import React, { ReactNode ,useState } from "react";
 import './Add.css'
+import { useAuth } from "../../AuthContext";
 
 export default function AddGroup({onToggleModal}) {
     const [groupName, SetgroupName]=useState('')
+    const {Account} =useAuth()
 
     const [addGroupStatus, setAddGroupStatus] = useState('');
     const handleSignupClick = async (event) => {
         event.preventDefault();
-        const AddGroup = { groupName }
+        const AddGroup = { Account,groupName }
         console.log(AddGroup)
     
         try {

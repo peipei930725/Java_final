@@ -16,49 +16,49 @@ import {
 } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import "./App.css";
-
-// 創建一個 UserContext
-const UserContext = createContext(null);
+import { AuthProvider, useAuth } from "./AuthContext";
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [userId, setUserId] = useState({});
 
-  const handleLogin = () => {
-    // 处理登录逻辑，比如验证用户信息等
-    setLoggedIn(true);
-  };
 
   return (
-    <div>
-      <UserContext.Provider value={[userId, setUserId]}>
-      <BrowserRouter>
-        {!userId ? (
-          <>
-            <ModalCtrl />
-          </>
-        ) : null}
-        <div className="maincpp">
-          <div className="header">
-            <Header />
-          </div>
-          <div className="content">
-            <div className="Sidebar">
-              <Sidebar />
-            </div>
-            <main className="main">
-              <Routes>
-                <Route path="/Add" Component={AddCtrl} />
-                <Route path="/Transfer" Component={Transfer} />
-                <Route path="/History" Component={History} />
-              </Routes>
-            </main>
-          </div>
-        </div>
-      </BrowserRouter>
-      </UserContext.Provider>
-    </div>
+      <AuthProvider>
+        <BrowserRouter>
+          <Content />
+        </BrowserRouter>
+      </AuthProvider>
   );
 }
+
+function Content(){
+  const { isLoggedIn } = useAuth();
+  return(
+    <>
+    {!isLoggedIn ? (
+      <>
+        <ModalCtrl />
+      </>
+    ) : null}
+    <div className="maincpp">
+      <div className="header">
+        <Header />
+      </div>
+      <div className="content">
+        <div className="Sidebar">
+          <Sidebar />
+        </div>
+        <main className="main">
+          <Routes>
+            <Route path="/Add" Component={AddCtrl} />
+            <Route path="/Transfer" Component={Transfer} />
+            <Route path="/History" Component={History} />
+          </Routes>
+        </main>
+      </div>
+    </div>
+    </>
+  )
+}
+
 
 export default App;

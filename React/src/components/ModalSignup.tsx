@@ -1,5 +1,6 @@
 import React, { ReactNode ,useState } from "react";
 import '../components/ModalSignup.css'
+import ModalSignin from "./ModalSignin";
 
 export default function ModalSignup({onToggleModal}) {
     const [firstName, setfirstnameValue]=useState('')
@@ -89,6 +90,10 @@ export default function ModalSignup({onToggleModal}) {
               </div>
             </form>
             <p>{signupStatus}</p>
+            {signupStatus=="註冊成功"?
+            <p >點此<button type="button" className="btn btn-link" onClick={onToggleModal}>登入</button></p>
+            :null
+            }
           </div>
         </div>
     </>
