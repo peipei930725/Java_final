@@ -1,12 +1,9 @@
-import React, { createContext, useContext, useState } from "react";
-import AddGroup from "./components/Page/CreateGroup";
-import AddTransfer from "./components/Page/AddTransfer";
 import Transfer from "./components/Page/Transfer";
 import History from "./components/Page/History";
 import AddCtrl from "./components/Page/AddCtrl";
 import ModalCtrl from "./components/ModalCtrl";
-import Main from "./components/Main";
 import Header from "./components/Header";
+
 import {
   BrowserRouter as Router,
   Route,
@@ -32,6 +29,7 @@ function App() {
 
 function Content(){
   const { isLoggedIn, colormode } = useAuth();
+
   return(
     <>
     {!isLoggedIn ? (

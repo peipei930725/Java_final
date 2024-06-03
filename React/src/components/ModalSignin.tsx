@@ -7,19 +7,6 @@ export default function ModalSignin({onToggleModal}) {
     const [account, setaccountValue]=useState('')
     const {login}=useAuth();
     const {Account}=useAuth();
-    
-    const handleclick=(event)=>{
-      event.preventDefault()
-      const User={account,passwd}
-      console.log(User)
-      fetch("http://localhost:8080/api/login",{
-        method:"POST",
-        headers:{"Content-Type":"application/json"},
-        body:JSON.stringify(User)
-      }).then(()=>{
-        console.log("New account added")
-      })
-    }
 
     const [loginStatus, setLoginStatus] = useState('');
 
@@ -38,6 +25,7 @@ export default function ModalSignin({onToggleModal}) {
         const result = await response.json();
         if (result.success === "true") {
           login(account);
+          localStorage.setItem("account",account);
           setLoginStatus(result.message);
           onToggleModal();
         } else {

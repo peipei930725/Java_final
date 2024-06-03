@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import useState  from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -11,7 +11,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 
 const Header = () => {
   const { logout } = useAuth();
-  const { account } = useAuth();
+  const { Account } = useAuth();
   const {colormode}=useAuth();
   const { changeColor } = useAuth();
   return (
@@ -25,7 +25,7 @@ const Header = () => {
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
             <Nav>
-              <NavDropdown title={account} id="basic-nav-dropdown">
+              <NavDropdown title={Account} id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
                   Another action
