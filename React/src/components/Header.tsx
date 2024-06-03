@@ -16,9 +16,9 @@ const Header = () => {
   const { changeColor} = useAuth();
   return (
     <div>
-      <Navbar expand="lg" bg={colormode} variant={colormode} className="header">
-        <Container className="m-0 p-1">
-          <Navbar.Brand href="/">
+      <Navbar expand="lg" bg={colormode} variant={colormode} className="header" style={{paddingLeft:"5px"}}>
+        <Container className="m-0 p-2" >
+          <Navbar.Brand href="/" style={{fontSize:"25px" }}>
             <CurrencyExchangeIcon style={{ paddingBottom: "5%" }} />
             共同支付
           </Navbar.Brand>
