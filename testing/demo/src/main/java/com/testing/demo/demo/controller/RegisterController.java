@@ -48,6 +48,15 @@ public class RegisterController {
         System.out.println("Received password: " + registerRequest.getPasswd());
 
         UserCase  existingUserCase = myDataRepository.findByUserAccount(registerRequest.getAccount());
+        if (registerRequest.getAccount() == "" || registerRequest.getPasswd() == "" || registerRequest.getFirstName()== "" || registerRequest.getLastName()==""){
+            response.put("message", "資料不完整");
+            response.put("success", "false");
+            return ResponseEntity.badRequest().body(response);
+        }else if(registerRequest.getPasswd().length() < 8){
+            response.put("message", "密碼長度不足(最少8位)");
+            response.put("success", "false");
+            return ResponseEntity.badRequest().body(response);
+        }
         if (existingUserCase != null ) {
             response.put("message", "帳號已存在");
             response.put("success", "false");
