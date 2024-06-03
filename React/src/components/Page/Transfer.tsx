@@ -30,47 +30,47 @@ function Transfer() {
 
     useEffect(() => {
         if (account) {
-          fetch(`http://localhost:8080/api/account`, {
+                fetch(`http://localhost:8080/api/account`, {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-              account: account
+                account: account
             })
-          })
-          .then(response => {
+        })
+        .then(response => {
             if (!response.ok) {
-              throw new Error('Network response was not ok');
+            throw new Error('Network response was not ok');
             }
             return response.json();
-          })
-          .then(data => setData1(data))
-          .catch(error => console.error('There has been a problem with your fetch operation:', error));
+        })
+        .then(data => setData1(data))
+        .catch(error => console.error('There has been a problem with your fetch operation:', error));
         }
-      }, [account]);
+    }, [account]);
 
-      useEffect(() => {
+    useEffect(() => {
         if (account) {
-          fetch(`http://localhost:8080/api/account`, {
+        fetch(`http://localhost:8080/api/account`, {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json'
+            'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-              account: account
+            account: account
             })
-          })
-          .then(response => {
+        })
+        .then(response => {
             if (!response.ok) {
-              throw new Error('Network response was not ok');
+            throw new Error('Network response was not ok');
             }
             return response.json();
-          })
-          .then(data => setData2(data))
-          .catch(error => console.error('There has been a problem with your fetch operation:', error));
+        })
+        .then(data => setData2(data))
+        .catch(error => console.error('There has been a problem with your fetch operation:', error));
         }
-      }, [account]);
+    }, [account]);
 
     return (
         <div className="container1">

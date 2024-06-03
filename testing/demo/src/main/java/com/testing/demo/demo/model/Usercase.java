@@ -84,8 +84,8 @@ import org.springframework.data.annotation.Id;
             this.userTradeList = userTradeList;
         }
 
-        public void addUserStateList(String stateId) {
-            this.userStateList.add(stateId);
+        public void addUserStateList(String state) {
+            this.userStateList.add(state);
         }
 
         public void setUserGroupList(ArrayList<String> userGroupList) {
