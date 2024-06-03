@@ -2,10 +2,11 @@ import React, { ReactNode, createContext, useContext, useState } from 'react';
 
 interface AuthContextType{
     isLoggedIn: boolean
-    login:(account:string| null)=>void
+    login:(account0:string| null)=>void
     logout:()=>void
     account: string |null
     colormode: 'dark'|'light'
+    setColor:(color:'dark'|'light')=>void
     changeColor:()=>void
 }
 
@@ -27,12 +28,24 @@ export const AuthProvider: React.FC<{children:ReactNode}>=({children})=> {
     }
     
     const changeColor=()=>{
-      if(colormode=='light') setColorMode('dark')
-      else setColorMode('light')
+      if(colormode=='light'){
+        localStorage.setItem('colormode','dark')
+        setColorMode('dark')
+      }
+      else 
+      {
+        localStorage.setItem('colormode','light')
+        setColorMode('light')
+      }
+    }
+    
+    const setColor=(color:'dark'|'light')=>{
+      localStorage.setItem('colormode',color);
+      setColorMode(color);
     }
 
     return (
-      <AuthContext.Provider value={{isLoggedIn,login,logout,account,colormode,changeColor}}>
+      <AuthContext.Provider value={{isLoggedIn,login,logout,account,colormode,changeColor,setColor}}>
         {children}
       </AuthContext.Provider>  
     );
