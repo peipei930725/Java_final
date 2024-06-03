@@ -1,23 +1,31 @@
 package com.testing.demo.demo.controller;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.HashMap;  // 導入 StudentDto 類
-import java.util.Map;
+import java.util.HashMap;
+import java.util.Map;  // 導入 StudentDto 類
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.testing.demo.demo.request.*;
-import com.testing.demo.demo.repository.*;
-import com.testing.demo.demo.model.*;
-import com.testing.demo.demo.dto.StudentDto;
+import com.testing.demo.demo.model.GroupCase;
+import com.testing.demo.demo.model.TradeCase;
+import com.testing.demo.demo.model.UserCase;
+import com.testing.demo.demo.repository.GroupRepository;
+import com.testing.demo.demo.repository.MyDataRepository;
+import com.testing.demo.demo.repository.TradeInfoDataRepository;
+import com.testing.demo.demo.request.AddGroupRequest;
+import com.testing.demo.demo.request.AddTransferRequest;
+import com.testing.demo.demo.request.GroupRequest;
+import com.testing.demo.demo.request.HistoryDoneRequest;
+import com.testing.demo.demo.request.HistoryToBeAcceptedRequest;
+import com.testing.demo.demo.request.HistoryToBeTransferredRequest;
+import com.testing.demo.demo.request.TradeRequest;
+import com.testing.demo.demo.request.WaitForAcceptRequest;
+import com.testing.demo.demo.request.WaitForTransferRequest;
 
 
 
@@ -300,12 +308,18 @@ public class ApiController {
             }
             responseCount += Integer.toString(userCount) + "/" + trade.getUserList().size() + ",";
         }
+        if (responseName.length() > 0){
+            responseName = responseName.substring(0, responseName.length()-1);
+        }
+        if (responseCount.length() > 0){
+            responseCount = responseCount.substring(0, responseCount.length()-1);
+        }
         if (responseName.length() == 0){
             responseName = "null";
             responseCount = "null";
         }
         response.put("groupName", responseName);
-        response.put("Count", responseCount);
+        response.put("count", responseCount);
         response.put("success", "true");
         return ResponseEntity.ok(response);
     }
@@ -336,13 +350,18 @@ public class ApiController {
             }
             responseCount += Integer.toString(userCount) + "/" + trade.getUserList().size() + ",";
         }
-
+        if (responseName.length() > 0){
+            responseName = responseName.substring(0, responseName.length()-1);
+        }
+        if (responseCount.length() > 0){
+            responseCount = responseCount.substring(0, responseCount.length()-1);
+        }
         if (responseName.length() == 0){
             responseName = "null";
             responseCount = "null";
         }
         response.put("groupName", responseName);
-        response.put("Count", responseCount);
+        response.put("count", responseCount);
         response.put("success", "true");
         return ResponseEntity.ok(response);
     }
