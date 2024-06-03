@@ -28,8 +28,10 @@ function App() {
 }
 
 function Content(){
-  const { isLoggedIn, colormode } = useAuth();
-
+  const { isLoggedIn,login, colormode } = useAuth();
+  if(localStorage.getItem('account')){
+    login(localStorage.getItem('account'));
+  }
   return(
     <>
     {!isLoggedIn ? (

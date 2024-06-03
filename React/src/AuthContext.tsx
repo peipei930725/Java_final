@@ -2,9 +2,9 @@ import React, { ReactNode, createContext, useContext, useState } from 'react';
 
 interface AuthContextType{
     isLoggedIn: boolean
-    login:(account:string)=>void
+    login:(account:string| null)=>void
     logout:()=>void
-    account: String|null
+    account: string |null
     colormode: 'dark'|'light'
     changeColor:()=>void
 }
@@ -17,8 +17,8 @@ export const AuthProvider: React.FC<{children:ReactNode}>=({children})=> {
     const [account,setaccount]=useState('')
     const [colormode,setColorMode]=useState<'dark'|'light'>('light')
 
-    const login=(account0:string)=>{
-      setaccount(account0);
+    const login=(account0:string|null)=>{
+      if(account0) setaccount(account0);
       setIsLoggedIn(true)
     }
     const logout=()=>{
