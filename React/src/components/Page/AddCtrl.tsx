@@ -45,7 +45,7 @@ function AddCtrl() {
         <div className="box-content">
           <div className="icon-text">
             <BorderColorIcon sx={{fontSize:'80px'}} onClick={() => handleButtonClick('AddTransfer')} />
-            {/*<p>建立轉帳</p>*/}
+            <p>建立轉帳</p>
           </div>
         </div>
       </div>
