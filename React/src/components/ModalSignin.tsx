@@ -44,7 +44,6 @@ export default function ModalSignin({onToggleModal}) {
         }
       } catch (error) {
         console.error('Error:', error);
-        login(account);
         setLoginStatus('Login failed: Server error');
       }
     }
