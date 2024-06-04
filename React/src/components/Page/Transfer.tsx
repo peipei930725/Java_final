@@ -184,7 +184,6 @@ function Transfer() {
                                     </div>
                                     <div>
                                         <button onClick={() => handleAccept(index)}>轉帳</button>
-                                        <button onClick={() => handleReject(index)}>拒絕</button>
                                     </div>
                                 </div>
                             ));
