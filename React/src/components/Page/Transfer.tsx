@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState ,useRef} from 'react';
 import './Transfer.css';
 import { useAuth } from '../../AuthContext';
 
@@ -8,13 +8,17 @@ interface Item {
 }
 
 function Transfer() {
-    const [dataList, setDataList] = useState([]);
+    const [dataList1, setDataList1] = useState([]);
     const [dataList2, setDataList2] = useState([]);  // [groupName, money
     const [showAll1, setShowAll1] = useState(false);
     const [showAll2, setShowAll2] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isModalOpen1, setIsModalOpen1] = useState(false);
+    const [isModalOpen2, setIsModalOpen2] = useState(false);
     const [currentView, setCurrentView] = useState('');
     const { account } = useAuth();
+    const fetchedRef1 = useRef(false);
+    const fetchedRef2 = useRef(false);
 
     const handleAccept = (index) => {
         console.log('accept', index);
@@ -27,6 +31,26 @@ function Transfer() {
     const handleCloseModal = () => {
         setIsModalOpen(false);
     };
+
+    const handleShowAll1 = () => {
+        setShowAll1(!showAll1);
+        setIsModalOpen1(true);
+    };
+
+    const handleShowAll2 = () => {
+        setShowAll2(!showAll2);
+        setIsModalOpen2(true);
+    };
+
+    const handleCloseModal1 = () => {
+        setIsModalOpen1(false);
+    };
+
+    const handleCloseModal2 = () => {
+        setIsModalOpen2(false);
+    };
+
+
     useEffect(() => {
         fetch(`http://localhost:8080/api/transfer/waitForTransfer`, {
             method: 'POST',
@@ -47,7 +71,7 @@ function Transfer() {
             console.log(data);  // 輸出返回的數據
             const groupName = data.groupName;
             const money = data.money;
-            setDataList(prevDataList => [...prevDataList, { groupName, money }]);
+            setDataList1(prevDataList => [...prevDataList, { groupName, money }]);
         })
         .catch(error => {
             console.error('There has been a problem with your fetch operation:', error);
@@ -55,43 +79,47 @@ function Transfer() {
     }, [account]);
 
     useEffect(() => {
-        fetch(`http://localhost:8080/api/transfer/waitForAccept`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                account: account
+        if (!fetchedRef2.current) {
+            fetch(`http://localhost:8080/api/transfer/waitForAccept`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    account: account
+                })
             })
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log(data);  // 輸出返回的數據
-            const groupName = data.groupName;
-            const money = data.money;
-            setDataList2(prevDataList => [...prevDataList, { groupName, money }]);
-        })
-        .catch(error => {
-            console.error('There has been a problem with your fetch operation:', error);
-        });
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data);  // 輸出返回的數據
+                const groupName = data.groupName;
+                const money = data.money;
+                setDataList2(prevDataList => [...prevDataList, { groupName, money }]);
+            })
+            .catch(error => {
+                console.error('There has been a problem with your fetch operation:', error);
+            });
+    
+            fetchedRef2.current = true;
+        }
     }, [account]);
 
     return (
         <div className="container1">
             <div className="section">
                 <div className="section-header">待轉帳</div>
-                {dataList && dataList.map((item, index) => {
+                {dataList1 && dataList1.slice(0, 2).map((item, index) => {
                     const groupNames = item.groupName.split(',');
-                    const moneys = item.money.split(',');
+                    const money = item.money.split(',');
                     return groupNames.map((groupName, i) => (
                         <div key={i} className="row">
                             <div>{groupName}</div>
-                            <div>{moneys[i]}</div>
+                            <div>{money[i]}</div>
                             <div>
                                 <button onClick={() => handleAccept(index)}>接受</button>
                                 <button onClick={() => handleReject(index)}>拒絕</button>
@@ -99,19 +127,39 @@ function Transfer() {
                         </div>
                     ));
                 })}
-                <div className="section-footer" onClick={() => setShowAll1(!showAll1)}>
-                    {showAll1 ? 'see less' : 'see all'}
+                <div className="section-footer" onClick={() => handleShowAll1()}>
+                    show all
                 </div>
+                {isModalOpen1 && (
+                    <Modal onClose={handleCloseModal1}>
+                        {dataList1.map((item, index) => {
+                            const groupNames = item.groupName.split(',');
+                            const money = item.money.split(',');
+                            return groupNames.map((groupName, i) => (
+                                <div key={`${index}-${i}`} className="row">
+                                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                        <div>{groupName}</div>
+                                        <div>{money[i]}</div>
+                                    </div>
+                                    <div>
+                                        <button onClick={() => handleAccept(index)}>接受</button>
+                                        <button onClick={() => handleReject(index)}>拒絕</button>
+                                    </div>
+                                </div>
+                            ));
+                        })}
+                    </Modal>
+                )} 
             </div>
             <div className="section">
                 <div className="section-header">待接受</div>
-                {dataList2 && dataList2.map((item, index) => {
+                {dataList2 && dataList2.slice(0, 2).map((item, index) => {
                     const groupNames = item.groupName.split(',');
-                    const moneys = item.money.split(',');
+                    const money = item.money.split(',');
                     return groupNames.map((groupName, i) => (
                         <div key={i} className="row">
                             <div>{groupName}</div>
-                            <div>{moneys[i]}</div>
+                            <div>{money[i]}</div>
                             <div>
                                 <button onClick={() => handleAccept(index)}>接受</button>
                                 <button onClick={() => handleReject(index)}>拒絕</button>
@@ -119,9 +167,29 @@ function Transfer() {
                         </div>
                     ));
                 })}
-                <div className="section-footer" onClick={() => setShowAll1(!showAll2)}>
-                    {showAll2 ? 'see less' : 'see all'}
+                <div className="section-footer" onClick={() => handleShowAll2()}>
+                    show all
                 </div>
+                {isModalOpen2 && (
+                    <Modal onClose={handleCloseModal2}>
+                        {dataList2.map((item, index) => {
+                            const groupNames = item.groupName.split(',');
+                            const money = item.money.split(',');
+                            return groupNames.map((groupName, i) => (
+                                <div key={`${index}-${i}`} className="row">
+                                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                        <div>{groupName}</div>
+                                        <div>{money[i]}</div>
+                                    </div>
+                                    <div>
+                                        <button onClick={() => handleAccept(index)}>接受</button>
+                                        <button onClick={() => handleReject(index)}>拒絕</button>
+                                    </div>
+                                </div>
+                            ));
+                        })}
+                    </Modal>
+                )} 
             </div>
             {isModalOpen && (
                 <Modal onClose={handleCloseModal}>
