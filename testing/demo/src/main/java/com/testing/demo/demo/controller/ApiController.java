@@ -485,5 +485,27 @@ public class ApiController {
         response.put("success", "true");
         return ResponseEntity.ok(response);
     }
+        @PostMapping("/acceptTransfer")
+        public ResponseEntity<Map<String, String>> acceptTransfer(@RequestBody requestRequest acceptTransferRequest) { 
+            Map<String, String> response = new HashMap<>();
+            System.out.println(acceptTransferRequest.getTransferName());
+            UserCase user =  myDataRepository.findByUserAccount(acceptTransferRequest.getAccount());
+            TradeCase trade = tradeInfoDataRepository.findByTransferName(acceptTransferRequest.getTransferName());
+            Integer index = user.getUserTradeList().indexOf(trade.getTransferId());
+            if (index == -1  ){
+                System.out.println("error");
+                response.put("message", "error");
+                return ResponseEntity.badRequest().body(response);
+            }
+            if(user.getUserStateList().get(index).equals("waitPay")){
+                // user.setUserState(index, "done");
+                ArrayList<String> state = user.getUserStateList();
+                state.set(index, "done");
+                user.setUserStateList(state);
+                myDataRepository.save(user);
+            }
+            response.put("success", "true");
+            return ResponseEntity.ok(response);
+        }
 }
 
