@@ -95,4 +95,10 @@ import org.springframework.data.annotation.Id;
         public void setUserGroupList(ArrayList<String> userGroupList) {
             this.userGroupList = userGroupList;
         }
+
+        public void removeUserTrade(String tradeId) {
+            Integer StateIndex = this.userTradeList.indexOf(tradeId);
+            this.userTradeList.remove(StateIndex);
+            this.userTradeList.remove(tradeId);
+        }
     }

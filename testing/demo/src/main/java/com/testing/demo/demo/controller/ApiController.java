@@ -389,11 +389,20 @@ public class ApiController {
     }
 
     @PostMapping("/reject")
-    
     public ResponseEntity<Map<String, String>> reject(@RequestBody requestRequest rejectRequest) {  
         Map<String, String> response = new HashMap<>();
         UserCase user =  myDataRepository.findByUserAccount(rejectRequest.getAccount());
-        Integer index = user.getUserTradeList().indexOf(rejectRequest.getGroupName());
+        TradeCase trade = tradeInfoDataRepository.findByTransferName(rejectRequest.getTransferName());
+        Integer index = user.getUserTradeList().indexOf(trade.getTransferId());
+        if (index == -1 || user==null ){
+            System.out.println("error");
+            response.put("message", "error");
+            return ResponseEntity.badRequest().body(response);
+        }
+        //remove trade
+        user.removeUserTrade(trade.getTransferId());
+        myDataRepository.save(user);
+        
         response.put("success", "true");
         return ResponseEntity.ok(response);
     }
@@ -402,16 +411,22 @@ public class ApiController {
     @PostMapping("/accept")
     public ResponseEntity<Map<String, String>> accept(@RequestBody requestRequest acceptRequest) {
         Map<String, String> response = new HashMap<>();
+        System.out.println(acceptRequest.getTransferName());
         UserCase user =  myDataRepository.findByUserAccount(acceptRequest.getAccount());
-        Integer index = user.getUserTradeList().indexOf(acceptRequest.getGroupName());
-        if(acceptRequest.getIndex().equals("transfer")){
+        TradeCase trade = tradeInfoDataRepository.findByTransferName(acceptRequest.getTransferName());
+        Integer index = user.getUserTradeList().indexOf(trade.getTransferId());
+        if (index == -1 || user==null ){
+            System.out.println("error");
+            response.put("message", "error");
+            return ResponseEntity.badRequest().body(response);
+        }
+        if(user.getUserStateList().get(index).equals("waitPay")){
             user.setUserState(index, "done");
             myDataRepository.save(user);
-        }else if (acceptRequest.getIndex().equals("accept")){
+        }else if(user.getUserStateList().get(index).equals("wait")){
             user.setUserState(index, "waitPay");
             myDataRepository.save(user);
         }
-        
         response.put("success", "true");
         return ResponseEntity.ok(response);
     }

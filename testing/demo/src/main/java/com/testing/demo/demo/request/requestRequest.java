@@ -3,10 +3,10 @@ package com.testing.demo.demo.request;
 public class requestRequest {
     private String account;
     private String index;
-    private String groupName;
+    private String transferName;
 
-    public String getGroupName() {
-        return groupName;
+    public String getTransferName() {
+        return transferName;
     }
     public String getAccount() {
         return account;
