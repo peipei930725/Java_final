@@ -193,13 +193,15 @@ function Transfer() {
                     const groupNames = item.groupName.split(',');
                     const money = item.money.split(',');
                     return groupNames.map((groupName, i) => (
-                        <div key={i} className="row">
-                            <div>{groupName}</div>
-                            <div>{money[i]}</div>
-                            <div>
-                                <button onClick={() => handleAcceptTransfer(groupName)}>轉帳</button>
+                        groupName != "null" && money[i] != "null" ? (
+                            <div key={i} className="row">
+                                <div>{groupName}</div>
+                                <div>${money[i]}</div>
+                                <div>
+                                    <button onClick={() => handleAcceptTransfer(groupName)}>轉帳</button>
+                                </div>
                             </div>
-                        </div>
+                        ) : "目前無資料"
                     ));
                 })}
                 <div className="section-footer" onClick={() => handleShowAll1()}>
@@ -212,15 +214,17 @@ function Transfer() {
                             const groupNames = item.groupName.split(',');
                             const money = item.money.split(',');
                             return groupNames.map((groupName, i) => (
-                                <div key={`${index}-${i}`} className="row">
-                                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                        <div>{groupName}</div>
-                                        <div>{money[i]}</div>
+                                groupName != "null" && money[i] != "null" ? (
+                                    <div key={`${index}-${i}`} className="row">
+                                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                            <div>{groupName}</div>
+                                            <div>${money[i]}</div>
+                                        </div>
+                                        <div>
+                                            <button onClick={() => handleAcceptTransfer(groupName)}>轉帳</button>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <button onClick={() => handleAcceptTransfer(groupName)}>轉帳</button>
-                                    </div>
-                                </div>
+                                ) : null
                             ));
                         })}
                         <button type="button" className="btn btn-secondary" onClick={handleCloseModal1}>關閉</button>
@@ -234,14 +238,16 @@ function Transfer() {
                     const groupNames = item.groupName.split(',');
                     const money = item.money.split(',');
                     return groupNames.map((groupName, i) => (
-                        <div key={i} className="row">
-                            <div>{groupName}</div>
-                            <div>{money[i]}</div>
-                            <div>
-                                <button onClick={() => handleAccept(groupName)}>接受</button>
-                                <button onClick={() => handleReject(groupName)}>拒絕</button>
+                        groupName != "null" && money[i] != "null" ? (
+                            <div key={i} className="row">
+                                <div>{groupName}</div>
+                                <div>${money[i]}</div>
+                                <div>
+                                    <button onClick={() => handleAccept(groupName)}>接受</button>
+                                    <button onClick={() => handleReject(groupName)}>拒絕</button>
+                                </div>
                             </div>
-                        </div>
+                        ) : "目前無資料"
                     ));
                 })}
                 <div className="section-footer" onClick={() => handleShowAll2()}>
@@ -254,16 +260,18 @@ function Transfer() {
                             const groupNames = item.groupName.split(',');
                             const money = item.money.split(',');
                             return groupNames.map((groupName, i) => (
-                                <div key={`${index}-${i}`} className="row">
-                                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                        <div>{groupName}</div>
-                                        <div>{money[i]}</div>
+                                groupName != "null" && money[i] != "null" ? (
+                                    <div key={`${index}-${i}`} className="row">
+                                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                            <div>{groupName}</div>
+                                            <div>${money[i]}</div>
+                                        </div>
+                                        <div>
+                                            <button onClick={() => handleAccept(groupName)}>接受</button>
+                                            <button onClick={() => handleReject(groupName)}>拒絕</button>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <button onClick={() => handleAccept(groupName)}>接受</button>
-                                        <button onClick={() => handleReject(groupName)}>拒絕</button>
-                                    </div>
-                                </div>
+                                ) : null
                             ));
                         })}
                         <button type="button" className="btn btn-secondary" onClick={handleCloseModal2}>關閉</button>

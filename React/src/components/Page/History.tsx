@@ -168,10 +168,12 @@ function History() {
                     const groupNames = item.groupName.split(',');
                     const money = item.money.split(',');
                     return groupNames.map((groupName, i) => (
-                        <div key={i} className="row">
-                            <div>{groupName}</div>
-                            <div>{money[i]}</div>
-                        </div>
+                        groupName != "null" && money[i] != "null" ? (
+                            <div key={i} className="row">
+                                <div>{groupName}</div>
+                                <div>${money[i]}</div>
+                            </div>
+                        ) : "目前無資料"
                     ));
                 })}
                 <div className="section-footer" onClick={() => handleShowAll1()}>
@@ -184,12 +186,14 @@ function History() {
                             const groupNames = item.groupName.split(',');
                             const money = item.money.split(',');
                             return groupNames.map((groupName, i) => (
-                                <div key={`${index}-${i}`} className="row">
-                                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                        <div>{groupName}</div>
-                                        <div>{money[i]}</div>
+                                groupName != "null" && money[i] != "null" ? (
+                                    <div key={`${index}-${i}`} className="row">
+                                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                            <div>{groupName}</div>
+                                            <div>${money[i]}</div>
+                                        </div>
                                     </div>
-                                </div>
+                                ) : null
                             ));
                         })}
                         <button type="button" className="btn btn-secondary" onClick={handleCloseModal1}>關閉</button>
@@ -203,10 +207,12 @@ function History() {
                     const groupNames = item.groupName.split(',');
                     const count = item.count.split(',');
                     return groupNames.map((groupName, i) => (
-                        <div key={i} className="row">
-                            <div>{groupName}</div>
-                            <div>{count[i]}</div>
-                        </div>
+                        groupName != "null" && count[i] != "null" ? (
+                            <div key={i} className="row">
+                                <div>{groupName}</div>
+                                <div>{count[i]}</div>
+                            </div>
+                        ) : "目前無資料"
                     ));
                 })}
                 <div className="section-footer" onClick={() => handleShowAll2()}>
@@ -219,12 +225,14 @@ function History() {
                             const groupNames = item.groupName.split(',');
                             const counts = item.count.split(',');
                             return groupNames.map((groupName, i) => (
-                                <div key={`${index}-${i}`} className="row">
-                                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                        <div>{groupName}</div>
-                                        <div>{counts[i]}</div>
+                                groupName != "null" && counts[i] != "null" ? (
+                                    <div key={`${index}-${i}`} className="row">
+                                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                            <div>{groupName}</div>
+                                            <div>{counts[i]}</div>
+                                        </div>
                                     </div>
-                                </div>
+                                ) : null
                             ));
                         })}
                         <button type="button" className="btn btn-secondary" onClick={handleCloseModal2}>關閉</button>
@@ -238,10 +246,12 @@ function History() {
                     const groupNames = item.groupName.split(',');
                     const count = item.count.split(',');
                     return groupNames.map((groupName, i) => (
-                        <div key={i} className="row">
-                            <div>{groupName}</div>
-                            <div>{count[i]}</div>
-                        </div>
+                        groupName != "null" && count[i] != "null" ? (
+                            <div key={i} className="row">
+                                <div>{groupName}</div>
+                                <div>{count[i]}</div>
+                            </div>
+                        ) : "目前無資料"
                     ));
                 })}
                 <div className="section-footer" onClick={() => handleShowAll3()}>
@@ -254,12 +264,14 @@ function History() {
                             const groupNames = item.groupName.split(',');
                             const counts = item.count.split(',');
                             return groupNames.map((groupName, i) => (
-                                <div key={`${index}-${i}`} className="row">
-                                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                        <div>{groupName}</div>
-                                        <div>{counts[i]}</div>
+                                groupName != "null" && counts[i] != "null" ? (
+                                    <div key={`${index}-${i}`} className="row">
+                                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                            <div>{groupName}</div>
+                                            <div>{counts[i]}</div>
+                                        </div>
                                     </div>
-                                </div>
+                                ) : null
                             ));
                         })}
                         <button type="button" className="btn btn-secondary" onClick={handleCloseModal2}>關閉</button>
