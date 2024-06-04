@@ -20,14 +20,14 @@ function Transfer() {
     const fetchedRef1 = useRef(false);
     const fetchedRef2 = useRef(false);
 
-    function handleAcceptTransfer(groupName) {
+    function handleAcceptTransfer(transferName) {
         fetch('http://localhost:8080/api/acceptTransfer', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                groupName: groupName,
+                transferName: transferName,
                 account: account  // 將 account 加入到請求體中
             })
         })
@@ -191,7 +191,7 @@ function Transfer() {
                             <div>{groupName}</div>
                             <div>{money[i]}</div>
                             <div>
-                                <button onClick={() => handleAcceptTransfer(index)}>轉帳</button>
+                                <button onClick={() => handleAcceptTransfer(groupName)}>轉帳</button>
                             </div>
                         </div>
                     ));
