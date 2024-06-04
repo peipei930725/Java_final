@@ -1,5 +1,4 @@
 import React, { ReactNode ,useState } from "react";
-import './Add.css'
 import { Modaloverlay } from "../Theme";
 import { useAuth } from '../../AuthContext';
 

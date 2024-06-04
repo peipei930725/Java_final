@@ -87,7 +87,6 @@ export const Modaloverlay=styled.div`
         max-width: 500px;
         width: 100%;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        /* text-align: center; */
     }
     ::placeholder{
         color:${(props) => props.theme.color.text};

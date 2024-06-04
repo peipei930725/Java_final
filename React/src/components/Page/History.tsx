@@ -195,7 +195,9 @@ function History() {
                                 ) : null
                             ));
                         })}
+                        <div className="col-12">
                         <button type="button" className="btn btn-secondary" onClick={handleCloseModal1}>關閉</button>
+                        </div>
                         </div>
                     </Modaloverlay>
                 )} 
@@ -234,7 +236,9 @@ function History() {
                                 ) : null
                             ));
                         })}
+                        <div className="col-12">
                         <button type="button" className="btn btn-secondary" onClick={handleCloseModal2}>關閉</button>
+                        </div>
                         </div>
                     </Modaloverlay>
                 )} 
@@ -273,7 +277,9 @@ function History() {
                                 ) : null
                             ));
                         })}
-                        <button type="button" className="btn btn-secondary" onClick={handleCloseModal2}>關閉</button>
+                        <div className="col-12">
+                        <button type="button" className="btn btn-secondary" onClick={handleCloseModal3}>關閉</button>
+                        </div>
                         </div>
                     </Modaloverlay>
                 )} 
