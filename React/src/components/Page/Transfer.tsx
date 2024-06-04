@@ -93,8 +93,7 @@ function Transfer() {
                             <div>{groupName}</div>
                             <div>{moneys[i]}</div>
                             <div>
-                                <button onClick={() => handleAccept(index)}>接受</button>
-                                <button onClick={() => handleReject(index)}>拒絕</button>
+                                <button onClick={() => handleAccept(index)}>詳情</button>
                             </div>
                         </div>
                     ));
