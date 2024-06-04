@@ -88,6 +88,10 @@ import org.springframework.data.annotation.Id;
             this.userStateList.add(state);
         }
 
+        public void setUserState(Integer index, String state) {
+            this.userStateList.set(index, state);
+        }
+
         public void setUserGroupList(ArrayList<String> userGroupList) {
             this.userGroupList = userGroupList;
         }
