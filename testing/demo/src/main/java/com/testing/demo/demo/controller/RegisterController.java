@@ -42,10 +42,10 @@ public class RegisterController {
     @PostMapping("/register")
     public ResponseEntity<Map<String, String>> register(@RequestBody RegisterRequest registerRequest) {
         Map<String, String> response = new HashMap<>();
-        // 打印接收到的账户和密码
-        System.out.println("Received name: " + registerRequest.getFirstName()+" "+registerRequest.getLastName());
-        System.out.println("Received account: " + registerRequest.getAccount());
-        System.out.println("Received password: " + registerRequest.getPasswd());
+        
+        // System.out.println("Received name: " + registerRequest.getFirstName()+" "+registerRequest.getLastName());
+        // System.out.println("Received account: " + registerRequest.getAccount());
+        // System.out.println("Received password: " + registerRequest.getPasswd());
 
         UserCase  existingUserCase = myDataRepository.findByUserAccount(registerRequest.getAccount());
         if (registerRequest.getAccount() == "" || registerRequest.getPasswd() == "" || registerRequest.getFirstName()== "" || registerRequest.getLastName()==""){

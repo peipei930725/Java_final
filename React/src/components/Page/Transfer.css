@@ -6,7 +6,10 @@
 }
 
 .container1 .section .row {
+    padding-top: 5px;
+    padding-bottom: 5px;
     display: flex;
+    flex-direction: row;
     align-items: center; /* Ensure items are centered vertically */
     flex: 1; /* Ensure each row takes equal width */
 }

@@ -58,4 +58,7 @@ public class TradeCase {
         this.userList.add(userId);
     }
 
+    public void setUserList(ArrayList<String> userList) {
+        this.userList = userList;
+    }
 }

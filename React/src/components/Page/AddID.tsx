@@ -4,7 +4,7 @@ import { useAuth } from "../../AuthContext";
 
 export default function AddID({onToggleModal}) {
     const [transferId, setTransferId]=useState('')
-    const {account} =useAuth()
+    const {account,colormode} =useAuth()
 
     const [IDStatus, setIDStatus] = useState('');
     const handleSignupClick = async (event) => {

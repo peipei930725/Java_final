@@ -48,12 +48,9 @@ public class LoginController {
     @PostMapping("/login")
     public ResponseEntity<Map<String, String>> login(@RequestBody LoginRequest loginRequest) {
         Map<String, String> response = new HashMap<>();
-        // 打印接收到的账户和密码
-        System.out.println("Received account: " + loginRequest.getAccount());
-        System.out.println("Received password: " + loginRequest.getPasswd());
-
-        // 您可以在这里添加对账户和密码的验证逻辑
-        // ...
+        // System.out.println("Received account: " + loginRequest.getAccount());
+        // System.out.println("Received password: " + loginRequest.getPasswd());
+        
         UserCase  existingUserCase = myDataRepository.findByUserAccount(loginRequest.getAccount());
         if (existingUserCase == null ) {
             response.put("message", "帳號不存在");
