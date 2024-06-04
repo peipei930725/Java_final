@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;  // 導入 StudentDto 類
 
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,21 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.testing.demo.demo.model.GroupCase;
-import com.testing.demo.demo.model.TradeCase;
-import com.testing.demo.demo.model.UserCase;
-import com.testing.demo.demo.repository.GroupRepository;
-import com.testing.demo.demo.repository.MyDataRepository;
-import com.testing.demo.demo.repository.TradeInfoDataRepository;
-import com.testing.demo.demo.request.AddGroupRequest;
-import com.testing.demo.demo.request.AddTransferRequest;
-import com.testing.demo.demo.request.GroupRequest;
-import com.testing.demo.demo.request.HistoryDoneRequest;
-import com.testing.demo.demo.request.HistoryToBeAcceptedRequest;
-import com.testing.demo.demo.request.HistoryToBeTransferredRequest;
-import com.testing.demo.demo.request.TradeRequest;
-import com.testing.demo.demo.request.WaitForAcceptRequest;
-import com.testing.demo.demo.request.WaitForTransferRequest;
+import com.testing.demo.demo.model.*;
+import com.testing.demo.demo.repository.*;
+import com.testing.demo.demo.request.*;
 
 
 
@@ -350,6 +339,7 @@ public class ApiController {
     
     @PostMapping("/history/toBeAccept")
     public ResponseEntity<Map<String, String>> historyToBeAccept(@RequestBody HistoryToBeAcceptedRequest historyToBeAcceptRequest) {
+
         System.out.println(historyToBeAcceptRequest.getAccount());
         UserCase user =  myDataRepository.findByUserAccount(historyToBeAcceptRequest.getAccount());
         Map<String, String> response = new HashMap<>();
@@ -397,6 +387,33 @@ public class ApiController {
         response.put("success", "true");
         return ResponseEntity.ok(response);
     }
+
+    @PostMapping("/reject")
     
+    public ResponseEntity<Map<String, String>> reject(@RequestBody requestRequest rejectRequest) {  
+        Map<String, String> response = new HashMap<>();
+        UserCase user =  myDataRepository.findByUserAccount(rejectRequest.getAccount());
+        Integer index = user.getUserTradeList().indexOf(rejectRequest.getGroupName());
+        response.put("success", "true");
+        return ResponseEntity.ok(response);
+    }
+
+    
+    @PostMapping("/accept")
+    public ResponseEntity<Map<String, String>> accept(@RequestBody requestRequest acceptRequest) {
+        Map<String, String> response = new HashMap<>();
+        UserCase user =  myDataRepository.findByUserAccount(acceptRequest.getAccount());
+        Integer index = user.getUserTradeList().indexOf(acceptRequest.getGroupName());
+        if(acceptRequest.getIndex().equals("transfer")){
+            user.setUserState(index, "done");
+            myDataRepository.save(user);
+        }else if (acceptRequest.getIndex().equals("accept")){
+            user.setUserState(index, "waitPay");
+            myDataRepository.save(user);
+        }
+        
+        response.put("success", "true");
+        return ResponseEntity.ok(response);
+    }
 }
 
