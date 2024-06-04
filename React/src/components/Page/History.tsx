@@ -81,13 +81,15 @@ function History() {
                 console.log(data);  // 輸出返回的數據
                 const groupName = data.groupName;
                 const money = data.money;
+                setDataList1([]);
                 setDataList1(prevDataList => [...prevDataList, { groupName, money }]);
+                fetchedRef1.current = true;
             })
             .catch(error => {
                 console.error('There has been a problem with your fetch operation:', error);
             });
     
-            fetchedRef1.current = true;
+
         }
     }, [account]);
 
@@ -112,13 +114,15 @@ function History() {
                 console.log(data);  // 輸出返回的數據
                 const groupName = data.groupName;
                 const count = data.count;
+                setDataList2([]);
                 setDataList2(prevDataList => [...prevDataList, { groupName, count }]);
+                fetchedRef2.current = true;
             })
             .catch(error => {
                 console.error('There has been a problem with your fetch operation:', error);
             });
     
-            fetchedRef2.current = true;
+  
         }
     }, [account]);
 
@@ -143,13 +147,15 @@ function History() {
                 console.log(data);  // 輸出返回的數據
                 const groupName = data.groupName;
                 const count = data.count;
+                setDataList3([]);
                 setDataList3(prevDataList => [...prevDataList, { groupName, count }]);
+                fetchedRef3.current = true;
             })
             .catch(error => {
                 console.error('There has been a problem with your fetch operation:', error);
             });
     
-            fetchedRef3.current = true;
+
         }
     }, [account]);
 
