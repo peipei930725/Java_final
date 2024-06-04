@@ -7,6 +7,7 @@
 
 .container1 .section .row {
     display: flex;
+    flex-direction: row;
     align-items: center; /* Ensure items are centered vertically */
     flex: 1; /* Ensure each row takes equal width */
 }
