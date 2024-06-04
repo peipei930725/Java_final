@@ -4,6 +4,7 @@ import AddTransfer from './AddTransfer';
 import CreateGroup from './CreateGroup';
 import AddID from './AddID';
 import './Add.css';
+import {useAuth} from '../../AuthContext'
 
 import BorderColorIcon from '@mui/icons-material/BorderColor';
 import KeyboardIcon from '@mui/icons-material/Keyboard';
@@ -14,6 +15,7 @@ import Groups2Icon from '@mui/icons-material/Groups2';
 function AddCtrl() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentView, setCurrentView] = useState('');
+  const {colormode}=useAuth()
 
   const handleButtonClick = (view) => {
     setCurrentView(view);

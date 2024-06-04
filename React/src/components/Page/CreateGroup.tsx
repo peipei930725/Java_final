@@ -5,7 +5,7 @@ import { useAuth } from '../../AuthContext';
 export default function CreateGroup({onToggleModal}) {
     const [groupName, SetgroupName]=useState('')
     const [groupSize, SetgroupSize]=useState('')
-    const {account} =useAuth()
+    const {account,colormode} =useAuth()
 
     const [CreateGroupStatus, SetCreateGroupStatus] = useState('');
     const handleSignupClick = async (event) => {

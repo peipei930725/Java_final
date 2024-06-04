@@ -1,50 +1,31 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+.container1 .section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Ensure items are centered vertically */
+    font-size: 1.2em; /* Adjust font size */
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+.container1 .section .row {
+    display: flex;
+    align-items: center; /* Ensure items are centered vertically */
+    flex: 1; /* Ensure each row takes equal width */
 }
 
-.container1 {
-    width: 80%;
-    margin: 50px auto;
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.container1 .section .row div {
+    flex: 1; /* Ensure each div takes equal width */
+    text-align: center; /* Center text within div */
 }
 
-.section {
-    margin-bottom: 30px;
+.container1 .section .row div:first-child {
+    text-align: left; /* Align text to the left for the first div */
 }
 
-.section-header {
-    font-size: 18px;
-    font-weight: bold;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #8adbd1;
+.container1 .section .row div:last-child {
+    text-align: right; /* Align text to the right for the last div */
 }
 
-.section-content {
-    list-style-type: none;
-    padding: 10px 0;
-}
-
-.section-content li {
-    display: block;
-    padding: 5px 0;
-}
-
-.section-footer {
-    text-align: right;
-    color: #8adbd1;
-    cursor: pointer;
-}
-
-.section-footer:hover {
-    text-decoration: underline;
+.container1 .section .row button {
+    margin: 0 10px; /* Add spacing between buttons */
+    border: none; /* Remove button borders */
+    width: 50px; /* Set button width */
 }

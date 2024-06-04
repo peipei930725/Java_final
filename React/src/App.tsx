@@ -14,11 +14,13 @@ import {
 import Sidebar from "./components/Sidebar";
 import "./App.css";
 import { AuthProvider, useAuth } from "./AuthContext";
+import AddGroup from "./components/Page/AddGroup";
 
 function App() {
 
 
   return (
+    
       <AuthProvider>
         <BrowserRouter>
           <Content />
@@ -52,7 +54,7 @@ function Content(){
         <div className="Sidebar">
           <Sidebar />
         </div>
-        <main className="main" style={{backgroundColor:colormode=='light'?'#F5F5F5':'#121212'}}>
+        <main className="main" style={{backgroundColor:colormode=='light'?'#fff':'#121212'}}>
           <Routes>
             <Route path="/Add" Component={AddCtrl} />
             <Route path="/Transfer" Component={Transfer} />

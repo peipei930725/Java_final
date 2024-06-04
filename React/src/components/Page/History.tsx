@@ -8,6 +8,9 @@ interface Item {
 }
 
 function History() {
+    const [dataList1, setDataList1] = useState([]);
+    const [dataList2, setDataList2] = useState([]);
+    const [dataList3, setDataList3] = useState([]);
     const [data1, setData1] = useState<Item[]>([]);
     const [data2, setData2] = useState<Item[]>([]);
     const [data3, setData3] = useState<Item[]>([]);
@@ -28,103 +31,133 @@ function History() {
     };
 
     useEffect(() => {
-    if (account) {
         fetch(`http://localhost:8080/api/history/done`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            account: account
-        })
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                account: account
+            })
         })
         .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
         })
-        .then(data => setData1(data))
-        .catch(error => console.error('There has been a problem with your fetch operation:', error));
-    }
+        .then(data => {
+            console.log(data);  // 輸出返回的數據
+            const groupName = data.groupName;
+            const money = data.money;
+            setDataList1(prevDataList => [...prevDataList, { groupName, money }]);
+        })
+        .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+        });
     }, [account]);
 
     useEffect(() => {
-        if (account) {
-          fetch(`http://localhost:8080/api/history/toBeTransfer`, {
+        fetch(`http://localhost:8080/api/history/toBeTransfer`, {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-              account: account
+                account: account
             })
-          })
-          .then(response => {
+        })
+        .then(response => {
             if (!response.ok) {
-              throw new Error('Network response was not ok');
+                throw new Error('Network response was not ok');
             }
             return response.json();
-          })
-          .then(data => setData2(data))
-          .catch(error => console.error('There has been a problem with your fetch operation:', error));
-        }
-      }, [account]);
+        })
+        .then(data => {
+            console.log(data);  // 輸出返回的數據
+            const groupName = data.groupName;
+            const count = data.count;
+            setDataList2(prevDataList => [...prevDataList, { groupName, count }]);
+        })
+        .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+        });
+    }, [account]);
 
-      useEffect(() => {
-        if (account) {
-          fetch(`http://localhost:8080/api/history/toBeAccept`, {
+    useEffect(() => {
+        fetch(`http://localhost:8080/api/history/toBeAccept`, {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-              account: account
+                account: account
             })
-          })
-          .then(response => {
+        })
+        .then(response => {
             if (!response.ok) {
-              throw new Error('Network response was not ok');
+                throw new Error('Network response was not ok');
             }
             return response.json();
-          })
-          .then(data => setData3(data))
-          .catch(error => console.error('There has been a problem with your fetch operation:', error));
-        }
-      }, [account]);
+        })
+        .then(data => {
+            console.log(data);  // 輸出返回的數據
+            const groupName = data.groupName;
+            const count = data.count;
+            setDataList3(prevDataList => [...prevDataList, { groupName, count }]);
+        })
+        .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+        });
+    }, [account]);
 
     return (
-        <div className="container1" id='block'>
+        <div className="container1">
             <div className="section">
                 <div className="section-header">Done</div>
-                <ul className="section-content">
-                    {/* {(showAll1 ? data1 : data1.slice(0, 2)).map((item, index) => (
-                        <li key={index}>{item.name} <span>{item.value}</span></li>
-                    ))} */}
-                </ul>
+                {dataList1 && dataList1.map((item, index) => {
+                    const groupNames = item.groupName.split(',');
+                    const moneys = item.money.split(',');
+                    return groupNames.map((groupName, i) => (
+                        <div key={i} className="row">
+                            <div>{groupName}</div>
+                            <div>{moneys[i]}</div>
+                        </div>
+                    ));
+                })}
                 <div className="section-footer" onClick={() => setShowAll1(!showAll1)}>
                     {showAll1 ? 'see less' : 'see all'}
                 </div>
             </div>
             <div className="section">
-                <div className="section-header">To be Transferred</div>
-                <ul className="section-content">
-                    {/* {(showAll2 ? data2 : data2.slice(0, 2)).map((item, index) => (
-                        <li key={index}>{item.name} <span>{item.value}</span></li>
-                    ))} */}
-                </ul>
-                <div className="section-footer" onClick={() => setShowAll2(!showAll2)}>
+                <div className="section-header">To be Transfered</div>
+                {dataList2 && dataList2.map((item, index) => {
+                    const groupNames = item.groupName.split(',');
+                    const count = item.count.split(',');
+                    return groupNames.map((groupName, i) => (
+                        <div key={i} className="row">
+                            <div>{groupName}</div>
+                            <div>{count[i]}</div>
+                        </div>
+                    ));
+                })}
+                <div className="section-footer" onClick={() => setShowAll1(!showAll2)}>
                     {showAll2 ? 'see less' : 'see all'}
                 </div>
             </div>
             <div className="section">
                 <div className="section-header">To be Accepted</div>
-                <ul className="section-content">
-                    {/* {(showAll3 ? data3 : data3.slice(0, 2)).map((item, index) => (
-                        <li key={index}>{item.name} <span>{item.value}</span></li>
-                    ))} */}
-                </ul>
-                <div className="section-footer" onClick={() => setShowAll3(!showAll3)}>
+                {dataList3 && dataList3.map((item, index) => {
+                    const groupNames = item.groupName.split(',');
+                    const count = item.count.split(',');
+                    return groupNames.map((groupName, i) => (
+                        <div key={i} className="row">
+                            <div>{groupName}</div>
+                            <div>{count[i]}</div>
+                        </div>
+                    ));
+                })}
+                <div className="section-footer" onClick={() => setShowAll1(!showAll3)}>
                     {showAll3 ? 'see less' : 'see all'}
                 </div>
             </div>
