@@ -1,6 +1,7 @@
 import React, { useEffect, useState ,useRef } from 'react';
 import './History.css';
 import { useAuth } from '../../AuthContext';
+import { HistoryAndTransferContainer, Modaloverlay } from '../Theme';
 
 interface Item {
     name: string;
@@ -160,9 +161,9 @@ function History() {
     }, [account]);
 
     return (
-        <div className="container1">
+        <HistoryAndTransferContainer>
             <div className="section">
-                <div className="section-header">Done</div>
+                <div className="section-header">已完成</div>
                 {dataList1 && dataList1.slice(0, 2).map((item, index) => {
                     const groupNames = item.groupName.split(',');
                     const money = item.money.split(',');
@@ -177,7 +178,8 @@ function History() {
                     show all
                 </div>
                 {isModalOpen1 && (
-                    <Modal onClose={handleCloseModal1}>
+                    <Modaloverlay>
+                        <div className='modal-box'>
                         {dataList1.map((item, index) => {
                             const groupNames = item.groupName.split(',');
                             const money = item.money.split(',');
@@ -190,7 +192,9 @@ function History() {
                                 </div>
                             ));
                         })}
-                    </Modal>
+                        <button type="button" className="btn btn-secondary" onClick={handleCloseModal1}>關閉</button>
+                        </div>
+                    </Modaloverlay>
                 )} 
             </div>
             <div className="section">
@@ -209,7 +213,8 @@ function History() {
                     show all
                 </div>
                 {isModalOpen2 && (
-                    <Modal onClose={handleCloseModal2}>
+                    <Modaloverlay>
+                        <div className='modal-box'>
                         {dataList2.map((item, index) => {
                             const groupNames = item.groupName.split(',');
                             const counts = item.count.split(',');
@@ -222,7 +227,9 @@ function History() {
                                 </div>
                             ));
                         })}
-                    </Modal>
+                        <button type="button" className="btn btn-secondary" onClick={handleCloseModal2}>關閉</button>
+                        </div>
+                    </Modaloverlay>
                 )} 
             </div>
             <div className="section">
@@ -241,7 +248,8 @@ function History() {
                     show all
                 </div>
                 {isModalOpen3 && (
-                    <Modal onClose={handleCloseModal3}>
+                    <Modaloverlay>
+                        <div className='modal-box'>
                         {dataList3.map((item, index) => {
                             const groupNames = item.groupName.split(',');
                             const counts = item.count.split(',');
@@ -254,41 +262,12 @@ function History() {
                                 </div>
                             ));
                         })}
-                    </Modal>
+                        <button type="button" className="btn btn-secondary" onClick={handleCloseModal2}>關閉</button>
+                        </div>
+                    </Modaloverlay>
                 )} 
             </div>
-            {isModalOpen && (
-                <Modal onClose={handleCloseModal}>
-                    <h1>{currentView}</h1>
-                </Modal>
-            )}
-        </div>
-    );
-}
-
-function Modal({ children, onClose }) {
-    return (
-      <div style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        zIndex: 9999,
-      }}>
-        <div style={{
-          backgroundColor: 'white',
-          padding: '20px',
-          borderRadius: '8px',
-        }}>
-          {children}
-          <button onClick={onClose}>Close</button>
-        </div>
-      </div>
+        </HistoryAndTransferContainer>
     );
 }
 

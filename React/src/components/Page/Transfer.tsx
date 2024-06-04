@@ -1,6 +1,6 @@
 import React, { useEffect, useState ,useRef} from 'react';
-import './Transfer.css';
 import { useAuth } from '../../AuthContext';
+import { HistoryAndTransferContainer, Modaloverlay } from '../Theme';
 
 interface Item {
     name: string;
@@ -186,7 +186,7 @@ function Transfer() {
     }, [account]);
 
     return (
-        <div className="container1">
+        <HistoryAndTransferContainer>
             <div className="section">
                 <div className="section-header">待轉帳</div>
                 {dataList1 && dataList1.slice(0, 2).map((item, index) => {
@@ -206,7 +206,8 @@ function Transfer() {
                     show all
                 </div>
                 {isModalOpen1 && (
-                    <Modal onClose={handleCloseModal1}>
+                    <Modaloverlay>
+                        <div className='modal-box'>
                         {dataList1.map((item, index) => {
                             const groupNames = item.groupName.split(',');
                             const money = item.money.split(',');
@@ -222,7 +223,9 @@ function Transfer() {
                                 </div>
                             ));
                         })}
-                    </Modal>
+                        <button type="button" className="btn btn-secondary" onClick={handleCloseModal1}>關閉</button>
+                        </div>
+                    </Modaloverlay>
                 )} 
             </div>
             <div className="section">
@@ -245,7 +248,8 @@ function Transfer() {
                     show all
                 </div>
                 {isModalOpen2 && (
-                    <Modal onClose={handleCloseModal2}>
+                    <Modaloverlay>
+                        <div className='modal-box'>
                         {dataList2.map((item, index) => {
                             const groupNames = item.groupName.split(',');
                             const money = item.money.split(',');
@@ -262,7 +266,9 @@ function Transfer() {
                                 </div>
                             ));
                         })}
-                    </Modal>
+                        <button type="button" className="btn btn-secondary" onClick={handleCloseModal2}>關閉</button>
+                        </div>
+                    </Modaloverlay>
                 )} 
             </div>
             {isModalOpen && (
@@ -270,7 +276,7 @@ function Transfer() {
                     <h1>{currentView}</h1>
                 </Modal>
             )}
-        </div>
+        </HistoryAndTransferContainer>
     );
 }
 

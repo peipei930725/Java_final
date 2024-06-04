@@ -1,5 +1,6 @@
 import React, { ReactNode ,useState } from "react";
 import './Add.css'
+import { Modaloverlay } from "../Theme";
 import { useAuth } from '../../AuthContext';
 
 export default function CreateGroup({onToggleModal}) {
@@ -37,7 +38,7 @@ export default function CreateGroup({onToggleModal}) {
 
   return (
     <>
-        <div className="modal-overlay" >
+        <Modaloverlay >
           <div  className="modal-box">
             <p className="h2">建立群組</p>
             <form className="row g-3">
@@ -68,7 +69,7 @@ export default function CreateGroup({onToggleModal}) {
             </form>
             <p>{CreateGroupStatus}</p>
           </div>
-        </div>
+        </Modaloverlay>
     </>
   );
 }

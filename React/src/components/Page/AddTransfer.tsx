@@ -1,6 +1,7 @@
 import React, { ReactNode ,useState } from "react";
 import './Add.css'
 import { useAuth } from '../../AuthContext';
+import { Modaloverlay } from "../Theme";
 
 export default function AddTransfer({onToggleModal}) {
     const [transferName, SettransferName]=useState('')
@@ -37,7 +38,7 @@ export default function AddTransfer({onToggleModal}) {
 
   return (
     <>
-        <div className="modal-overlay" >
+        <Modaloverlay>
           <div  className="modal-box">
             <p className="h2">建立轉帳</p>
             <form className="row g-3">
@@ -78,7 +79,7 @@ export default function AddTransfer({onToggleModal}) {
             </form>
             <p>{TransferStatus}</p>
           </div>
-        </div>
+        </Modaloverlay>
     </>
   );
 }

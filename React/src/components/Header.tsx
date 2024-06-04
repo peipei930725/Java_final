@@ -5,6 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Form from "react-bootstrap/Form";
 import { useAuth } from "../AuthContext";
+import {HeaderCss } from "./Theme";
 
 import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
 import LogoutIcon from "@mui/icons-material/Logout";
@@ -15,7 +16,7 @@ const Header = () => {
   const {colormode}=useAuth();
   const { changeColor} = useAuth();
   return (
-    <div>
+    <HeaderCss>
       <Navbar expand="lg" bg={colormode} variant={colormode} className="header" style={{paddingLeft:"5px"}}>
         <Container className="m-0 p-2" >
           <Navbar.Brand href="/" style={{fontSize:"25px" }}>
@@ -53,7 +54,7 @@ const Header = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-    </div>
+      </HeaderCss>
   );
 };
 

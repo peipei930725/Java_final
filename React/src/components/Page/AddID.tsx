@@ -1,6 +1,7 @@
 import React, { ReactNode ,useState } from "react";
 import './Add.css'
 import { useAuth } from "../../AuthContext";
+import { Modaloverlay } from "../Theme";
 
 export default function AddID({onToggleModal}) {
     const [transferId, setTransferId]=useState('')
@@ -36,7 +37,7 @@ export default function AddID({onToggleModal}) {
 
     return (
       <>
-          <div className="modal-overlay" >
+          <Modaloverlay >
             <div  className="modal-box">
               <p className="h2">加入交易</p>
               <form className="row g-3">
@@ -57,7 +58,7 @@ export default function AddID({onToggleModal}) {
               </form>
               <p>{IDStatus}</p>
             </div>
-          </div>
+          </Modaloverlay>
       </>
     );
 }
