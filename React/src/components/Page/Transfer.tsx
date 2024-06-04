@@ -196,7 +196,7 @@ function Transfer() {
                         groupName != "null" && money[i] != "null" ? (
                             <div key={i} className="row">
                                 <div>{groupName}</div>
-                                <div>{money[i]}</div>
+                                <div>${money[i]}</div>
                                 <div>
                                     <button onClick={() => handleAcceptTransfer(groupName)}>轉帳</button>
                                 </div>
@@ -217,7 +217,7 @@ function Transfer() {
                                     <div key={`${index}-${i}`} className="row">
                                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                                             <div>{groupName}</div>
-                                            <div>{money[i]}</div>
+                                            <div>${money[i]}</div>
                                         </div>
                                         <div>
                                             <button onClick={() => handleAcceptTransfer(groupName)}>轉帳</button>
@@ -238,7 +238,7 @@ function Transfer() {
                         groupName != "null" && money[i] != "null" ? (
                             <div key={i} className="row">
                                 <div>{groupName}</div>
-                                <div>{money[i]}</div>
+                                <div>${money[i]}</div>
                                 <div>
                                     <button onClick={() => handleAccept(groupName)}>接受</button>
                                     <button onClick={() => handleReject(groupName)}>拒絕</button>
@@ -260,7 +260,7 @@ function Transfer() {
                                     <div key={`${index}-${i}`} className="row">
                                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                                             <div>{groupName}</div>
-                                            <div>{money[i]}</div>
+                                            <div>${money[i]}</div>
                                         </div>
                                         <div>
                                             <button onClick={() => handleAccept(groupName)}>接受</button>

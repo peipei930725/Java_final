@@ -170,7 +170,7 @@ function History() {
                         groupName != "null" && money[i] != "null" ? (
                             <div key={i} className="row">
                                 <div>{groupName}</div>
-                                <div>{money[i]}</div>
+                                <div>${money[i]}</div>
                             </div>
                         ) : "目前無資料"
                     ));
@@ -188,7 +188,7 @@ function History() {
                                     <div key={`${index}-${i}`} className="row">
                                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                                             <div>{groupName}</div>
-                                            <div>{money[i]}</div>
+                                            <div>${money[i]}</div>
                                         </div>
                                     </div>
                                 ) : null
