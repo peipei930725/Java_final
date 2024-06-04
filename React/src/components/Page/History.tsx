@@ -274,7 +274,7 @@ function History() {
                                 ) : null
                             ));
                         })}
-                        <button type="button" className="btn btn-secondary" onClick={handleCloseModal2}>關閉</button>
+                        <button type="button" className="btn btn-secondary" onClick={handleCloseModal3}>關閉</button>
                         </div>
                     </Modaloverlay>
                 )} 
