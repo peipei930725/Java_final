@@ -17,7 +17,7 @@ function Transfer() {
     const [isModalOpen2, setIsModalOpen2] = useState(false);
     const [currentView, setCurrentView] = useState('');
     const { account } = useAuth();
-    // const fetchedRef1 = useRef(false);
+    const fetchedRef1 = useRef(false);
     const fetchedRef2 = useRef(false);
 
     function handleAccept(index) {
@@ -45,6 +45,31 @@ function Transfer() {
         });
     }
     
+    function handleReject(index) {
+        fetch('http://localhost:8080/api/reject', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                index: index,
+                account: account  // 將 account 加入到請求體中
+            })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);  // 輸出返回的數據
+        })
+        .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+        });
+    }
+
     const handleCloseModal = () => {
         setIsModalOpen(false);
     };
@@ -159,7 +184,7 @@ function Transfer() {
                                     </div>
                                     <div>
                                         <button onClick={() => handleAccept(index)}>轉帳</button>
-                                        {/* <button onClick={() => handleReject(index)}>拒絕</button> */}
+                                        <button onClick={() => handleReject(index)}>拒絕</button>
                                     </div>
                                 </div>
                             ));
@@ -178,7 +203,7 @@ function Transfer() {
                             <div>{money[i]}</div>
                             <div>
                                 <button onClick={() => handleAccept(index)}>接受</button>
-                                {/* <button onClick={() => handleReject(index)}>拒絕</button> */}
+                                <button onClick={() => handleReject(index)}>拒絕</button>
                             </div>
                         </div>
                     ));
@@ -199,7 +224,7 @@ function Transfer() {
                                     </div>
                                     <div>
                                         <button onClick={() => handleAccept(index)}>接受</button>
-                                        {/* <button onClick={() => handleReject(index)}>拒絕</button> */}
+                                        <button onClick={() => handleReject(index)}>拒絕</button>
                                     </div>
                                 </div>
                             ));
