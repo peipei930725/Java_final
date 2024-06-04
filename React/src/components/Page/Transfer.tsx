@@ -119,30 +119,34 @@ function Transfer() {
 
 
     useEffect(() => {
-        fetch(`http://localhost:8080/api/transfer/waitForTransfer`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                account: account
+        if (!fetchedRef1.current) {
+            fetch(`http://localhost:8080/api/transfer/waitForTransfer`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    account: account
+                })
             })
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log(data);  // 輸出返回的數據
-            const groupName = data.groupName;
-            const money = data.money;
-            setDataList1(prevDataList => [...prevDataList, { groupName, money }]);
-        })
-        .catch(error => {
-            console.error('There has been a problem with your fetch operation:', error);
-        });
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data);  // 輸出返回的數據
+                const groupName = data.groupName;
+                const money = data.money;
+                setDataList1(prevDataList => [...prevDataList, { groupName, money }]);
+            })
+            .catch(error => {
+                console.error('There has been a problem with your fetch operation:', error);
+            });
+    
+            fetchedRef1.current = true;
+        }
     }, [account]);
 
     useEffect(() => {
@@ -163,7 +167,6 @@ function Transfer() {
                 return response.json();
             })
             .then(data => {
-                console.log(data);  // 輸出返回的數據
                 const groupName = data.groupName;
                 const money = data.money;
                 setDataList2(prevDataList => [...prevDataList, { groupName, money }]);
