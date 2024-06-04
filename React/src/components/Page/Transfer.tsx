@@ -45,14 +45,14 @@ function Transfer() {
         });
     }
 
-    function handleAccept(groupName) {
+    function handleAccept(transferName) {
         fetch('http://localhost:8080/api/accept', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                groupName: groupName,
+                transferName: transferName,
                 account: account  // 將 account 加入到請求體中
             })
         })
@@ -70,14 +70,14 @@ function Transfer() {
         });
     }
     
-    function handleReject(groupName) {
+    function handleReject(transferName) {
         fetch('http://localhost:8080/api/reject', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                groupName: groupName,
+                transferName: transferName,
                 account: account  // 將 account 加入到請求體中
             })
         })
