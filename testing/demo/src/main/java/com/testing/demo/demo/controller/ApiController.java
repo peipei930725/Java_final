@@ -1,5 +1,6 @@
 package com.testing.demo.demo.controller;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;  // 導入 StudentDto 類
@@ -305,11 +306,11 @@ public class ApiController {
             responseName += trade.getTransferName() + ",";
             for (int j = 0; j < trade.getUserList().size(); j++) {
                 UserCase newUser =  myDataRepository.findByUserAccount(trade.getUserList().get(j));
-                Integer index = newUser.getUserTradeList().indexOf(trade.getTransferName());
+                Integer index = newUser.getUserTradeList().indexOf(trade.getTransferId());
                 if (index == -1){
                     continue;
                 }
-                if (newUser.getUserStateList().get(index).equals("waitPay")){
+                if (newUser.getUserStateList().get(index).equals("done")){
                     userCount++;
                 }
             }
@@ -330,6 +331,10 @@ public class ApiController {
         // System.out.println("ToBeTransfer:");
         // System.out.println(responseName);
         // System.out.println(responseCount);
+
+
+
+
 
         response.put("groupName", responseName);
         response.put("count", responseCount);
@@ -354,11 +359,11 @@ public class ApiController {
             responseName += trade.getTransferName() + ",";
             for (int j = 0; j < trade.getUserList().size(); j++) {
                 UserCase newUser =  myDataRepository.findByUserAccount(trade.getUserList().get(j));
-                Integer index = newUser.getUserTradeList().indexOf(trade.getTransferName());
+                Integer index = newUser.getUserTradeList().indexOf(trade.getTransferId());
                 if (index == -1){
                     continue;
                 }
-                if (newUser.getUserStateList().get(index).equals("wait")){
+                if (newUser.getUserStateList().get(index).equals("waitAllAccept")){
                     userCount++;
                 }
             }
@@ -380,8 +385,37 @@ public class ApiController {
         // System.out.println("ToBeAccept:");
         // System.out.println(responseName);
         // System.out.println(responseCount);
-
-
+        user =  myDataRepository.findByUserAccount(historyToBeAcceptRequest.getAccount());
+        ArrayList<String> tradeList1 = user.getUserTradeList();
+        for (int i = 0; i < tradeList1.size(); i++) {
+            TradeCase trade = tradeInfoDataRepository.findByTransferId(tradeList1.get(i));
+            int userCount = 0;
+            for (int j = 0; j < trade.getUserList().size(); j++) {
+                UserCase newUser =  myDataRepository.findByUserAccount(trade.getUserList().get(j));
+                Integer indexIf = newUser.getUserTradeList().indexOf(trade.getTransferId());
+                if (indexIf == -1){
+                    continue;
+                }
+                if (newUser.getUserStateList().get(indexIf).equals("waitAllAccept")){
+                    userCount++;
+                }
+                // k
+            }
+            if (userCount == trade.getUserList().size()){
+                for (int j = 0; j < trade.getUserList().size(); j++) {
+                    UserCase newUser =  myDataRepository.findByUserAccount(trade.getUserList().get(j));
+                    Integer indexIf = newUser.getUserTradeList().indexOf(trade.getTransferId());
+                    if (indexIf == -1){
+                        continue;
+                    }
+                    // newUser.setUserState(indexIf, "waitPay");
+                    ArrayList<String> state1 = newUser.getUserStateList();
+                    state1.set(indexIf, "waitPay");
+                    newUser.setUserStateList(state1);
+                    myDataRepository.save(newUser);
+                }
+            }
+        }
         response.put("groupName", responseName);
         response.put("count", responseCount);
         response.put("success", "true");
@@ -400,14 +434,28 @@ public class ApiController {
             return ResponseEntity.badRequest().body(response);
         }
         //remove trade
-        user.removeUserTrade(trade.getTransferId());
+        // user.removeUserTrade(trade.getTransferId());
+        ArrayList<String> del  = user.getUserTradeList();
+        del.remove(trade.getTransferId());
+        user.setUserTradeList(del);
+        // user.removeUserState(index);
+        ArrayList<String> delState = user.getUserStateList();
+        delState.remove(index);
+        user.setUserStateList(delState);
+        // trade.removeUserList(rejectRequest.getAccount());
+        ArrayList<String> delTrade = trade.getUserList();
+        delTrade.remove(rejectRequest.getAccount());
+        trade.setUserList(delTrade);
+
+        tradeInfoDataRepository.save(trade);
         myDataRepository.save(user);
         
         response.put("success", "true");
         return ResponseEntity.ok(response);
     }
 
-    
+
+    // 665ef0309cf7f709c7d58df3
     @PostMapping("/accept")
     public ResponseEntity<Map<String, String>> accept(@RequestBody requestRequest acceptRequest) {
         Map<String, String> response = new HashMap<>();
@@ -415,18 +463,25 @@ public class ApiController {
         UserCase user =  myDataRepository.findByUserAccount(acceptRequest.getAccount());
         TradeCase trade = tradeInfoDataRepository.findByTransferName(acceptRequest.getTransferName());
         Integer index = user.getUserTradeList().indexOf(trade.getTransferId());
-        if (index == -1 || user==null ){
+        if (index == -1  ){
             System.out.println("error");
             response.put("message", "error");
             return ResponseEntity.badRequest().body(response);
         }
         if(user.getUserStateList().get(index).equals("waitPay")){
-            user.setUserState(index, "done");
+            // user.setUserState(index, "done");
+            ArrayList<String> state = user.getUserStateList();
+            state.set(index, "done");
+            user.setUserStateList(state);
             myDataRepository.save(user);
         }else if(user.getUserStateList().get(index).equals("wait")){
-            user.setUserState(index, "waitPay");
+            // user.setUserState(index, "waitAllAccept");
+            ArrayList<String> state = user.getUserStateList();
+            state.set(index, "waitAllAccept");
+            user.setUserStateList(state);
             myDataRepository.save(user);
         }
+        
         response.put("success", "true");
         return ResponseEntity.ok(response);
     }
