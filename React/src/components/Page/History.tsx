@@ -1,5 +1,4 @@
 import React, { useEffect, useState ,useRef } from 'react';
-import './History.css';
 import { useAuth } from '../../AuthContext';
 import { HistoryAndTransferContainer, Modaloverlay } from '../Theme';
 
