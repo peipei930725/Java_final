@@ -37,7 +37,7 @@ public class ApiController {
     @PostMapping("/createGroup")
     public ResponseEntity<Map<String, String>> register(@RequestBody GroupRequest groupRequest) {
         Map<String, String> response = new HashMap<>();
-        System.out.println(groupRequest.getGroupName());
+        // System.out.println(groupRequest.getGroupName());
         GroupCase existingGroupCase = GroupRepository.findByGroupName(groupRequest.getGroupName());
         if (groupRequest.getGroupName() == null || groupRequest.getGroupSize() == 0) {
             response.put("message", "請填入名稱或人數");
@@ -68,7 +68,7 @@ public class ApiController {
     
     @PostMapping("/transfer")
     public ResponseEntity<Map<String, String>> addTransfer(@RequestBody TradeRequest tradeRequest) {
-        System.out.println(tradeRequest.getAccount());
+        // System.out.println(tradeRequest.getAccount());
         Map<String, String> response = new HashMap<>();
         TradeCase existedTradeCase = tradeInfoDataRepository.findByTransferName(tradeRequest.getTransferName());
         if (tradeRequest.getTransferName() == null || tradeRequest.getTradeAmount() <= 0 || tradeRequest.getPeopleCount() <= 1  ){
@@ -102,7 +102,7 @@ public class ApiController {
 
     @PostMapping("/addTransfer")
     public ResponseEntity<Map<String, String>> transfer(@RequestBody AddTransferRequest addTransferRequest) {
-        System.out.println(addTransferRequest.getTransferId());
+        // System.out.println(addTransferRequest.getTransferId());
         Map<String, String> response = new HashMap<>();
         TradeCase existedTradeCase = tradeInfoDataRepository.findByTransferId(addTransferRequest.getTransferId());
         if (addTransferRequest.getTransferId() == null ){
@@ -138,8 +138,8 @@ public class ApiController {
     public ResponseEntity<Map<String, String>> addGroup(@RequestBody AddGroupRequest addGroupRequest) {
         Map<String, String> response = new HashMap<>();
         GroupCase existedGroupCase = GroupRepository.findByGroupName(addGroupRequest.getGroupName());
-        System.out.println(existedGroupCase);
-        System.out.println(addGroupRequest.getGroupName());
+        // System.out.println(existedGroupCase);
+        // System.out.println(addGroupRequest.getGroupName());
         if (existedGroupCase == null) {
             response.put("message", "群組不存在");
             return ResponseEntity.badRequest().body(response);
@@ -198,8 +198,12 @@ public class ApiController {
             responseName = "null";
             responseMoney = "null";
         }
-        System.out.println(responseName);
-        System.out.println(responseMoney);
+
+        //test print
+        // System.out.println("WaitForTransfer:");
+        // System.out.println(responseName);
+        // System.out.println(responseMoney);
+
         response.put("groupName", responseName);
         response.put("money", responseMoney);
         response.put("success", "true");
@@ -234,8 +238,13 @@ public class ApiController {
             responseName = "null";
             responseMoney = "null";
         }
-        System.out.println(responseName);
-        System.out.println(responseMoney);
+
+
+        //test print
+        // System.out.println("WaitForAccept:");
+        // System.out.println(responseName);
+        // System.out.println(responseMoney);
+
         response.put("groupName", responseName);
         response.put("money", responseMoney);
         response.put("success", "true");
@@ -269,10 +278,19 @@ public class ApiController {
             responseName = "null";
             responseMoney = "null";
         }
+
+        //test print
+        // System.out.println("Done:");
+        // System.out.println(responseName);
+        // System.out.println(responseMoney);
+
+
         response.put("groupName", responseName);
         response.put("money", responseMoney);
         response.put("success", "true");
         return ResponseEntity.ok(response);
+
+
     }
     
     @PostMapping("/history/toBeTransfer")
@@ -304,6 +322,12 @@ public class ApiController {
             responseName = "null";
             responseCount = "null";
         }
+
+        //test print
+        // System.out.println("ToBeTransfer:");
+        // System.out.println(responseName);
+        // System.out.println(responseCount);
+
         response.put("groupName", responseName);
         response.put("Count", responseCount);
         response.put("success", "true");
@@ -341,6 +365,14 @@ public class ApiController {
             responseName = "null";
             responseCount = "null";
         }
+
+
+        //test print
+        // System.out.println("ToBeAccept:");
+        // System.out.println(responseName);
+        // System.out.println(responseCount);
+
+
         response.put("groupName", responseName);
         response.put("Count", responseCount);
         response.put("success", "true");
