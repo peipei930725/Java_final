@@ -31,10 +31,10 @@ const Header = () => {
                 <NavDropdown.Item href="#action/3.2">
                   Another action
                 </NavDropdown.Item> */}
-                <NavDropdown.Item href="#action/3.3">
+                {/* <NavDropdown.Item href="#action/3.3">
                   更改密碼
                 </NavDropdown.Item>
-                <NavDropdown.Divider />
+                <NavDropdown.Divider /> */}
                 <NavDropdown.Item onClick={logout}>
                   <LogoutIcon />
                   登出

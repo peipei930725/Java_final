@@ -196,7 +196,7 @@ function History() {
                             ));
                         })}
                         <div className="col-12">
-                            
+
                         <button type="button" className="btn btn-secondary" onClick={handleCloseModal1}>關閉</button>
                         </div>
                         </div>
@@ -204,7 +204,7 @@ function History() {
                 )} 
             </div>
             <div className="section">
-                <div className="section-header">To be Transfered</div>
+                <div className="section-header">已轉帳</div>
                 {dataList2 && dataList2.slice(0, 2).map((item, index) => {
                     const groupNames = item.groupName.split(',');
                     const count = item.count.split(',');
@@ -245,7 +245,7 @@ function History() {
                 )} 
             </div>
             <div className="section">
-                <div className="section-header">To be Accepted</div>
+                <div className="section-header">待接受</div>
                 {dataList3 && dataList3.slice(0, 2).map((item, index) => {
                     const groupNames = item.groupName.split(',');
                     const count = item.count.split(',');
