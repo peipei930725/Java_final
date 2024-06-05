@@ -220,6 +220,6 @@ export const HistoryAndTransferContainer=styled.div`
     .section .row button {
         margin: 0 10px;
         border: none;
-        width: 50px;
+        width: 70px;
     }
 `
