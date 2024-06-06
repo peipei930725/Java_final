@@ -300,6 +300,7 @@ public class ApiController {
         ArrayList<String> stateList = user.getUserStateList();
         String responseName = "";
         String responseCount = "";
+        boolean flag = true;
         for (int i = 0; i < tradeList.size(); i++) {
             int userCount = 0;
             TradeCase trade = tradeInfoDataRepository.findByTransferId(tradeList.get(i));
@@ -312,7 +313,11 @@ public class ApiController {
                 }
                 if (newUser.getUserStateList().get(index).equals("done")){
                     userCount++;
+                    flag = false;
                 }
+                // else if (newUser.getUserStateList().get(index).equals("waitPay")|| newUser.getUserStateList().get(index).equals("waitAllAccept")){
+                //     flag = true;
+                // }
             }
             responseCount += Integer.toString(userCount) + "/" + trade.getUserList().size() + ",";
         }
@@ -322,7 +327,7 @@ public class ApiController {
         if (responseCount.length() > 0){
             responseCount = responseCount.substring(0, responseCount.length()-1);
         }
-        if (responseName.length() == 0){
+        if (responseName.length() == 0 || flag){
             responseName = "null";
             responseCount = "null";
         }
@@ -352,7 +357,7 @@ public class ApiController {
         ArrayList<String> stateList = user.getUserStateList();
         String responseName = "";
         String responseCount = "";
-
+        boolean flag = true;
         for (int i = 0; i < tradeList.size(); i++) {
             int userCount = 0;
             TradeCase trade = tradeInfoDataRepository.findByTransferId(tradeList.get(i));
@@ -363,9 +368,13 @@ public class ApiController {
                 if (index == -1){
                     continue;
                 }
-                if (newUser.getUserStateList().get(index).equals("waitAllAccept")){
+                if (newUser.getUserStateList().get(index).equals("waitAllAccept")|| newUser.getUserStateList().get(index).equals("waitPay")|| newUser.getUserStateList().get(index).equals("done")){
                     userCount++;
+                    flag = false;
                 }
+                // else if (newUser.getUserStateList().get(index).equals("done")){
+                // flag = true;
+                // }
             }
             responseCount += Integer.toString(userCount) + "/" + trade.getUserList().size() + ",";
         }
@@ -375,7 +384,7 @@ public class ApiController {
         if (responseCount.length() > 0){
             responseCount = responseCount.substring(0, responseCount.length()-1);
         }
-        if (responseName.length() == 0){
+        if (responseName.length() == 0 || flag){
             responseName = "null";
             responseCount = "null";
         }

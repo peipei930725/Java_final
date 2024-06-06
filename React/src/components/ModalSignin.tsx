@@ -1,4 +1,4 @@
-import React, { ReactNode ,useContext,useState } from "react";
+import  { useState } from "react";
 import '../components/ModalSignin.css'
 import { useAuth } from "../AuthContext";
 
@@ -64,9 +64,8 @@ export default function ModalSignin({onToggleModal}) {
                 />
                 <label htmlFor="floatingPassword">密碼</label>
             </div>
-            <div className="button">
+            <div className="col-12">
                 <button type="button" className="btn btn-outline-success" onClick={handleLoginClick}>登入</button> 
-                <hr/>
             </div>
             <p>{loginStatus}</p>
             <p className="Signup">還沒有帳號嗎？點此<button type="button" className="btn btn-link" onClick={onToggleModal}>註冊帳號</button></p>

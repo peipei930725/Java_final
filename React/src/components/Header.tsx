@@ -5,6 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Form from "react-bootstrap/Form";
 import { useAuth } from "../AuthContext";
+import {HeaderCss } from "./Theme";
 
 import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
 import LogoutIcon from "@mui/icons-material/Logout";
@@ -15,7 +16,7 @@ const Header = () => {
   const {colormode}=useAuth();
   const { changeColor} = useAuth();
   return (
-    <div>
+    <HeaderCss>
       <Navbar expand="lg" bg={colormode} variant={colormode} className="header" style={{paddingLeft:"5px"}}>
         <Container className="m-0 p-2" >
           <Navbar.Brand href="/" style={{fontSize:"25px" }}>
@@ -26,14 +27,14 @@ const Header = () => {
           <Navbar.Collapse className="justify-content-end">
             <Nav>
               <NavDropdown title={account} id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                {/* <NavDropdown.Item href="#action/3.1"></NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
                   Another action
+                </NavDropdown.Item> */}
+                {/* <NavDropdown.Item href="#action/3.3">
+                  更改密碼
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Something
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
+                <NavDropdown.Divider /> */}
                 <NavDropdown.Item onClick={logout}>
                   <LogoutIcon />
                   登出
@@ -53,7 +54,7 @@ const Header = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-    </div>
+      </HeaderCss>
   );
 };
 

@@ -8,64 +8,63 @@ import {
   BrowserRouter as Router,
   Route,
   Routes,
-  Navigate,
   BrowserRouter,
 } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
-import "./App.css";
 import { AuthProvider, useAuth } from "./AuthContext";
-import AddGroup from "./components/Page/AddGroup";
+import { ThemeProvider } from "styled-components";
+import {
+  darkTheme,
+  lightTheme,
+  Maincontent,
+  Content,
+  MainApp,
+} from "./components/Theme";
 
 function App() {
-
-
   return (
-    
-      <AuthProvider>
-        <BrowserRouter>
-          <Content />
-        </BrowserRouter>
-      </AuthProvider>
+    <AuthProvider>
+      <BrowserRouter>
+        <AppContent />
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 
-function Content(){
-  const { isLoggedIn,login, colormode ,changeColor,setColor} = useAuth();
+function AppContent() {
+  const { isLoggedIn, login, colormode, changeColor, setColor } = useAuth();
 
-  if(localStorage.getItem('account')){
-    login(localStorage.getItem('account'));
+  if (localStorage.getItem("account")) {
+    login(localStorage.getItem("account"));
   }
 
-  if(localStorage.getItem('colormode')=='dark'){
-    setColor('dark');
+  if (localStorage.getItem("colormode") == "dark") {
+    setColor("dark");
   }
-  return(
+  return (
     <>
-    {!isLoggedIn ? (
-      <>
-        <ModalCtrl />
-      </>
-    ) : null}
-    <div className="maincpp">
-      <div className="header">
-        <Header />
-      </div>
-      <div className="content">
-        <div className="Sidebar">
-          <Sidebar />
-        </div>
-        <main className="main" style={{backgroundColor:colormode=='light'?'#fff':'#121212'}}>
-          <Routes>
-            <Route path="/Add" Component={AddCtrl} />
-            <Route path="/Transfer" Component={Transfer} />
-            <Route path="/History" Component={History} />
-          </Routes>
-        </main>
-      </div>
-    </div>
+      <ThemeProvider theme={colormode == "light" ? lightTheme : darkTheme}>
+        {!isLoggedIn ? (
+          <>
+            <ModalCtrl />
+          </>
+        ) : null}
+        <MainApp>
+          <Header />
+          <Content>
+            <Sidebar />
+            <Maincontent>
+              <Routes>
+                <Route path="/Add" Component={AddCtrl} />
+                <Route path="/Transfer" Component={Transfer} />
+                <Route path="/History" Component={History} />
+              </Routes>
+            </Maincontent>
+          </Content>
+        </MainApp>
+      </ThemeProvider>
     </>
-  )
+  );
 }
-
 
 export default App;
